@@ -37,9 +37,6 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
     window.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`, "_blank");
   }, [shareText, shareUrl]);
 
-  const handleTwitter = useCallback(() => {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, "_blank");
-  }, [shareText, shareUrl]);
 
   useEffect(() => {
     const duration = 1500;
@@ -162,14 +159,6 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
             className="flex items-center gap-2 bg-[hsl(142,70%,40%)] text-white px-4 py-2.5 rounded-lg text-sm font-medium"
           >
             WhatsApp
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={handleTwitter}
-            className="flex items-center gap-2 bg-foreground/10 text-foreground px-4 py-2.5 rounded-lg text-sm font-medium"
-          >
-            𝕏 Twitter
           </motion.button>
           <motion.button
             whileHover={{ scale: 1.08 }}
