@@ -37,9 +37,6 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
     window.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`, "_blank");
   }, [shareText, shareUrl]);
 
-  const handleTwitter = useCallback(() => {
-    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, "_blank");
-  }, [shareText, shareUrl]);
 
   useEffect(() => {
     const duration = 1500;
