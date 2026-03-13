@@ -12,6 +12,32 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
   const top = wines[0];
   const others = wines.slice(1, 3);
 
+  useEffect(() => {
+    const duration = 1500;
+    const end = Date.now() + duration;
+    const colors = ["#9fbc00", "#c8e64a", "#ffffff"];
+
+    const frame = () => {
+      confetti({
+        particleCount: 3,
+        angle: 60,
+        spread: 55,
+        origin: { x: 0, y: 0.6 },
+        colors,
+      });
+      confetti({
+        particleCount: 3,
+        angle: 120,
+        spread: 55,
+        origin: { x: 1, y: 0.6 },
+        colors,
+      });
+      if (Date.now() < end) requestAnimationFrame(frame);
+    };
+    frame();
+  }, []);
+  const others = wines.slice(1, 3);
+
   const formatPrice = (price: number) =>
     price.toLocaleString("de-DE", { style: "currency", currency: "EUR" });
 
