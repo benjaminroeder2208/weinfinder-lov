@@ -1,6 +1,8 @@
-import { useEffect } from "react";
+import { useEffect, useCallback } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
+import { Share2, Copy, Check } from "lucide-react";
+import { useState } from "react";
 import { Wine } from "@/data/wines";
 
 interface ResultScreenProps {
