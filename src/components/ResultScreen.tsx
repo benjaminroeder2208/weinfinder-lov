@@ -13,6 +13,33 @@ interface ResultScreenProps {
 const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
   const top = wines[0];
   const others = wines.slice(1, 3);
+  const [copied, setCopied] = useState(false);
+
+  const shareText = top
+    ? `🍷 Mein Wein-Match: ${top.name} von ${top.weingut} – ${top.description}`
+    : "";
+
+  const shareUrl = window.location.href;
+
+  const handleShare = useCallback(async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({ title: "Mein Wein-Match 🍷", text: shareText, url: shareUrl });
+      } catch {}
+    } else {
+      await navigator.clipboard.writeText(`${shareText}\n${shareUrl}`);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  }, [shareText, shareUrl]);
+
+  const handleWhatsApp = useCallback(() => {
+    window.open(`https://wa.me/?text=${encodeURIComponent(`${shareText}\n${shareUrl}`)}`, "_blank");
+  }, [shareText, shareUrl]);
+
+  const handleTwitter = useCallback(() => {
+    window.open(`https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`, "_blank");
+  }, [shareText, shareUrl]);
 
   useEffect(() => {
     const duration = 1500;
