@@ -1,4 +1,6 @@
+import { useEffect } from "react";
 import { motion } from "framer-motion";
+import confetti from "canvas-confetti";
 import { Wine } from "@/data/wines";
 
 interface ResultScreenProps {
