@@ -163,14 +163,6 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.95 }}
-            onClick={handleTwitter}
-            className="flex items-center gap-2 bg-foreground/10 text-foreground px-4 py-2.5 rounded-lg text-sm font-medium"
-          >
-            𝕏 Twitter
-          </motion.button>
-          <motion.button
-            whileHover={{ scale: 1.08 }}
-            whileTap={{ scale: 0.95 }}
             onClick={handleShare}
             className="flex items-center gap-2 bg-foreground/10 text-foreground px-4 py-2.5 rounded-lg text-sm font-medium"
           >
