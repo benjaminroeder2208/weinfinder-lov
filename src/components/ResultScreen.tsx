@@ -36,7 +36,6 @@ const ResultScreen = ({ wines, onRestart }: ResultScreenProps) => {
     };
     frame();
   }, []);
-  const others = wines.slice(1, 3);
 
   const formatPrice = (price: number) =>
     price.toLocaleString("de-DE", { style: "currency", currency: "EUR" });
