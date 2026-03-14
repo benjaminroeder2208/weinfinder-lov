@@ -2,7 +2,7 @@ import type { AppConfig } from "@/types/config";
 
 export const appConfig: AppConfig = {
   brandName: "Weinfinder Premium",
-  headline: "Weinfinder Premium 🍷",
+  headline: "Weinfinder",
   subheadline: "Finde den Wein, der wirklich zu deinem Geschmack, Anlass und Menü passt.",
   description: "Beantworte wenige kurze Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
   ctaLabel: "Weinberatung starten",
