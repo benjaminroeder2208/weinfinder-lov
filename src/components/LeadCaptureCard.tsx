@@ -27,12 +27,12 @@ const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
       setError(null);
 
       try {
-        const { error: dbError } = await supabase.from("leads").insert({
+        const { error: dbError } = await supabase.from("leads").insert([{
           email: email.trim(),
           wine_name: wine?.name ?? null,
           wine_id: wine?.id ?? null,
           quiz_answers: answers ? (answers as unknown as Record<string, unknown>) : null,
-        });
+        }]);
 
         if (dbError) throw dbError;
 
