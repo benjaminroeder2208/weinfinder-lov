@@ -94,6 +94,7 @@ Deno.serve(async (req) => {
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
         from_name: "Weinfinder Premium",
+        purpose: "transactional",
       }),
     });
 
