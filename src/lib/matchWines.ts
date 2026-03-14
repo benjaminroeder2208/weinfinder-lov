@@ -33,10 +33,19 @@ export interface MatchResult {
  */
 export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult {
   // Step 1: color filter
-  const filtered =
+  let filtered =
     answers.color !== "egal"
       ? allWines.filter((w) => w.color === answers.color)
-      : allWines;
+      : [...allWines];
+
+  // Step 1b: hard price filter – main recommendation must respect price
+  if (answers.price !== "egal") {
+    const priceFiltered = filtered.filter((w) => w.price_category === answers.price);
+    if (priceFiltered.length > 0) {
+      filtered = priceFiltered;
+    }
+    // If no wines match the price range, keep all to avoid empty results
+  }
 
   // Step 2 + 3 + 4: scoring
   const scored: ScoredWine[] = filtered.map((wine) => {
@@ -65,9 +74,9 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
       foodOccasionScore += 2;
     }
 
-    // Base: price +1
+    // Base: price +2
     if (answers.price !== "egal" && wine.price_category === answers.price) {
-      score += 1;
+      score += 2;
     }
 
     // Base: acidity +2

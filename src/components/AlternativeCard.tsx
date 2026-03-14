@@ -1,6 +1,8 @@
 import { motion } from "framer-motion";
 import type { Wine } from "@/types/wine";
 import { formatPrice } from "@/lib/helpers";
+import { appConfig } from "@/data/config";
+import { trackEvent } from "@/lib/analytics";
 
 interface AlternativeCardProps {
   wine: Wine;
@@ -9,6 +11,11 @@ interface AlternativeCardProps {
 }
 
 const AlternativeCard = ({ wine, label, index }: AlternativeCardProps) => {
+  const handleCta = () => {
+    trackEvent("wine_cta_clicked", { wineId: wine.id, wineName: wine.name });
+    if (wine.link) window.open(wine.link, "_blank");
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 15 }}
@@ -30,9 +37,21 @@ const AlternativeCard = ({ wine, label, index }: AlternativeCardProps) => {
             <p className="text-xs text-muted-foreground mt-1">{wine.grape_variety} · {wine.region}</p>
           )}
         </div>
-        <span className="font-display text-lg font-bold text-primary whitespace-nowrap">
-          {formatPrice(wine.price)}
-        </span>
+        <div className="flex flex-col items-end gap-2 shrink-0">
+          <span className="font-display text-lg font-bold text-primary whitespace-nowrap">
+            {formatPrice(wine.price)}
+          </span>
+          {wine.link && (
+            <motion.button
+              whileHover={{ scale: 1.04 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={handleCta}
+              className="bg-primary text-primary-foreground font-medium px-4 py-1.5 rounded-lg text-xs"
+            >
+              {appConfig.ctaWineLabel}
+            </motion.button>
+          )}
+        </div>
       </div>
     </motion.div>
   );
