@@ -8,6 +8,7 @@ import {
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Link,
   Preview,
@@ -27,32 +28,33 @@ export const EmailChangeEmail = ({
   newEmail,
   confirmationUrl,
 }: EmailChangeEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="de" dir="ltr">
     <Head />
-    <Preview>Confirm your email change for {siteName}</Preview>
+    <Preview>E-Mail-Änderung bestätigen – Weinfinder Premium</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Confirm your email change</Heading>
+        <Text style={brand}>🍷 Weinfinder Premium</Text>
+        <Heading style={h1}>E-Mail-Adresse ändern</Heading>
         <Text style={text}>
-          You requested to change your email address for {siteName} from{' '}
+          Du hast eine Änderung deiner E-Mail-Adresse angefordert – von{' '}
           <Link href={`mailto:${email}`} style={link}>
             {email}
           </Link>{' '}
-          to{' '}
+          zu{' '}
           <Link href={`mailto:${newEmail}`} style={link}>
             {newEmail}
           </Link>
           .
         </Text>
         <Text style={text}>
-          Click the button below to confirm this change:
+          Klicke auf den Button, um die Änderung zu bestätigen:
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Confirm Email Change
+          Änderung bestätigen
         </Button>
+        <Hr style={hr} />
         <Text style={footer}>
-          If you didn't request this change, please secure your account
-          immediately.
+          Falls du diese Änderung nicht angefordert hast, sichere bitte sofort dein Konto.
         </Text>
       </Container>
     </Body>
@@ -61,27 +63,33 @@ export const EmailChangeEmail = ({
 
 export default EmailChangeEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
+const primary = 'hsl(345, 60%, 35%)'
+const primaryFg = 'hsl(30, 20%, 97%)'
+const foreground = 'hsl(350, 15%, 15%)'
+const mutedFg = 'hsl(350, 8%, 45%)'
+const bgColor = 'hsl(30, 25%, 95%)'
+const borderColor = 'hsl(30, 15%, 85%)'
+
+const main = { backgroundColor: bgColor, fontFamily: "'Inter', Arial, sans-serif" }
+const container = { maxWidth: '520px', margin: '0 auto', padding: '40px 24px' }
+const brand = { fontSize: '14px', color: mutedFg, margin: '0 0 24px', textAlign: 'center' as const }
 const h1 = {
-  fontSize: '22px',
+  fontSize: '24px',
   fontWeight: 'bold' as const,
-  color: '#000000',
+  fontFamily: "'Playfair Display', Georgia, serif",
+  color: foreground,
   margin: '0 0 20px',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
+const text = { fontSize: '14px', color: mutedFg, lineHeight: '1.6', margin: '0 0 25px' }
 const link = { color: 'inherit', textDecoration: 'underline' }
 const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
+  backgroundColor: primary,
+  color: primaryFg,
   fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontWeight: '600' as const,
+  borderRadius: '12px',
+  padding: '12px 24px',
   textDecoration: 'none',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const hr = { borderColor, margin: '30px 0 16px' }
+const footer = { fontSize: '12px', color: mutedFg, margin: '0' }

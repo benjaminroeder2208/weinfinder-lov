@@ -8,6 +8,7 @@ import {
   Container,
   Head,
   Heading,
+  Hr,
   Html,
   Link,
   Preview,
@@ -27,31 +28,26 @@ export const SignupEmail = ({
   recipient,
   confirmationUrl,
 }: SignupEmailProps) => (
-  <Html lang="en" dir="ltr">
+  <Html lang="de" dir="ltr">
     <Head />
-    <Preview>Confirm your email for {siteName}</Preview>
+    <Preview>Bestätige deine E-Mail für Weinfinder Premium</Preview>
     <Body style={main}>
       <Container style={container}>
-        <Heading style={h1}>Confirm your email</Heading>
+        <Text style={brand}>🍷 Weinfinder Premium</Text>
+        <Heading style={h1}>Willkommen!</Heading>
         <Text style={text}>
-          Thanks for signing up for{' '}
-          <Link href={siteUrl} style={link}>
-            <strong>{siteName}</strong>
-          </Link>
-          !
-        </Text>
-        <Text style={text}>
-          Please confirm your email address (
+          Schön, dass du dabei bist! Bestätige deine E-Mail-Adresse (
           <Link href={`mailto:${recipient}`} style={link}>
             {recipient}
           </Link>
-          ) by clicking the button below:
+          ), um loszulegen.
         </Text>
         <Button style={button} href={confirmationUrl}>
-          Verify Email
+          E-Mail bestätigen
         </Button>
+        <Hr style={hr} />
         <Text style={footer}>
-          If you didn't create an account, you can safely ignore this email.
+          Falls du kein Konto erstellt hast, kannst du diese E-Mail ignorieren.
         </Text>
       </Container>
     </Body>
@@ -60,27 +56,33 @@ export const SignupEmail = ({
 
 export default SignupEmail
 
-const main = { backgroundColor: '#ffffff', fontFamily: 'Arial, sans-serif' }
-const container = { padding: '20px 25px' }
+const primary = 'hsl(345, 60%, 35%)'
+const primaryFg = 'hsl(30, 20%, 97%)'
+const foreground = 'hsl(350, 15%, 15%)'
+const mutedFg = 'hsl(350, 8%, 45%)'
+const bgColor = 'hsl(30, 25%, 95%)'
+const borderColor = 'hsl(30, 15%, 85%)'
+
+const main = { backgroundColor: bgColor, fontFamily: "'Inter', Arial, sans-serif" }
+const container = { maxWidth: '520px', margin: '0 auto', padding: '40px 24px' }
+const brand = { fontSize: '14px', color: mutedFg, margin: '0 0 24px', textAlign: 'center' as const }
 const h1 = {
-  fontSize: '22px',
+  fontSize: '24px',
   fontWeight: 'bold' as const,
-  color: '#000000',
+  fontFamily: "'Playfair Display', Georgia, serif",
+  color: foreground,
   margin: '0 0 20px',
 }
-const text = {
-  fontSize: '14px',
-  color: '#55575d',
-  lineHeight: '1.5',
-  margin: '0 0 25px',
-}
+const text = { fontSize: '14px', color: mutedFg, lineHeight: '1.6', margin: '0 0 25px' }
 const link = { color: 'inherit', textDecoration: 'underline' }
 const button = {
-  backgroundColor: '#000000',
-  color: '#ffffff',
+  backgroundColor: primary,
+  color: primaryFg,
   fontSize: '14px',
-  borderRadius: '8px',
-  padding: '12px 20px',
+  fontWeight: '600' as const,
+  borderRadius: '12px',
+  padding: '12px 24px',
   textDecoration: 'none',
 }
-const footer = { fontSize: '12px', color: '#999999', margin: '30px 0 0' }
+const hr = { borderColor, margin: '30px 0 16px' }
+const footer = { fontSize: '12px', color: mutedFg, margin: '0' }
