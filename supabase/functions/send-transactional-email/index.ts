@@ -97,6 +97,7 @@ Deno.serve(async (req) => {
         sender_domain: "notify.weinfinder.kontakt-2.de",
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
+        text,
         purpose: "transactional",
         label: "quiz-results",
         queued_at: new Date().toISOString(),
