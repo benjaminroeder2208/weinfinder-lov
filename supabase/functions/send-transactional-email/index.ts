@@ -57,22 +57,23 @@ Deno.serve(async (req) => {
     const siteUrl = "https://weinfinder.lovable.app";
 
     // Render the email template
-    const html = await renderAsync(
-      QuizResultsEmail({
-        wineName: wineName || "Deine Weinempfehlung",
-        winery: winery || "",
-        description: description || "",
-        price: price || "",
-        grapeVariety,
-        region,
-        bodyStyle,
-        foodPairings: foodPairings || [],
-        wineLink,
-        alternativeName,
-        alternativeWinery,
-        siteUrl,
-      })
-    );
+    const emailProps = {
+      wineName: wineName || "Deine Weinempfehlung",
+      winery: winery || "",
+      description: description || "",
+      price: price || "",
+      grapeVariety,
+      region,
+      bodyStyle,
+      foodPairings: foodPairings || [],
+      wineLink,
+      alternativeName,
+      alternativeWinery,
+      siteUrl,
+    };
+
+    const html = await renderAsync(QuizResultsEmail(emailProps));
+    const text = `Deine Weinempfehlung: ${wineName || "Weinfinder"}\n\nWeingut: ${winery || ""}\n${description || ""}\nPreis: ${price || ""}\n\nBesuche ${siteUrl} für mehr Infos.`;
 
     const messageId = `quiz-result-${crypto.randomUUID()}`;
 
@@ -88,14 +89,19 @@ Deno.serve(async (req) => {
     // Enqueue for sending
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
-      payload: JSON.stringify({
+      payload: {
+        
         message_id: messageId,
         to: email,
+        from: `Weinfinder Premium <noreply@weinfinder.kontakt-2.de>`,
+        sender_domain: "notify.weinfinder.kontakt-2.de",
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
-        from_name: "Weinfinder Premium",
+        text,
         purpose: "transactional",
-      }),
+        label: "quiz-results",
+        queued_at: new Date().toISOString(),
+      },
     });
 
     return new Response(
