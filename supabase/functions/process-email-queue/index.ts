@@ -262,29 +262,37 @@ Deno.serve(async (req) => {
             { apiKey, sendUrl: Deno.env.get('LOVABLE_SEND_URL') }
           )
         } else {
-          // Transactional emails: direct API call (no run_id needed)
-          const sendUrl = Deno.env.get('LOVABLE_SEND_URL') || 'https://api.lovable.dev'
-          const resp = await fetch(`${sendUrl}/v1/email/send`, {
+          // Transactional emails: send via Resend API
+          const resendKey = Deno.env.get('RESEND_API_KEY')
+          if (!resendKey) {
+            throw new Error('RESEND_API_KEY not configured')
+          }
+          const resp = await fetch('https://api.resend.com/emails', {
             method: 'POST',
             headers: {
-              'Authorization': `Bearer ${apiKey}`,
+              'Authorization': `Bearer ${resendKey}`,
               'Content-Type': 'application/json',
             },
             body: JSON.stringify({
-              to: payload.to,
               from: payload.from,
-              sender_domain: payload.sender_domain,
+              to: [payload.to],
               subject: payload.subject,
               html: payload.html,
               text: payload.text,
-              purpose: payload.purpose,
-              label: payload.label,
-              message_id: payload.message_id,
             }),
           })
-          const respText = await resp.text()
+          const respBody = await resp.json()
           if (!resp.ok) {
-            throw new Error(`Email API error: ${resp.status} ${respText}`)
+            const errMsg = respBody?.message || JSON.stringify(respBody)
+            const err = new Error(`Resend API error: ${resp.status} ${errMsg}`)
+            if (resp.status === 429) {
+              ;(err as any).status = 429
+              const retryHeader = resp.headers.get('retry-after')
+              if (retryHeader) {
+                ;(err as any).retryAfterSeconds = parseInt(retryHeader, 10)
+              }
+            }
+            throw err
           }
         }
 
