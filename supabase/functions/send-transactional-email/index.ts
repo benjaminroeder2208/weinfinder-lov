@@ -89,6 +89,7 @@ Deno.serve(async (req) => {
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
       payload: {
+        run_id: crypto.randomUUID(),
         message_id: messageId,
         to: email,
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
