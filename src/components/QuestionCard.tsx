@@ -18,29 +18,28 @@ const QuestionCard = ({ question, questionIndex, totalQuestions, onAnswer }: Que
   };
 
   return (
-    <div className="flex flex-col min-h-[85vh] px-5 pt-12">
+    <div className="flex flex-col min-h-[80vh] px-4 pt-10">
       <ProgressBar current={questionIndex} total={totalQuestions} />
 
       <AnimatePresence mode="wait">
         <motion.div
           key={questionIndex}
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 40 }}
           animate={{ opacity: 1, x: 0 }}
-          exit={{ opacity: 0, x: -30 }}
-          transition={{ duration: 0.35, ease: "easeOut" }}
+          exit={{ opacity: 0, x: -40 }}
+          transition={{ duration: 0.3 }}
         >
-          <h2 className="font-display text-2xl md:text-3xl lg:text-4xl font-semibold text-foreground mb-10 leading-snug">
+          <h2 className="font-display text-2xl md:text-3xl font-semibold text-foreground mb-8">
             {question.question}
           </h2>
 
           <div className="flex flex-col gap-3">
-            {question.options.map((option, i) => (
+            {question.options.map((option) => (
               <AnswerOption
                 key={option.value}
                 label={option.label}
                 value={option.value}
                 onSelect={handleAnswer}
-                index={i}
               />
             ))}
           </div>

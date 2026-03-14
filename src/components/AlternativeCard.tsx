@@ -20,25 +20,25 @@ const AlternativeCard = ({ wine, label, index }: AlternativeCardProps) => {
     <motion.div
       initial={{ opacity: 0, y: 15 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: 0.35 + index * 0.1 }}
-      className="bg-card rounded-xl shadow-card hover:shadow-card-hover p-6 border border-border transition-shadow duration-300"
+      transition={{ delay: 0.3 + index * 0.1 }}
+      className="bg-card rounded-lg shadow-card p-5 border border-border/50"
     >
-      <span className="text-xs font-semibold uppercase tracking-[0.15em] text-accent mb-3 block">
+      <span className="text-xs font-semibold uppercase tracking-widest text-primary/70 mb-2 block">
         {label}
       </span>
       <div className="flex justify-between items-start gap-4">
         <div className="flex-1 min-w-0">
-          <h4 className="font-display text-xl font-semibold text-foreground mb-0.5">
+          <h4 className="font-display text-base font-semibold text-foreground truncate">
             {wine.name}
           </h4>
-          <p className="text-muted-foreground text-xs font-medium">{wine.weingut}</p>
-          <p className="text-foreground/70 text-sm mt-2 line-clamp-2 leading-relaxed">{wine.description}</p>
+          <p className="text-muted-foreground text-xs">{wine.weingut}</p>
+          <p className="text-foreground/70 text-sm mt-1 line-clamp-2">{wine.description}</p>
           {wine.grape_variety && (
-            <p className="text-xs text-muted-foreground mt-2">{wine.grape_variety} · {wine.region}</p>
+            <p className="text-xs text-muted-foreground mt-1">{wine.grape_variety} · {wine.region}</p>
           )}
         </div>
-        <div className="flex flex-col items-end gap-3 shrink-0">
-          <span className="font-display text-xl font-bold text-foreground whitespace-nowrap">
+        <div className="flex flex-col items-end gap-2 shrink-0">
+          <span className="font-display text-lg font-bold text-primary whitespace-nowrap">
             {formatPrice(wine.price)}
           </span>
           {wine.link && (
@@ -46,7 +46,7 @@ const AlternativeCard = ({ wine, label, index }: AlternativeCardProps) => {
               whileHover={{ scale: 1.04 }}
               whileTap={{ scale: 0.97 }}
               onClick={handleCta}
-              className="bg-primary text-primary-foreground font-medium px-5 py-2 rounded-full text-xs tracking-wide"
+              className="bg-primary text-primary-foreground font-medium px-4 py-1.5 rounded-lg text-xs"
             >
               {appConfig.ctaWineLabel}
             </motion.button>

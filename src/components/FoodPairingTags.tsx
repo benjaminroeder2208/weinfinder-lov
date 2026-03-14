@@ -10,8 +10,8 @@ const FoodPairingTags = ({ pairings }: FoodPairingTagsProps) => {
   if (!pairings.length) return null;
 
   return (
-    <div className="mt-6 pt-5 border-t border-border">
-      <h4 className="font-display text-lg font-semibold text-foreground mb-4">
+    <div className="mt-5">
+      <h4 className="font-display text-sm font-semibold text-foreground mb-3 tracking-wide uppercase">
         {appConfig.foodPairingLabel}
       </h4>
       <div className="flex flex-wrap gap-2">
@@ -24,10 +24,10 @@ const FoodPairingTags = ({ pairings }: FoodPairingTagsProps) => {
               initial={{ opacity: 0, scale: 0.9 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 0.4 + i * 0.08 }}
-              className="inline-flex items-center gap-2 bg-secondary text-secondary-foreground px-4 py-2 rounded-full text-sm"
+              className="inline-flex items-center gap-1.5 bg-secondary text-secondary-foreground px-3 py-1.5 rounded-full text-sm font-medium"
             >
-              <span className="text-base">{info.emoji}</span>
-              <span className="font-medium">{info.label}</span>
+              <span>{info.emoji}</span>
+              <span>{info.label}</span>
             </motion.span>
           );
         })}

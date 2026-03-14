@@ -4,21 +4,17 @@ interface AnswerOptionProps {
   label: string;
   value: string;
   onSelect: (value: string) => void;
-  index?: number;
 }
 
-const AnswerOption = ({ label, value, onSelect, index = 0 }: AnswerOptionProps) => {
+const AnswerOption = ({ label, value, onSelect }: AnswerOptionProps) => {
   return (
     <motion.button
-      initial={{ opacity: 0, y: 8 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.06, duration: 0.3 }}
-      whileHover={{ y: -2, boxShadow: "var(--shadow-card-hover)" }}
-      whileTap={{ scale: 0.985 }}
+      whileHover={{ scale: 1.02, y: -1 }}
+      whileTap={{ scale: 0.98 }}
       onClick={() => onSelect(value)}
-      className="w-full text-left bg-card text-card-foreground p-5 md:p-6 rounded-lg shadow-card border border-border hover:border-primary/30 transition-all duration-250 font-medium text-base group"
+      className="w-full text-left bg-card text-card-foreground p-5 md:p-6 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-200 border border-border/50 hover:border-primary/30 font-medium text-base"
     >
-      <span className="group-hover:text-primary transition-colors duration-200">{label}</span>
+      {label}
     </motion.button>
   );
 };

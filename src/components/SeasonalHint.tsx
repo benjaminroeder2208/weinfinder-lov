@@ -21,10 +21,10 @@ const SeasonalHint = ({ seasonKey }: SeasonalHintProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ delay: 0.6 }}
-      className="mt-5 flex items-center gap-3 bg-secondary/50 px-5 py-3 rounded-lg"
+      className="mt-4 flex items-center gap-2 text-sm text-muted-foreground italic"
     >
-      <span className="text-lg">{emoji}</span>
-      <span className="text-sm text-foreground/70 italic">{text}</span>
+      <span>{emoji}</span>
+      <span>{text}</span>
     </motion.div>
   );
 };
