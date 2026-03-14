@@ -1,21 +1,50 @@
 import { useState, useCallback } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Mail, Check } from "lucide-react";
+import { Mail, Check, Loader2 } from "lucide-react";
 import { appConfig } from "@/data/config";
 import { trackEvent } from "@/lib/analytics";
+import { supabase } from "@/integrations/supabase/client";
+import type { Wine } from "@/types/wine";
+import type { QuizAnswers } from "@/types/quiz";
 
-const LeadCaptureCard = () => {
+interface LeadCaptureCardProps {
+  wine?: Wine | null;
+  answers?: QuizAnswers;
+}
+
+const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
   const handleSubmit = useCallback(
-    (e: React.FormEvent) => {
+    async (e: React.FormEvent) => {
       e.preventDefault();
       if (!email.trim()) return;
-      trackEvent("lead_capture_submitted", { email });
-      setSubmitted(true);
+
+      setLoading(true);
+      setError(null);
+
+      try {
+        const { error: dbError } = await supabase.from("leads").insert({
+          email: email.trim(),
+          wine_name: wine?.name ?? null,
+          wine_id: wine?.id ?? null,
+          quiz_answers: answers ? (answers as unknown as Record<string, unknown>) : null,
+        });
+
+        if (dbError) throw dbError;
+
+        trackEvent("lead_capture_submitted", { email, wine: wine?.name });
+        setSubmitted(true);
+      } catch {
+        setError("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
+      } finally {
+        setLoading(false);
+      }
     },
-    [email]
+    [email, wine, answers]
   );
 
   const handleFocus = useCallback(() => {
@@ -44,26 +73,34 @@ const LeadCaptureCard = () => {
           <motion.form
             key="form"
             onSubmit={handleSubmit}
-            className="flex gap-2"
+            className="flex flex-col gap-2"
             exit={{ opacity: 0 }}
           >
-            <input
-              type="email"
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              onFocus={handleFocus}
-              placeholder="deine@email.de"
-              className="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
-              required
-            />
-            <motion.button
-              whileHover={{ scale: 1.03 }}
-              whileTap={{ scale: 0.97 }}
-              type="submit"
-              className="bg-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium shrink-0"
-            >
-              {appConfig.leadCaptureButton}
-            </motion.button>
+            <div className="flex gap-2">
+              <input
+                type="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
+                onFocus={handleFocus}
+                placeholder="deine@email.de"
+                className="flex-1 rounded-lg border border-border bg-background px-4 py-2.5 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/30"
+                required
+                disabled={loading}
+              />
+              <motion.button
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.97 }}
+                type="submit"
+                disabled={loading}
+                className="bg-primary text-primary-foreground px-5 py-2.5 rounded-lg text-sm font-medium shrink-0 disabled:opacity-50 flex items-center gap-2"
+              >
+                {loading && <Loader2 className="h-3 w-3 animate-spin" />}
+                {appConfig.leadCaptureButton}
+              </motion.button>
+            </div>
+            {error && (
+              <p className="text-destructive text-xs mt-1">{error}</p>
+            )}
           </motion.form>
         ) : (
           <motion.div
