@@ -11,12 +11,12 @@ const RecommendationReason = ({ reason }: RecommendationReasonProps) => {
       initial={{ opacity: 0, y: 10 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ delay: 0.4 }}
-      className="mt-5 bg-secondary/50 rounded-lg p-4"
+      className="mt-6 pt-5 border-t border-border"
     >
-      <h4 className="font-display text-sm font-semibold text-foreground mb-1.5 tracking-wide uppercase">
+      <h4 className="font-display text-lg font-semibold text-foreground mb-3">
         {appConfig.whyThisWineLabel}
       </h4>
-      <p className="text-foreground/80 text-sm leading-relaxed italic">
+      <p className="text-foreground/75 text-sm leading-relaxed italic pl-4 border-l-2 border-accent/40">
         „{reason}"
       </p>
     </motion.div>

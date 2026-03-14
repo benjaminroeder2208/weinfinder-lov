@@ -2,11 +2,11 @@ import type { AppConfig } from "@/types/config";
 
 export const appConfig: AppConfig = {
   brandName: "Weinfinder Premium",
-  headline: "Weinfinder",
-  subheadline: "Finde den Wein, der wirklich zu deinem Geschmack, Anlass und Menü passt.",
+  headline: "Finde deinen perfekten Wein 🍷",
+  subheadline: "Unsere digitale Weinberatung findet den Wein, der wirklich zu deinem Geschmack passt.",
   description: "Beantworte wenige kurze Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
   ctaLabel: "Weinberatung starten",
-  ctaSupportText: "Schnell, einfach und individuell",
+  ctaSupportText: "Dauert weniger als 30 Sekunden",
   resultHeadline: "Dein persönliches Wein-Match 🍷",
   resultIntro: "Basierend auf deinem Geschmack, Anlass und deinen Vorlieben empfehlen wir dir diese Weine.",
   topRecommendationLabel: "Top Empfehlung",
@@ -17,7 +17,7 @@ export const appConfig: AppConfig = {
   restartLabel: "Nochmal starten",
   questionPrefix: "Frage",
   questionSuffix: "von",
-  ctaWineLabel: "Zum Wein",
+  ctaWineLabel: "Zum Wein im Shop",
   whatsappLabel: "WhatsApp",
   shareButtonLabel: "Teilen",
   copiedLabel: "Kopiert!",
@@ -26,7 +26,7 @@ export const appConfig: AppConfig = {
   tasteProfileLabel: "Geschmacksprofil",
   whyThisWineLabel: "Warum dieser Wein zu dir passt",
   leadCaptureHeadline: "Empfehlung speichern",
-  leadCaptureDescription: "Erhalte deine Weinempfehlung bequem per E-Mail.",
+  leadCaptureDescription: "Erhalte deine Weinempfehlung bequem per E-Mail – kostenlos und unverbindlich.",
   leadCaptureButton: "Empfehlung senden",
   leadCaptureSuccess: "Danke! Deine Empfehlung ist unterwegs.",
   seasonalHints: {
