@@ -31,7 +31,7 @@ const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
           email: email.trim(),
           wine_name: wine?.name ?? null,
           wine_id: wine?.id ?? null,
-          quiz_answers: answers ? (answers as unknown as Record<string, unknown>) : null,
+          quiz_answers: answers ? JSON.parse(JSON.stringify(answers)) : null,
         }]);
 
         if (dbError) throw dbError;
