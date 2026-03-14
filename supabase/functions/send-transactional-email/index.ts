@@ -57,22 +57,23 @@ Deno.serve(async (req) => {
     const siteUrl = "https://weinfinder.lovable.app";
 
     // Render the email template
-    const html = await renderAsync(
-      QuizResultsEmail({
-        wineName: wineName || "Deine Weinempfehlung",
-        winery: winery || "",
-        description: description || "",
-        price: price || "",
-        grapeVariety,
-        region,
-        bodyStyle,
-        foodPairings: foodPairings || [],
-        wineLink,
-        alternativeName,
-        alternativeWinery,
-        siteUrl,
-      })
-    );
+    const emailProps = {
+      wineName: wineName || "Deine Weinempfehlung",
+      winery: winery || "",
+      description: description || "",
+      price: price || "",
+      grapeVariety,
+      region,
+      bodyStyle,
+      foodPairings: foodPairings || [],
+      wineLink,
+      alternativeName,
+      alternativeWinery,
+      siteUrl,
+    };
+
+    const html = await renderAsync(QuizResultsEmail(emailProps));
+    const text = `Deine Weinempfehlung: ${wineName || "Weinfinder"}\n\nWeingut: ${winery || ""}\n${description || ""}\nPreis: ${price || ""}\n\nBesuche ${siteUrl} für mehr Infos.`;
 
     const messageId = `quiz-result-${crypto.randomUUID()}`;
 
