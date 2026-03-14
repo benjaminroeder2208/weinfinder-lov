@@ -9,10 +9,11 @@ import type { QuizAnswers } from "@/types/quiz";
 
 interface LeadCaptureCardProps {
   wine?: Wine | null;
+  alternative?: Wine | null;
   answers?: QuizAnswers;
 }
 
-const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
+const LeadCaptureCard = ({ wine, alternative, answers }: LeadCaptureCardProps) => {
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [loading, setLoading] = useState(false);
@@ -27,6 +28,7 @@ const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
       setError(null);
 
       try {
+        // 1. Save lead to database
         const { error: dbError } = await supabase.from("leads").insert([{
           email: email.trim(),
           wine_name: wine?.name ?? null,
@@ -36,6 +38,35 @@ const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
 
         if (dbError) throw dbError;
 
+        // 2. Send quiz results email
+        const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
+        const anonKey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
+
+        await fetch(
+          `https://${projectId}.supabase.co/functions/v1/send-transactional-email`,
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${anonKey}`,
+            },
+            body: JSON.stringify({
+              email: email.trim(),
+              wineName: wine?.name,
+              winery: wine?.weingut,
+              description: wine?.description,
+              price: wine?.price ? `€${wine.price.toFixed(2).replace(".", ",")}` : undefined,
+              grapeVariety: wine?.grape_variety,
+              region: wine?.region,
+              bodyStyle: wine?.body,
+              foodPairings: wine?.food_pairing,
+              wineLink: wine?.link,
+              alternativeName: alternative?.name,
+              alternativeWinery: alternative?.weingut,
+            }),
+          }
+        );
+
         trackEvent("lead_capture_submitted", { email, wine: wine?.name });
         setSubmitted(true);
       } catch {
@@ -44,7 +75,7 @@ const LeadCaptureCard = ({ wine, answers }: LeadCaptureCardProps) => {
         setLoading(false);
       }
     },
-    [email, wine, answers]
+    [email, wine, alternative, answers]
   );
 
   const handleFocus = useCallback(() => {
