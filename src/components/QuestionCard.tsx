@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import type { Question } from "@/types/quiz";
 import ProgressBar from "@/components/ProgressBar";
 import AnswerOption from "@/components/AnswerOption";
+import { trackEvent } from "@/lib/analytics";
 
 interface QuestionCardProps {
   question: Question;
@@ -11,8 +12,13 @@ interface QuestionCardProps {
 }
 
 const QuestionCard = ({ question, questionIndex, totalQuestions, onAnswer }: QuestionCardProps) => {
+  const handleAnswer = (value: string) => {
+    trackEvent("question_answered", { question: questionIndex + 1, value });
+    onAnswer(value);
+  };
+
   return (
-    <div className="flex flex-col min-h-[80vh] px-4 pt-8">
+    <div className="flex flex-col min-h-[80vh] px-4 pt-10">
       <ProgressBar current={questionIndex} total={totalQuestions} />
 
       <AnimatePresence mode="wait">
@@ -33,7 +39,7 @@ const QuestionCard = ({ question, questionIndex, totalQuestions, onAnswer }: Que
                 key={option.value}
                 label={option.label}
                 value={option.value}
-                onSelect={onAnswer}
+                onSelect={handleAnswer}
               />
             ))}
           </div>

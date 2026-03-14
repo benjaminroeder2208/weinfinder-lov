@@ -9,12 +9,12 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "600px",
+        "2xl": "640px",
       },
     },
     extend: {
       maxWidth: {
-        quiz: "600px",
+        quiz: "640px",
       },
       fontFamily: {
         display: ["Playfair Display", "serif"],
@@ -54,11 +54,15 @@ export default {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        wine: {
+          gold: "hsl(var(--wine-gold))",
+          cream: "hsl(var(--wine-cream))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
-        md: "calc(var(--radius) - 4px)",
-        sm: "calc(var(--radius) - 8px)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
         card: "var(--shadow-card)",

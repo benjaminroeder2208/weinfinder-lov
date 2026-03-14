@@ -14,4 +14,6 @@ export interface QuizAnswers {
   food: string;
   color: string;
   price: string;
+  acidity: string;
+  adventurousness: string;
 }
