@@ -88,14 +88,15 @@ Deno.serve(async (req) => {
     // Enqueue for sending
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
-      payload: JSON.stringify({
+      payload: {
         message_id: messageId,
         to: email,
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
         from_name: "Weinfinder Premium",
         purpose: "transactional",
-      }),
+        queued_at: new Date().toISOString(),
+      },
     });
 
     return new Response(
