@@ -95,6 +95,7 @@ Deno.serve(async (req) => {
         to: email,
         from: `Weinfinder Premium <noreply@weinfinder.kontakt-2.de>`,
         sender_domain: "notify.weinfinder.kontakt-2.de",
+        from: `Weinfinder <onboarding@resend.dev>`,
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
         text,
