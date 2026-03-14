@@ -11,7 +11,7 @@ export interface Wine {
   description: string;
   link?: string;
   image?: string;
-  body?: "leicht" | "mittel" | "voll";
+  body?: "leicht" | "mittel" | "voll" | "kraeftig";
   acidity?: "niedrig" | "mittel" | "hoch";
   sweetness?: "trocken" | "halbtrocken" | "lieblich";
   aroma_notes?: string[];
