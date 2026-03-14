@@ -138,7 +138,7 @@ const ResultScreen = ({ results, answers, onRestart }: ResultScreenProps) => {
       )}
 
       {/* Lead Capture */}
-      <LeadCaptureCard />
+      <LeadCaptureCard wine={top} answers={answers} />
 
       {/* Share */}
       <motion.div
