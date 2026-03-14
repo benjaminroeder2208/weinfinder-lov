@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { appConfig } from "@/data/config";
 
 interface StartScreenProps {
   onStart: () => void;
@@ -23,11 +24,11 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
       </motion.div>
 
       <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4">
-        Weinfinder
+        {appConfig.headline}
       </h1>
 
       <p className="font-display text-xl text-foreground/80 mb-3 italic">
-        Finde den Wein, der perfekt zu dir passt.
+        {appConfig.subheadline}
       </p>
 
       <p className="text-muted-foreground text-base mb-10 max-w-sm">
@@ -40,7 +41,7 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         onClick={onStart}
         className="bg-primary text-primary-foreground font-medium text-lg px-10 py-4 rounded-lg shadow-hero transition-shadow hover:shadow-card-hover"
       >
-        Wein finden
+        {appConfig.ctaLabel}
       </motion.button>
     </motion.div>
   );
