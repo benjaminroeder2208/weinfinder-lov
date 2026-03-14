@@ -92,10 +92,12 @@ Deno.serve(async (req) => {
         run_id: crypto.randomUUID(),
         message_id: messageId,
         to: email,
+        from: `Weinfinder Premium <noreply@weinfinder.kontakt-2.de>`,
+        sender_domain: "notify.weinfinder.kontakt-2.de",
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
-        from_name: "Weinfinder Premium",
         purpose: "transactional",
+        label: "quiz-results",
         queued_at: new Date().toISOString(),
       },
     });
