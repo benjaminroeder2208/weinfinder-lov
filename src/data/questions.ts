@@ -48,4 +48,20 @@ export const questions: Question[] = [
       { label: "egal", value: "egal" },
     ],
   },
+  {
+    question: "Wie frisch und lebendig darf der Wein wirken?",
+    options: [
+      { label: "eher mild und weich", value: "niedrig" },
+      { label: "ausgewogen", value: "mittel" },
+      { label: "schön frisch und lebendig", value: "hoch" },
+    ],
+  },
+  {
+    question: "Wie offen bist du für neue Weinempfehlungen?",
+    options: [
+      { label: "lieber Klassiker", value: "klassisch" },
+      { label: "gerne etwas Neues", value: "offen" },
+      { label: "überrasche mich", value: "mutig" },
+    ],
+  },
 ];

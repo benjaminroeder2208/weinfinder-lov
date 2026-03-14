@@ -11,4 +11,17 @@ export interface Wine {
   description: string;
   link?: string;
   image?: string;
+  body?: "leicht" | "mittel" | "voll";
+  acidity?: "niedrig" | "mittel" | "hoch";
+  sweetness?: "trocken" | "halbtrocken" | "lieblich";
+  aroma_notes?: string[];
+  grape_variety?: string;
+  region?: string;
+  vintage?: number;
+  alcohol?: number;
+  gift_score?: number;
+  classic_score?: number;
+  discovery_score?: number;
+  serving_temp?: string;
+  featured_score?: number;
 }

@@ -2,10 +2,15 @@ export interface AppConfig {
   brandName: string;
   headline: string;
   subheadline: string;
+  description: string;
   ctaLabel: string;
+  ctaSupportText: string;
   resultIntro: string;
+  resultHeadline: string;
   topRecommendationLabel: string;
   alternativesLabel: string;
+  valueTipLabel: string;
+  adventurousLabel: string;
   shareLabel: string;
   restartLabel: string;
   questionPrefix: string;
@@ -14,4 +19,13 @@ export interface AppConfig {
   whatsappLabel: string;
   shareButtonLabel: string;
   copiedLabel: string;
+  giftNote: string;
+  foodPairingLabel: string;
+  tasteProfileLabel: string;
+  whyThisWineLabel: string;
+  leadCaptureHeadline: string;
+  leadCaptureDescription: string;
+  leadCaptureButton: string;
+  leadCaptureSuccess: string;
+  seasonalHints: Record<string, string>;
 }

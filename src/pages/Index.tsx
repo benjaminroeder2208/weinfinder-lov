@@ -5,8 +5,7 @@ import QuestionCard from "@/components/QuestionCard";
 import ResultScreen from "@/components/ResultScreen";
 import { questions } from "@/data/questions";
 import { wines } from "@/data/wines";
-import { matchWines } from "@/lib/matchWines";
-import type { Wine } from "@/types/wine";
+import { matchWines, type MatchResult } from "@/lib/matchWines";
 import type { QuizAnswers } from "@/types/quiz";
 
 type Phase = "start" | "quiz" | "result";
@@ -15,7 +14,16 @@ const Index = () => {
   const [phase, setPhase] = useState<Phase>("start");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [results, setResults] = useState<Wine[]>([]);
+  const [results, setResults] = useState<MatchResult>({ top: null, alternative: null, valueTip: null, adventurous: null });
+  const [quizAnswers, setQuizAnswers] = useState<QuizAnswers>({
+    occasion: "",
+    style: "",
+    food: "",
+    color: "",
+    price: "",
+    acidity: "",
+    adventurousness: "",
+  });
 
   const handleStart = useCallback(() => setPhase("quiz"), []);
 
@@ -25,14 +33,17 @@ const Index = () => {
       setAnswers(newAnswers);
 
       if (newAnswers.length >= questions.length) {
-        const quizAnswers: QuizAnswers = {
+        const qa: QuizAnswers = {
           occasion: newAnswers[0],
           style: newAnswers[1],
           food: newAnswers[2],
           color: newAnswers[3],
           price: newAnswers[4],
+          acidity: newAnswers[5],
+          adventurousness: newAnswers[6],
         };
-        setResults(matchWines(wines, quizAnswers));
+        setQuizAnswers(qa);
+        setResults(matchWines(wines, qa));
         setPhase("result");
       } else {
         setQuestionIndex(questionIndex + 1);
@@ -45,7 +56,7 @@ const Index = () => {
     setPhase("start");
     setQuestionIndex(0);
     setAnswers([]);
-    setResults([]);
+    setResults({ top: null, alternative: null, valueTip: null, adventurous: null });
   }, []);
 
   return (
@@ -63,7 +74,7 @@ const Index = () => {
             />
           )}
           {phase === "result" && (
-            <ResultScreen key="result" wines={results} onRestart={handleRestart} />
+            <ResultScreen key="result" results={results} answers={quizAnswers} onRestart={handleRestart} />
           )}
         </AnimatePresence>
       </div>
