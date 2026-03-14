@@ -9,15 +9,15 @@ export default {
       center: true,
       padding: "1.5rem",
       screens: {
-        "2xl": "640px",
+        "2xl": "720px",
       },
     },
     extend: {
       maxWidth: {
-        quiz: "640px",
+        quiz: "720px",
       },
       fontFamily: {
-        display: ["Playfair Display", "serif"],
+        display: ["Cormorant Garamond", "serif"],
         body: ["Inter", "sans-serif"],
       },
       colors: {
