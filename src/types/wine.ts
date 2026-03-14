@@ -17,8 +17,8 @@ export interface Wine {
   aroma_notes?: string[];
   grape_variety?: string;
   region?: string;
-  vintage?: number;
-  alcohol?: number;
+  vintage?: number | string;
+  alcohol?: number | string;
   gift_score?: number;
   classic_score?: number;
   discovery_score?: number;
