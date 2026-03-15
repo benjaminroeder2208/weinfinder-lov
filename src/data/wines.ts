@@ -4,7 +4,7 @@ export const wines: Wine[] = [
   {
     id: "wein_001",
     name: "Riesling Kabinett",
-    weingut: "Weingut Kellerberg",
+    weingut: "Weingut ABC",
     price: 9.9,
     price_category: "unter10",
     color: "weiss",
@@ -27,7 +27,7 @@ export const wines: Wine[] = [
   {
     id: "wein_002",
     name: "Grauburgunder Classic",
-    weingut: "Weingut Sonnenhang",
+    weingut: "Weingut ABC",
     price: 12.5,
     price_category: "10-20",
     color: "weiss",
@@ -50,7 +50,7 @@ export const wines: Wine[] = [
   {
     id: "wein_003",
     name: "Sauvignon Blanc",
-    weingut: "Weingut Lindenhof",
+    weingut: "Weingut ABC",
     price: 14.9,
     price_category: "10-20",
     color: "weiss",
@@ -73,7 +73,7 @@ export const wines: Wine[] = [
   {
     id: "wein_004",
     name: "Chardonnay Reserve",
-    weingut: "Weingut Goldtal",
+    weingut: "Weingut ABC",
     price: 24.9,
     price_category: "ueber20",
     color: "weiss",
@@ -96,7 +96,7 @@ export const wines: Wine[] = [
   {
     id: "wein_005",
     name: "Weißburgunder",
-    weingut: "Weingut Bergblick",
+    weingut: "Weingut ABC",
     price: 11.5,
     price_category: "10-20",
     color: "weiss",
@@ -119,7 +119,7 @@ export const wines: Wine[] = [
   {
     id: "wein_006",
     name: "Rosé Sommerwein",
-    weingut: "Weingut Rosengarten",
+    weingut: "Weingut ABC",
     price: 8.9,
     price_category: "unter10",
     color: "rose",
@@ -142,7 +142,7 @@ export const wines: Wine[] = [
   {
     id: "wein_007",
     name: "Spätburgunder Classic",
-    weingut: "Weingut Kellerberg",
+    weingut: "Weingut ABC",
     price: 15.9,
     price_category: "10-20",
     color: "rot",
@@ -165,7 +165,7 @@ export const wines: Wine[] = [
   {
     id: "wein_008",
     name: "Merlot Barrique",
-    weingut: "Weingut Falkenberg",
+    weingut: "Weingut ABC",
     price: 22.5,
     price_category: "ueber20",
     color: "rot",
@@ -188,7 +188,7 @@ export const wines: Wine[] = [
   {
     id: "wein_009",
     name: "Dornfelder",
-    weingut: "Weingut Sonnenhang",
+    weingut: "Weingut ABC",
     price: 7.9,
     price_category: "unter10",
     color: "rot",
@@ -211,7 +211,7 @@ export const wines: Wine[] = [
   {
     id: "wein_010",
     name: "Primitivo",
-    weingut: "Cantina Sole",
+    weingut: "Weingut ABC",
     price: 13.9,
     price_category: "10-20",
     color: "rot",
@@ -234,7 +234,7 @@ export const wines: Wine[] = [
   {
     id: "wein_011",
     name: "Müller-Thurgau",
-    weingut: "Weingut Rebenhof",
+    weingut: "Weingut ABC",
     price: 6.9,
     price_category: "unter10",
     color: "weiss",
@@ -257,7 +257,7 @@ export const wines: Wine[] = [
   {
     id: "wein_012",
     name: "Trollinger",
-    weingut: "Weingut Württemberger Hof",
+    weingut: "Weingut ABC",
     price: 7.5,
     price_category: "unter10",
     color: "rot",
@@ -280,7 +280,7 @@ export const wines: Wine[] = [
   {
     id: "wein_013",
     name: "Spätburgunder Réserve",
-    weingut: "Weingut Schloss Eberstein",
+    weingut: "Weingut ABC",
     price: 28.0,
     price_category: "ueber20",
     color: "rot",
@@ -303,7 +303,7 @@ export const wines: Wine[] = [
   {
     id: "wein_014",
     name: "Riesling Große Lage",
-    weingut: "Weingut Steinberg",
+    weingut: "Weingut ABC",
     price: 32.0,
     price_category: "ueber20",
     color: "weiss",
@@ -326,7 +326,7 @@ export const wines: Wine[] = [
   {
     id: "wein_015",
     name: "Rosé Prestige",
-    weingut: "Weingut Rosengarten",
+    weingut: "Weingut ABC",
     price: 22.9,
     price_category: "ueber20",
     color: "rose",
@@ -349,7 +349,7 @@ export const wines: Wine[] = [
   {
     id: "wein_016",
     name: "Rosé Provence Style",
-    weingut: "Weingut Lindenhof",
+    weingut: "Weingut ABC",
     price: 13.5,
     price_category: "10-20",
     color: "rose",
@@ -372,7 +372,7 @@ export const wines: Wine[] = [
   {
     id: "wein_017",
     name: "Silvaner Alte Reben",
-    weingut: "Weingut Rebenhof",
+    weingut: "Weingut ABC",
     price: 16.9,
     price_category: "10-20",
     color: "weiss",
@@ -395,7 +395,7 @@ export const wines: Wine[] = [
   {
     id: "wein_018",
     name: "Rosé Secco",
-    weingut: "Weingut Württemberger Hof",
+    weingut: "Weingut ABC",
     price: 7.9,
     price_category: "unter10",
     color: "rose",
@@ -418,7 +418,7 @@ export const wines: Wine[] = [
   {
     id: "wein_019",
     name: "Spätburgunder Rosé",
-    weingut: "Weingut Bergblick",
+    weingut: "Weingut ABC",
     price: 8.5,
     price_category: "unter10",
     color: "rose",
