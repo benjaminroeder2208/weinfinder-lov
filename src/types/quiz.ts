@@ -15,5 +15,4 @@ export interface QuizAnswers {
   color: string;
   price: string;
   acidity: string;
-  adventurousness: string;
 }

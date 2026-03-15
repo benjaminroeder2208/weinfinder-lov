@@ -12,7 +12,6 @@ export const appConfig: AppConfig = {
   topRecommendationLabel: "Top Empfehlung",
   alternativesLabel: "Ähnliche Alternative",
   valueTipLabel: "Preis-Leistungs-Tipp",
-  adventurousLabel: "Etwas Besonderes",
   shareLabel: "Ergebnis teilen",
   restartLabel: "Nochmal starten",
   questionPrefix: "Frage",

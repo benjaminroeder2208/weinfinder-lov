@@ -20,8 +20,6 @@ export interface Wine {
   vintage?: number | string;
   alcohol?: number | string;
   gift_score?: number;
-  classic_score?: number;
-  discovery_score?: number;
   serving_temp?: string;
   featured_score?: number;
 }

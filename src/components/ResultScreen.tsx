@@ -2,7 +2,6 @@ import { useEffect, useCallback, useState } from "react";
 import { motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { Share2, Check, Gift } from "lucide-react";
-import type { Wine } from "@/types/wine";
 import type { QuizAnswers } from "@/types/quiz";
 import { appConfig } from "@/data/config";
 import { buildShareText } from "@/lib/helpers";
@@ -20,7 +19,7 @@ interface ResultScreenProps {
 }
 
 const ResultScreen = ({ results, answers, onRestart }: ResultScreenProps) => {
-  const { top, alternative, valueTip, adventurous } = results;
+  const { top, alternative, alternative2, valueTip } = results;
   const [copied, setCopied] = useState(false);
 
   const shareText = top
@@ -123,16 +122,16 @@ const ResultScreen = ({ results, answers, onRestart }: ResultScreenProps) => {
       <SeasonalHint seasonKey={seasonKey} />
 
       {/* Alternative cards */}
-      {(alternative || valueTip || adventurous) && (
+      {(alternative || alternative2 || valueTip) && (
         <div className="flex flex-col gap-3 mt-8">
           {alternative && (
             <AlternativeCard wine={alternative} label={appConfig.alternativesLabel} index={0} />
           )}
-          {valueTip && (
-            <AlternativeCard wine={valueTip} label={appConfig.valueTipLabel} index={1} />
+          {alternative2 && (
+            <AlternativeCard wine={alternative2} label="Weitere Alternative" index={1} />
           )}
-          {adventurous && (
-            <AlternativeCard wine={adventurous} label={appConfig.adventurousLabel} index={2} />
+          {valueTip && (
+            <AlternativeCard wine={valueTip} label={appConfig.valueTipLabel} index={2} />
           )}
         </div>
       )}

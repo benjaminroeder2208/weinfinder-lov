@@ -27,7 +27,7 @@ export const questions: Question[] = [
       { label: "Fleisch / Grill", value: "fleisch" },
       { label: "Pasta / mediterran", value: "pasta" },
       { label: "vegetarisch", value: "vegetarisch" },
-      { label: "ohne Essen", value: "ohne_essen" },
+      { label: "ohne Essen / nach dem Essen", value: "ohne_essen" },
     ],
   },
   {
@@ -54,14 +54,6 @@ export const questions: Question[] = [
       { label: "eher mild und weich", value: "niedrig" },
       { label: "ausgewogen", value: "mittel" },
       { label: "schön frisch und lebendig", value: "hoch" },
-    ],
-  },
-  {
-    question: "Wie offen bist du für neue Weinempfehlungen?",
-    options: [
-      { label: "lieber Klassiker", value: "klassisch" },
-      { label: "gerne etwas Neues", value: "offen" },
-      { label: "überrasche mich", value: "mutig" },
     ],
   },
 ];

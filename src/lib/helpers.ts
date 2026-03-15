@@ -20,5 +20,5 @@ export const foodPairingLabels: Record<string, { label: string; emoji: string }>
   fleisch: { label: "Fleisch & Grill", emoji: "🥩" },
   pasta: { label: "Pasta & Mediterran", emoji: "🍝" },
   vegetarisch: { label: "Vegetarisch", emoji: "🥗" },
-  ohne_essen: { label: "Solo genießen", emoji: "🍷" },
+  ohne_essen: { label: "Solo genießen / nach dem Essen", emoji: "🍷" },
 };
