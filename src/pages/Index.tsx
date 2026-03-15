@@ -14,7 +14,7 @@ const Index = () => {
   const [phase, setPhase] = useState<Phase>("start");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
-  const [results, setResults] = useState<MatchResult>({ top: null, alternative: null, valueTip: null, adventurous: null });
+  const [results, setResults] = useState<MatchResult>({ top: null, alternative: null, alternative2: null, valueTip: null });
   const [quizAnswers, setQuizAnswers] = useState<QuizAnswers>({
     occasion: "",
     style: "",
@@ -22,7 +22,6 @@ const Index = () => {
     color: "",
     price: "",
     acidity: "",
-    adventurousness: "",
   });
 
   const handleStart = useCallback(() => setPhase("quiz"), []);
@@ -40,7 +39,6 @@ const Index = () => {
           color: newAnswers[3],
           price: newAnswers[4],
           acidity: newAnswers[5],
-          adventurousness: newAnswers[6],
         };
         setQuizAnswers(qa);
         setResults(matchWines(wines, qa));
@@ -56,7 +54,7 @@ const Index = () => {
     setPhase("start");
     setQuestionIndex(0);
     setAnswers([]);
-    setResults({ top: null, alternative: null, valueTip: null, adventurous: null });
+    setResults({ top: null, alternative: null, alternative2: null, valueTip: null });
   }, []);
 
   return (

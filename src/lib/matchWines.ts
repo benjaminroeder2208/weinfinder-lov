@@ -19,41 +19,40 @@ const BODY_STYLE_AFFINITY: Record<string, string[]> = {
   leicht: ["leicht_frisch"],
   mittel: ["fruchtig_aromatisch", "weich_harmonisch"],
   voll: ["kraeftig_intensiv", "weich_harmonisch"],
+  kraeftig: ["kraeftig_intensiv"],
 };
 
 export interface MatchResult {
   top: Wine | null;
   alternative: Wine | null;
+  alternative2: Wine | null;
   valueTip: Wine | null;
-  adventurous: Wine | null;
 }
 
 /**
  * Premium matching with soft similarity, premium attributes, and categorized results.
  */
 export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult {
-  // Step 1: color filter
+  // STEP 1 – HARD FILTERS
   let filtered =
     answers.color !== "egal"
       ? allWines.filter((w) => w.color === answers.color)
       : [...allWines];
 
-  // Step 1b: hard price filter – main recommendation must respect price
   if (answers.price !== "egal") {
     const priceFiltered = filtered.filter((w) => w.price_category === answers.price);
     if (priceFiltered.length > 0) {
       filtered = priceFiltered;
     }
-    // If no wines match the price range, keep all to avoid empty results
   }
 
-  // Step 2 + 3 + 4: scoring
+  // STEP 2 + 3 – SCORING
   const scored: ScoredWine[] = filtered.map((wine) => {
     let score = 0;
     let styleScore = 0;
     let foodOccasionScore = 0;
 
-    // Base: style exact match +3
+    // Base: style exact match +3, soft similarity +1
     if (wine.style === answers.style) {
       score += 3;
       styleScore += 3;
@@ -62,8 +61,8 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
       styleScore += 1;
     }
 
-    // Base: food +2
-    if (wine.food_pairing.includes(answers.food)) {
+    // Base: food +2 (skip if ohne_essen)
+    if (answers.food !== "ohne_essen" && wine.food_pairing.includes(answers.food)) {
       score += 2;
       foodOccasionScore += 2;
     }
@@ -74,12 +73,12 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
       foodOccasionScore += 2;
     }
 
-    // Base: price +2
+    // Base: price +2 (skip if egal)
     if (answers.price !== "egal" && wine.price_category === answers.price) {
       score += 2;
     }
 
-    // Base: acidity +2
+    // Base: acidity exact +2, proximity +1
     if (wine.acidity === answers.acidity) {
       score += 2;
     } else if (
@@ -87,22 +86,12 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
       (answers.acidity === "niedrig" && wine.acidity === "mittel") ||
       (answers.acidity === "mittel" && (wine.acidity === "hoch" || wine.acidity === "niedrig"))
     ) {
-      score += 1; // soft proximity
-    }
-
-    // Premium: adventurousness
-    if (answers.adventurousness === "klassisch" && wine.classic_score) {
-      score += wine.classic_score >= 8 ? 2 : wine.classic_score >= 6 ? 1 : 0;
-    } else if (answers.adventurousness === "mutig" && wine.discovery_score) {
-      score += wine.discovery_score >= 7 ? 2 : wine.discovery_score >= 5 ? 1 : 0;
-    } else if (answers.adventurousness === "offen") {
-      const balanced = ((wine.classic_score ?? 5) + (wine.discovery_score ?? 5)) / 2;
-      score += balanced >= 6 ? 1 : 0;
+      score += 1;
     }
 
     // Premium: gift boost
     if (answers.occasion === "geschenk" && wine.gift_score) {
-      score += wine.gift_score >= 8 ? 2 : wine.gift_score >= 6 ? 1 : 0;
+      score += wine.gift_score >= 8 ? 2 : wine.gift_score >= 4 ? 1 : 0;
     }
 
     // Premium: body/style affinity
@@ -116,7 +105,7 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
     return { wine, score, styleScore, foodOccasionScore };
   });
 
-  // Step 5: sort
+  // STEP 5 – SORTING
   scored.sort((a, b) => {
     if (b.score !== a.score) return b.score - a.score;
     if (b.styleScore !== a.styleScore) return b.styleScore - a.styleScore;
@@ -127,9 +116,13 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
   const top = scored[0]?.wine ?? null;
   const usedIds = new Set(top ? [top.id] : []);
 
-  // Alternative: next best that's not the top
+  // Alternative 1: next best
   const alternative = scored.find((s) => !usedIds.has(s.wine.id))?.wine ?? null;
   if (alternative) usedIds.add(alternative.id);
+
+  // Alternative 2: third best
+  const alternative2 = scored.find((s) => !usedIds.has(s.wine.id))?.wine ?? null;
+  if (alternative2) usedIds.add(alternative2.id);
 
   // Value tip: good fit but lower price
   const valueTip =
@@ -139,17 +132,8 @@ export function matchWines(allWines: Wine[], answers: QuizAnswers): MatchResult 
         s.wine.price < (top?.price ?? 999) &&
         s.score > 3
     )?.wine ?? null;
-  if (valueTip) usedIds.add(valueTip.id);
 
-  // Adventurous: high discovery score
-  const adventurous =
-    scored.find(
-      (s) =>
-        !usedIds.has(s.wine.id) &&
-        (s.wine.discovery_score ?? 0) >= 5
-    )?.wine ?? null;
-
-  return { top, alternative, valueTip, adventurous };
+  return { top, alternative, alternative2, valueTip };
 }
 
 /**

@@ -22,8 +22,6 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "11.5%",
     gift_score: 2,
-    classic_score: 4,
-    discovery_score: 2,
     featured_score: 3,
   },
   {
@@ -47,8 +45,6 @@ export const wines: Wine[] = [
     vintage: "2021",
     alcohol: "12.5%",
     gift_score: 3,
-    classic_score: 4,
-    discovery_score: 2,
     featured_score: 3,
   },
   {
@@ -72,8 +68,6 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "12%",
     gift_score: 3,
-    classic_score: 3,
-    discovery_score: 3,
     featured_score: 3,
   },
   {
@@ -97,8 +91,6 @@ export const wines: Wine[] = [
     vintage: "2020",
     alcohol: "13.5%",
     gift_score: 5,
-    classic_score: 4,
-    discovery_score: 3,
     featured_score: 5,
   },
   {
@@ -122,8 +114,6 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "12%",
     gift_score: 2,
-    classic_score: 4,
-    discovery_score: 2,
     featured_score: 2,
   },
   {
@@ -147,8 +137,6 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "11.5%",
     gift_score: 3,
-    classic_score: 3,
-    discovery_score: 3,
     featured_score: 2,
   },
   {
@@ -172,8 +160,6 @@ export const wines: Wine[] = [
     vintage: "2021",
     alcohol: "13%",
     gift_score: 4,
-    classic_score: 4,
-    discovery_score: 2,
     featured_score: 4,
   },
   {
@@ -197,8 +183,6 @@ export const wines: Wine[] = [
     vintage: "2020",
     alcohol: "14%",
     gift_score: 4,
-    classic_score: 4,
-    discovery_score: 3,
     featured_score: 5,
   },
   {
@@ -222,8 +206,6 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "12.5%",
     gift_score: 2,
-    classic_score: 3,
-    discovery_score: 3,
     featured_score: 2,
   },
   {
@@ -247,11 +229,8 @@ export const wines: Wine[] = [
     vintage: "2021",
     alcohol: "14%",
     gift_score: 3,
-    classic_score: 3,
-    discovery_score: 3,
     featured_score: 3,
   },
-  // --- unter10 additions ---
   {
     id: "wein_011",
     name: "Müller-Thurgau",
@@ -273,8 +252,6 @@ export const wines: Wine[] = [
     vintage: "2023",
     alcohol: "11%",
     gift_score: 1,
-    classic_score: 4,
-    discovery_score: 1,
     featured_score: 1,
   },
   {
@@ -298,11 +275,8 @@ export const wines: Wine[] = [
     vintage: "2022",
     alcohol: "11.5%",
     gift_score: 1,
-    classic_score: 4,
-    discovery_score: 2,
     featured_score: 1,
   },
-  // --- ueber20 additions ---
   {
     id: "wein_013",
     name: "Spätburgunder Réserve",
@@ -324,8 +298,6 @@ export const wines: Wine[] = [
     vintage: "2019",
     alcohol: "13.5%",
     gift_score: 5,
-    classic_score: 5,
-    discovery_score: 2,
     featured_score: 4,
   },
   {
@@ -349,8 +321,6 @@ export const wines: Wine[] = [
     vintage: "2020",
     alcohol: "12%",
     gift_score: 5,
-    classic_score: 5,
-    discovery_score: 3,
     featured_score: 5,
   },
   {
@@ -374,11 +344,8 @@ export const wines: Wine[] = [
     vintage: "2021",
     alcohol: "12.5%",
     gift_score: 4,
-    classic_score: 3,
-    discovery_score: 4,
     featured_score: 4,
   },
-  // --- 10-20 additions for rosé coverage ---
   {
     id: "wein_016",
     name: "Rosé Provence Style",
@@ -400,8 +367,6 @@ export const wines: Wine[] = [
     vintage: "2023",
     alcohol: "12%",
     gift_score: 3,
-    classic_score: 3,
-    discovery_score: 4,
     featured_score: 3,
   },
   {
@@ -425,8 +390,6 @@ export const wines: Wine[] = [
     vintage: "2021",
     alcohol: "13%",
     gift_score: 3,
-    classic_score: 4,
-    discovery_score: 3,
     featured_score: 3,
   },
   {
@@ -450,8 +413,6 @@ export const wines: Wine[] = [
     vintage: "2023",
     alcohol: "10.5%",
     gift_score: 2,
-    classic_score: 3,
-    discovery_score: 3,
     featured_score: 2,
   },
   {
@@ -475,8 +436,6 @@ export const wines: Wine[] = [
     vintage: "2023",
     alcohol: "11.5%",
     gift_score: 2,
-    classic_score: 3,
-    discovery_score: 2,
     featured_score: 2,
   },
 ];

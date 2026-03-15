@@ -10,7 +10,6 @@ export interface AppConfig {
   topRecommendationLabel: string;
   alternativesLabel: string;
   valueTipLabel: string;
-  adventurousLabel: string;
   shareLabel: string;
   restartLabel: string;
   questionPrefix: string;
