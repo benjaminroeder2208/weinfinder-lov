@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { appConfig } from "@/data/config";
+import { brandConfig } from "@/config";
 import { trackEvent } from "@/lib/analytics";
 
 interface StartScreenProps {
