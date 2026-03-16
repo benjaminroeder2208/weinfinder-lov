@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { appConfig } from "@/data/config";
+import { brandConfig } from "@/config";
 import { trackEvent } from "@/lib/analytics";
 
 interface StartScreenProps {
@@ -24,9 +25,13 @@ const StartScreen = ({ onStart }: StartScreenProps) => {
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ delay: 0.2, duration: 0.5 }}
-        className="text-7xl mb-8"
+        className="mb-6"
       >
-        🍷
+        <img
+          src={brandConfig.logoUrl}
+          alt={brandConfig.logoAlt}
+          className="h-14 w-auto mx-auto"
+        />
       </motion.div>
 
       <h1 className="font-display text-4xl md:text-5xl font-bold text-foreground mb-4 leading-tight">

@@ -7,7 +7,7 @@ export const appConfig: AppConfig = {
   description: "Beantworte sechs einfache Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
   ctaLabel: "Weinberatung starten",
   ctaSupportText: "Schnell, einfach und individuell",
-  resultHeadline: "Dein persönliches Wein-Match 🍷",
+  resultHeadline: "Dein persönliches Wein-Match",
   resultIntro: "Basierend auf deinem Geschmack, Anlass und deinen Vorlieben empfehlen wir dir diese Weine.",
   topRecommendationLabel: "Top Empfehlung",
   alternativesLabel: "Ähnliche Alternative",
