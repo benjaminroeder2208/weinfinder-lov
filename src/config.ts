@@ -3,5 +3,5 @@ export const brandConfig = {
   logoAlt: "Weinfinder",
   brandName: "Weinfinder",
   tagline: "Ihr digitaler Sommelier",
-  accentColor: "#EC3F55",
+  accentColor: "#a0bd00",
 };

@@ -80,8 +80,8 @@
     --wine-cream: 0 0% 14%;
 
     --shadow-card: 0 2px 20px -4px hsl(0 0% 0% / 0.5);
-    --shadow-card-hover: 0 6px 30px -6px hsl(69 100% 37% / 0.2);
-    --shadow-hero: 0 12px 50px -12px hsl(69 100% 37% / 0.3);
+    --shadow-card-hover: 0 6px 30px -6px hsl(72 100% 37% / 0.2);
+    --shadow-hero: 0 12px 50px -12px hsl(72 100% 37% / 0.3);
   }
 }
 
