@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 72" width="320" height="72">
+  <defs>
+    <radialGradient id="monoBg" cx="40%" cy="38%" r="65%">
+      <stop offset="0%" stop-color="#2A0A12"/>
+      <stop offset="100%" stop-color="#1A0608"/>
+    </radialGradient>
+  </defs>
+  <circle cx="36" cy="36" r="32" fill="url(#monoBg)"/>
+  <circle cx="36" cy="36" r="32" fill="none" stroke="#EC3F55" stroke-width="1.2" opacity="0.6"/>
+  <circle cx="36" cy="36" r="28" fill="none" stroke="rgba(220,215,210,0.1)" stroke-width="0.6"/>
+  <text x="36" y="46" font-family="Georgia, 'Times New Roman', serif" font-size="30" font-weight="700" fill="#EC3F55" text-anchor="middle" letter-spacing="-1">W</text>
+  <text x="80" y="30" font-family="Georgia, 'Times New Roman', serif" font-size="26" font-weight="700" fill="white" letter-spacing="-0.4">Weinfinder</text>
+  <text x="80" y="50" font-family="Georgia, 'Times New Roman', serif" font-size="11" font-style="italic" fill="rgba(220,215,210,0.45)" letter-spacing="1.2">Ihr digitaler Sommelier</text>
+</svg>
