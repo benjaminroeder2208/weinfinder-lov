@@ -32,7 +32,7 @@
 
     --border: 30 15% 85%;
     --input: 30 15% 85%;
-    --ring: 69 100% 37%;
+    --ring: 72 100% 37%;
 
     --radius: 0.75rem;
 
@@ -43,8 +43,8 @@
     --font-body: 'Inter', sans-serif;
 
     --shadow-card: 0 2px 20px -4px hsl(350 15% 15% / 0.06);
-    --shadow-card-hover: 0 6px 30px -6px hsl(69 100% 37% / 0.12);
-    --shadow-hero: 0 12px 50px -12px hsl(69 100% 37% / 0.18);
+    --shadow-card-hover: 0 6px 30px -6px hsl(72 100% 37% / 0.12);
+    --shadow-hero: 0 12px 50px -12px hsl(72 100% 37% / 0.18);
   }
 
   .dark {
