@@ -4,7 +4,7 @@ export const appConfig: AppConfig = {
   brandName: "Weinfinder Premium",
   headline: "Weinfinder",
   subheadline: "Finde den Wein, der wirklich zu deinem Geschmack, Anlass und Menü passt.",
-  description: "Beantworte wenige kurze Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
+  description: "Beantworte sechs einfache Fragen und erhalte eine persönliche Weinempfehlung – fast wie im Gespräch mit einem Sommelier.",
   ctaLabel: "Weinberatung starten",
   ctaSupportText: "Schnell, einfach und individuell",
   resultHeadline: "Dein persönliches Wein-Match 🍷",
