@@ -62,13 +62,6 @@ export default function EmailDashboard() {
   async function fetchData() {
     setLoading(true);
     try {
-      const { data, error } = await supabase.functions.invoke("get-email-stats", {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        body: undefined,
-      });
-
-      // Use query params via custom fetch since functions.invoke doesn't support query params well
       const projectId = import.meta.env.VITE_SUPABASE_PROJECT_ID;
       const res = await fetch(
         `https://${projectId}.supabase.co/functions/v1/get-email-stats?days=${days}`,
