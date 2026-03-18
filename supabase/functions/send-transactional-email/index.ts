@@ -86,14 +86,14 @@ Deno.serve(async (req) => {
       metadata: { wineName, winery },
     });
 
-    // Extract project ref from SUPABASE_URL for run_id
-    const projectRef = supabaseUrl.match(/\/\/([^.]+)\./)?.[1] || "";
+    // Lovable project run ID for email API authentication
+    const runId = "8ffcbabd-8601-4afa-b629-43c7c05f8b05";
 
     // Enqueue for sending
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
       payload: {
-        run_id: projectRef,
+        run_id: runId,
         message_id: messageId,
         to: email,
         from: `Weinfinder Premium <noreply@mail.premium-weinfinder.de>`,
