@@ -51,10 +51,13 @@ export default function EmailDashboard() {
   const [stats, setStats] = useState<Stats>({ total: 0, sent: 0, failed: 0, pending: 0, suppressed: 0 });
   const [emails, setEmails] = useState<EmailLog[]>([]);
   const [suppressed, setSuppressed] = useState<SuppressedEmail[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [days, setDays] = useState(30);
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [tab, setTab] = useState<"emails" | "suppressed">("emails");
+  const [password, setPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState(false);
 
   useEffect(() => {
     fetchData();
