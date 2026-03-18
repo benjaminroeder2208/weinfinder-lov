@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft, Lock } from "lucide-react";
+import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft, Lock, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EmailLog {
@@ -173,16 +173,21 @@ export default function EmailDashboard() {
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
-        <div className="flex items-center gap-4">
-          <Button variant="ghost" size="icon" onClick={() => navigate("/")}>
-            <ArrowLeft className="h-5 w-5" />
-          </Button>
-          <div>
-            <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] text-foreground">
-              E-Mail Dashboard
-            </h1>
-            <p className="text-sm text-muted-foreground">Übersicht aller gesendeten E-Mails</p>
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-4">
+            <Button variant="ghost" size="icon" onClick={() => navigate("/")}>
+              <ArrowLeft className="h-5 w-5" />
+            </Button>
+            <div>
+              <h1 className="text-2xl font-bold font-[family-name:var(--font-display)] text-foreground">
+                E-Mail Dashboard
+              </h1>
+              <p className="text-sm text-muted-foreground">Übersicht aller gesendeten E-Mails</p>
+            </div>
           </div>
+          <Button variant="outline" size="sm" onClick={() => navigate("/leads")}>
+            <Users className="h-4 w-4 mr-1" /> Leads
+          </Button>
         </div>
 
         {/* Time Range */}
