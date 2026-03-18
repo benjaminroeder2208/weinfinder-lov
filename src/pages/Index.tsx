@@ -12,6 +12,7 @@ import type { QuizAnswers } from "@/types/quiz";
 type Phase = "start" | "quiz" | "result";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [phase, setPhase] = useState<Phase>("start");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
