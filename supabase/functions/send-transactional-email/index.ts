@@ -93,7 +93,7 @@ Deno.serve(async (req) => {
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
       payload: {
-        run_id: projectRef,
+        run_id: runId,
         message_id: messageId,
         to: email,
         from: `Weinfinder Premium <noreply@mail.premium-weinfinder.de>`,
