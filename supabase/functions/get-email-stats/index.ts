@@ -12,6 +12,16 @@ Deno.serve(async (req) => {
   }
 
   try {
+    // Validate password
+    const password = req.headers.get("x-dashboard-password");
+    const expectedPassword = Deno.env.get("DASHBOARD_PASSWORD");
+    if (!expectedPassword || password !== expectedPassword) {
+      return new Response(
+        JSON.stringify({ error: "Unauthorized" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, serviceKey);
