@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
 import Index from "./pages/Index.tsx";
 import EmailDashboard from "./pages/EmailDashboard.tsx";
+import LeadsDashboard from "./pages/LeadsDashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
