@@ -41,6 +41,7 @@ export const QuizResultsEmail = ({
   alternativeName,
   alternativeWinery,
   siteUrl = "https://weinfinder.lovable.app",
+  unsubscribeUrl,
 }: QuizResultsEmailProps) => {
   const primaryColor = "hsl(345, 60%, 35%)";
   const primaryFg = "hsl(30, 20%, 97%)";
