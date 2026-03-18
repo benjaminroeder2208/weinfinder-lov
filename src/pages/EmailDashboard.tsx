@@ -12,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft, Lock } from "lucide-react";
+import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft, Lock, Users } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EmailLog {
