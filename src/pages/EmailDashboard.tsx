@@ -63,6 +63,8 @@ export default function EmailDashboard() {
     if (authenticated) fetchData();
   }, [days, authenticated]);
 
+  const storedPassword = () => sessionStorage.getItem("dashboard_pw") || password;
+
   async function fetchData() {
     setLoading(true);
     try {
@@ -72,11 +74,19 @@ export default function EmailDashboard() {
         {
           headers: {
             apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            "x-dashboard-password": storedPassword(),
           },
         }
       );
-      const json = await res.json();
 
+      if (res.status === 401) {
+        setAuthenticated(false);
+        setAuthError(true);
+        sessionStorage.removeItem("dashboard_pw");
+        return;
+      }
+
+      const json = await res.json();
       if (json.stats) setStats(json.stats);
       if (json.emails) setEmails(json.emails);
       if (json.suppressed) setSuppressed(json.suppressed);
@@ -85,6 +95,13 @@ export default function EmailDashboard() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setAuthError(false);
+    sessionStorage.setItem("dashboard_pw", password);
+    setAuthenticated(true);
   }
 
   const filteredEmails = statusFilter === "all"
