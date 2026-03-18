@@ -60,6 +60,12 @@ export default function EmailDashboard() {
   const [authError, setAuthError] = useState(false);
 
   useEffect(() => {
+    if (sessionStorage.getItem("dashboard_pw")) {
+      setAuthenticated(true);
+    }
+  }, []);
+
+  useEffect(() => {
     if (authenticated) fetchData();
   }, [days, authenticated]);
 
