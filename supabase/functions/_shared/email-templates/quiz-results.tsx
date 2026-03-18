@@ -25,6 +25,7 @@ interface QuizResultsEmailProps {
   alternativeName?: string;
   alternativeWinery?: string;
   siteUrl: string;
+  unsubscribeUrl?: string;
 }
 
 export const QuizResultsEmail = ({
