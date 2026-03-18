@@ -134,6 +134,35 @@ export default function EmailDashboard() {
       " " + d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
   };
 
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="w-full max-w-sm">
+          <CardHeader className="text-center">
+            <Lock className="h-10 w-10 text-primary mx-auto mb-2" />
+            <CardTitle className="font-[family-name:var(--font-display)]">E-Mail Dashboard</CardTitle>
+            <p className="text-sm text-muted-foreground">Bitte Passwort eingeben</p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <Input
+                type="password"
+                placeholder="Passwort"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoFocus
+              />
+              {authError && (
+                <p className="text-sm text-destructive">Falsches Passwort</p>
+              )}
+              <Button type="submit" className="w-full">Anmelden</Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
+
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
