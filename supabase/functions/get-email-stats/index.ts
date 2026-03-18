@@ -27,10 +27,27 @@ Deno.serve(async (req) => {
     const supabase = createClient(supabaseUrl, serviceKey);
 
     const url = new URL(req.url);
+    const endpoint = url.searchParams.get("endpoint") || "emails";
     const days = parseInt(url.searchParams.get("days") || "30", 10);
     const since = new Date(Date.now() - days * 86400000).toISOString();
 
-    // Get all logs in range
+    // --- Leads endpoint ---
+    if (endpoint === "leads") {
+      const { data: leads, error: leadsError } = await supabase
+        .from("leads")
+        .select("*")
+        .order("created_at", { ascending: false })
+        .limit(1000);
+
+      if (leadsError) throw leadsError;
+
+      return new Response(
+        JSON.stringify({ leads: leads || [] }),
+        { headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // --- Email stats endpoint (default) ---
     const { data: logs, error } = await supabase
       .from("email_send_log")
       .select("*")
@@ -40,7 +57,6 @@ Deno.serve(async (req) => {
 
     if (error) throw error;
 
-    // Deduplicate by message_id (keep latest status per message_id)
     const seen = new Map<string, typeof logs[0]>();
     const deduped: typeof logs = [];
 
@@ -52,14 +68,12 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Get suppressed emails
     const { data: suppressed } = await supabase
       .from("suppressed_emails")
       .select("email, reason, created_at")
       .order("created_at", { ascending: false })
       .limit(100);
 
-    // Stats
     const stats = { total: deduped.length, sent: 0, failed: 0, pending: 0, suppressed: suppressed?.length || 0 };
     for (const row of deduped) {
       if (row.status === "sent") stats.sent++;
