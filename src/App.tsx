@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
 import Index from "./pages/Index.tsx";
+import EmailDashboard from "./pages/EmailDashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
