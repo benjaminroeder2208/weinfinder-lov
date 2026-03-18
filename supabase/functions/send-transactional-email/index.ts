@@ -99,7 +99,7 @@ Deno.serve(async (req) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        from: "Weinfinder Premium <noreply@mail.premium-weinfinder.de>",
+        from: "Weinfinder Premium <onboarding@resend.dev>",
         to: [email],
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
