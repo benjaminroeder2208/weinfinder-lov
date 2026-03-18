@@ -86,11 +86,14 @@ Deno.serve(async (req) => {
       metadata: { wineName, winery },
     });
 
+    // Extract project ref from SUPABASE_URL for run_id
+    const projectRef = supabaseUrl.match(/\/\/([^.]+)\./)?.[1] || "";
+
     // Enqueue for sending
     await supabase.rpc("enqueue_email", {
       queue_name: "transactional_emails",
       payload: {
-        
+        run_id: projectRef,
         message_id: messageId,
         to: email,
         from: `Weinfinder Premium <noreply@mail.premium-weinfinder.de>`,
