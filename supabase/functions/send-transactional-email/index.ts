@@ -14,6 +14,11 @@ Deno.serve(async (req) => {
   }
 
   try {
+    const resendApiKey = Deno.env.get("RESEND_API_KEY");
+    if (!resendApiKey) {
+      throw new Error("RESEND_API_KEY is not configured");
+    }
+
     const supabaseUrl = Deno.env.get("SUPABASE_URL")!;
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, serviceKey);
@@ -86,35 +91,57 @@ Deno.serve(async (req) => {
       metadata: { wineName, winery },
     });
 
-    // Lovable project run ID for email API authentication
-    const runId = "8ffcbabd-8601-4afa-b629-43c7c05f8b05";
-
-    // Enqueue for sending
-    await supabase.rpc("enqueue_email", {
-      queue_name: "transactional_emails",
-      payload: {
-        run_id: runId,
-        message_id: messageId,
-        to: email,
-        from: `Weinfinder Premium <noreply@mail.premium-weinfinder.de>`,
-        sender_domain: "mail.premium-weinfinder.de",
+    // Send via Resend API
+    const resendResponse = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        "Authorization": `Bearer ${resendApiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: "Weinfinder Premium <noreply@mail.premium-weinfinder.de>",
+        to: [email],
         subject: `🍷 Deine Weinempfehlung: ${wineName || "Weinfinder"}`,
         html,
         text,
-        purpose: "transactional",
-        label: "quiz-results",
-        queued_at: new Date().toISOString(),
-      },
+      }),
+    });
+
+    const resendData = await resendResponse.json();
+
+    if (!resendResponse.ok) {
+      console.error("Resend API error:", resendResponse.status, resendData);
+
+      // Log failure
+      await supabase.from("email_send_log").insert({
+        message_id: messageId,
+        template_name: "quiz-results",
+        recipient_email: email,
+        status: "failed",
+        error_message: resendData?.message || `Resend error ${resendResponse.status}`,
+        metadata: { wineName, winery },
+      });
+
+      throw new Error(`Resend API error: ${resendResponse.status}`);
+    }
+
+    // Log success
+    await supabase.from("email_send_log").insert({
+      message_id: messageId,
+      template_name: "quiz-results",
+      recipient_email: email,
+      status: "sent",
+      metadata: { wineName, winery, resendId: resendData.id },
     });
 
     return new Response(
-      JSON.stringify({ ok: true, messageId }),
+      JSON.stringify({ ok: true, messageId, resendId: resendData.id }),
       { headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   } catch (err) {
     console.error("send-transactional-email error:", err);
     return new Response(
-      JSON.stringify({ error: "Internal server error" }),
+      JSON.stringify({ error: err.message || "Internal server error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
