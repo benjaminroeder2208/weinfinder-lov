@@ -60,8 +60,8 @@ export default function EmailDashboard() {
   const [authError, setAuthError] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, [days]);
+    if (authenticated) fetchData();
+  }, [days, authenticated]);
 
   async function fetchData() {
     setLoading(true);
