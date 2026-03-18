@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Input } from "@/components/ui/input";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -11,7 +12,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
-import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft } from "lucide-react";
+import { Mail, CheckCircle, XCircle, Ban, Clock, ArrowLeft, Lock } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 interface EmailLog {
@@ -50,14 +51,25 @@ export default function EmailDashboard() {
   const [stats, setStats] = useState<Stats>({ total: 0, sent: 0, failed: 0, pending: 0, suppressed: 0 });
   const [emails, setEmails] = useState<EmailLog[]>([]);
   const [suppressed, setSuppressed] = useState<SuppressedEmail[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [days, setDays] = useState(30);
   const [statusFilter, setStatusFilter] = useState<string>("all");
   const [tab, setTab] = useState<"emails" | "suppressed">("emails");
+  const [password, setPassword] = useState("");
+  const [authenticated, setAuthenticated] = useState(false);
+  const [authError, setAuthError] = useState(false);
 
   useEffect(() => {
-    fetchData();
-  }, [days]);
+    if (sessionStorage.getItem("dashboard_pw")) {
+      setAuthenticated(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (authenticated) fetchData();
+  }, [days, authenticated]);
+
+  const storedPassword = () => sessionStorage.getItem("dashboard_pw") || password;
 
   async function fetchData() {
     setLoading(true);
@@ -68,11 +80,19 @@ export default function EmailDashboard() {
         {
           headers: {
             apikey: import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY,
+            "x-dashboard-password": storedPassword(),
           },
         }
       );
-      const json = await res.json();
 
+      if (res.status === 401) {
+        setAuthenticated(false);
+        setAuthError(true);
+        sessionStorage.removeItem("dashboard_pw");
+        return;
+      }
+
+      const json = await res.json();
       if (json.stats) setStats(json.stats);
       if (json.emails) setEmails(json.emails);
       if (json.suppressed) setSuppressed(json.suppressed);
@@ -81,6 +101,13 @@ export default function EmailDashboard() {
     } finally {
       setLoading(false);
     }
+  }
+
+  function handleLogin(e: React.FormEvent) {
+    e.preventDefault();
+    setAuthError(false);
+    sessionStorage.setItem("dashboard_pw", password);
+    setAuthenticated(true);
   }
 
   const filteredEmails = statusFilter === "all"
@@ -112,6 +139,35 @@ export default function EmailDashboard() {
     return d.toLocaleDateString("de-DE", { day: "2-digit", month: "2-digit", year: "numeric" }) +
       " " + d.toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
   };
+
+  if (!authenticated) {
+    return (
+      <div className="min-h-screen bg-background flex items-center justify-center p-4">
+        <Card className="w-full max-w-sm">
+          <CardHeader className="text-center">
+            <Lock className="h-10 w-10 text-primary mx-auto mb-2" />
+            <CardTitle className="font-[family-name:var(--font-display)]">E-Mail Dashboard</CardTitle>
+            <p className="text-sm text-muted-foreground">Bitte Passwort eingeben</p>
+          </CardHeader>
+          <CardContent>
+            <form onSubmit={handleLogin} className="space-y-4">
+              <Input
+                type="password"
+                placeholder="Passwort"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                autoFocus
+              />
+              {authError && (
+                <p className="text-sm text-destructive">Falsches Passwort</p>
+              )}
+              <Button type="submit" className="w-full">Anmelden</Button>
+            </form>
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background p-4 md:p-8">
