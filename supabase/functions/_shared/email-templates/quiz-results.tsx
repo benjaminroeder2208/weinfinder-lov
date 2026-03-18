@@ -25,6 +25,7 @@ interface QuizResultsEmailProps {
   alternativeName?: string;
   alternativeWinery?: string;
   siteUrl: string;
+  unsubscribeUrl?: string;
 }
 
 export const QuizResultsEmail = ({
@@ -40,6 +41,7 @@ export const QuizResultsEmail = ({
   alternativeName,
   alternativeWinery,
   siteUrl = "https://weinfinder.lovable.app",
+  unsubscribeUrl,
 }: QuizResultsEmailProps) => {
   const primaryColor = "hsl(345, 60%, 35%)";
   const primaryFg = "hsl(30, 20%, 97%)";
@@ -275,11 +277,28 @@ export const QuizResultsEmail = ({
               fontSize: "12px",
               color: mutedFg,
               textAlign: "center",
-              margin: "0",
+              margin: "0 0 8px",
             }}
           >
             Weinfinder Premium · Deine persönliche Weinberatung
           </Text>
+          {unsubscribeUrl && (
+            <Text
+              style={{
+                fontSize: "11px",
+                color: mutedFg,
+                textAlign: "center",
+                margin: "0",
+              }}
+            >
+              <a
+                href={unsubscribeUrl}
+                style={{ color: mutedFg, textDecoration: "underline" }}
+              >
+                Von E-Mails abmelden
+              </a>
+            </Text>
+          )}
         </Container>
       </Body>
     </Html>

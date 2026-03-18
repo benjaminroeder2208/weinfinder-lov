@@ -61,6 +61,28 @@ Deno.serve(async (req) => {
 
     const siteUrl = "https://weinfinder.lovable.app";
 
+    // Generate or reuse unsubscribe token
+    let unsubscribeToken: string;
+    const { data: existingToken } = await supabase
+      .from("email_unsubscribe_tokens")
+      .select("token")
+      .eq("email", email)
+      .is("used_at", null)
+      .limit(1)
+      .single();
+
+    if (existingToken) {
+      unsubscribeToken = existingToken.token;
+    } else {
+      unsubscribeToken = crypto.randomUUID();
+      await supabase.from("email_unsubscribe_tokens").insert({
+        email,
+        token: unsubscribeToken,
+      });
+    }
+
+    const unsubscribeUrl = `${supabaseUrl}/functions/v1/handle-email-unsubscribe?token=${unsubscribeToken}`;
+
     // Render the email template
     const emailProps = {
       wineName: wineName || "Deine Weinempfehlung",
@@ -75,6 +97,7 @@ Deno.serve(async (req) => {
       alternativeName,
       alternativeWinery,
       siteUrl,
+      unsubscribeUrl,
     };
 
     const html = await renderAsync(QuizResultsEmail(emailProps));
