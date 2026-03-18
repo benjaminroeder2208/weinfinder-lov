@@ -1,4 +1,5 @@
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import StartScreen from "@/components/StartScreen";
 import QuestionCard from "@/components/QuestionCard";
@@ -11,6 +12,7 @@ import type { QuizAnswers } from "@/types/quiz";
 type Phase = "start" | "quiz" | "result";
 
 const Index = () => {
+  const navigate = useNavigate();
   const [phase, setPhase] = useState<Phase>("start");
   const [questionIndex, setQuestionIndex] = useState(0);
   const [answers, setAnswers] = useState<string[]>([]);
@@ -56,6 +58,18 @@ const Index = () => {
     setAnswers([]);
     setResults({ top: null, alternative: null, alternative2: null, valueTip: null });
   }, []);
+
+  // Hidden admin shortcut: Ctrl+Shift+A
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "A") {
+        e.preventDefault();
+        navigate("/leads");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [navigate]);
 
   return (
     <div className="min-h-screen bg-background flex justify-center">
