@@ -59,6 +59,18 @@ const Index = () => {
     setResults({ top: null, alternative: null, alternative2: null, valueTip: null });
   }, []);
 
+  // Hidden admin shortcut: Ctrl+Shift+A
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if (e.ctrlKey && e.shiftKey && e.key === "A") {
+        e.preventDefault();
+        navigate("/leads");
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, [navigate]);
+
   return (
     <div className="min-h-screen bg-background flex justify-center">
       <div className="w-full max-w-quiz">
