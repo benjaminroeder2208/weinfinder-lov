@@ -374,5 +374,6 @@ export default function EmailDashboard() {
         )}
       </div>
     </div>
+    </>
   );
 }

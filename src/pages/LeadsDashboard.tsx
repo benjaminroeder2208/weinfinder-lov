@@ -273,5 +273,6 @@ export default function LeadsDashboard() {
         </Card>
       </div>
     </div>
+    </>
   );
 }
