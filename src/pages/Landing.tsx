@@ -374,9 +374,9 @@ const Footer = () => (
       <Logo />
       <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
         <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
-        <a href="#" className="hover:opacity-70">Kontakt</a>
-        <a href="#" className="hover:opacity-70">Impressum</a>
-        <a href="#" className="hover:opacity-70">Datenschutz</a>
+        <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
+        <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
+        <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
       </div>
     </div>
   </footer>

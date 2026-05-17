@@ -9,6 +9,9 @@ import Index from "./pages/Index.tsx";
 import Landing from "./pages/Landing.tsx";
 import EmailDashboard from "./pages/EmailDashboard.tsx";
 import LeadsDashboard from "./pages/LeadsDashboard.tsx";
+import Kontakt from "./pages/legal/Kontakt.tsx";
+import Impressum from "./pages/legal/Impressum.tsx";
+import Datenschutz from "./pages/legal/Datenschutz.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -24,6 +27,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/demo" element={<Index />} />
+            <Route path="/kontakt" element={<Kontakt />} />
+            <Route path="/impressum" element={<Impressum />} />
+            <Route path="/datenschutz" element={<Datenschutz />} />
             <Route path="/email-dashboard" element={<EmailDashboard />} />
             <Route path="/leads" element={<LeadsDashboard />} />
             <Route path="*" element={<NotFound />} />
