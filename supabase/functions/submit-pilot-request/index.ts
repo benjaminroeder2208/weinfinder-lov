@@ -1,0 +1,121 @@
+import { createClient } from "npm:@supabase/supabase-js@2";
+import { z } from "npm:zod@3.23.8";
+
+const corsHeaders = {
+  "Access-Control-Allow-Origin": "*",
+  "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
+  "Access-Control-Allow-Methods": "POST, OPTIONS",
+};
+
+const BodySchema = z.object({
+  name: z.string().trim().min(1).max(120),
+  email: z.string().trim().email().max(255),
+  company: z.string().trim().max(200).optional().or(z.literal("")),
+  shop_url: z.string().trim().max(300).optional().or(z.literal("")),
+  phone: z.string().trim().max(60).optional().or(z.literal("")),
+  message: z.string().trim().max(2000).optional().or(z.literal("")),
+});
+
+const RECIPIENT = "benjamin@kontakt-2.de";
+const FROM = "Weinfinder Pilot <noreply@mail.premium-weinfinder.de>";
+
+const escapeHtml = (s: string) =>
+  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+
+Deno.serve(async (req) => {
+  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+
+  try {
+    const parsed = BodySchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return new Response(JSON.stringify({ error: parsed.error.flatten().fieldErrors }), {
+        status: 400,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    const d = parsed.data;
+
+    const supabase = createClient(
+      Deno.env.get("SUPABASE_URL")!,
+      Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!,
+    );
+
+    const { error: dbError } = await supabase.from("pilot_requests").insert({
+      name: d.name,
+      email: d.email,
+      company: d.company || null,
+      shop_url: d.shop_url || null,
+      phone: d.phone || null,
+      message: d.message || null,
+    });
+    if (dbError) {
+      console.error("DB insert failed", dbError);
+      return new Response(JSON.stringify({ error: "db_error" }), {
+        status: 500,
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+
+    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
+    if (RESEND_API_KEY) {
+      const rows = [
+        ["Name", d.name],
+        ["E-Mail", d.email],
+        ["Firma", d.company || "—"],
+        ["Shop-URL", d.shop_url || "—"],
+        ["Telefon", d.phone || "—"],
+        ["Nachricht", d.message || "—"],
+      ];
+      const html = `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#2c1f0e">
+          <h2 style="color:#8b2615;border-bottom:2px solid #8b2615;padding-bottom:8px">
+            Neue Pilot-Anfrage
+          </h2>
+          <table style="width:100%;border-collapse:collapse;margin-top:16px">
+            ${rows
+              .map(
+                ([k, v]) => `
+              <tr>
+                <td style="padding:8px;border-bottom:1px solid #ede8de;font-weight:bold;width:140px;vertical-align:top">${k}</td>
+                <td style="padding:8px;border-bottom:1px solid #ede8de;white-space:pre-wrap">${escapeHtml(String(v))}</td>
+              </tr>`,
+              )
+              .join("")}
+          </table>
+          <p style="margin-top:24px;font-size:12px;color:#8b4a2a">
+            Eingegangen über das Pilot-Programm-Formular auf premium-weinfinder.de
+          </p>
+        </div>`;
+
+      const emailRes = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: FROM,
+          to: [RECIPIENT],
+          reply_to: d.email,
+          subject: `Neue Pilot-Anfrage von ${d.name}${d.company ? ` (${d.company})` : ""}`,
+          html,
+        }),
+      });
+      if (!emailRes.ok) {
+        console.error("Resend failed", emailRes.status, await emailRes.text());
+      }
+    } else {
+      console.warn("RESEND_API_KEY not set — skipped email");
+    }
+
+    return new Response(JSON.stringify({ ok: true }), {
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  } catch (e) {
+    console.error("submit-pilot-request error", e);
+    return new Response(JSON.stringify({ error: "server_error" }), {
+      status: 500,
+      headers: { ...corsHeaders, "Content-Type": "application/json" },
+    });
+  }
+});

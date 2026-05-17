@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2 } from "lucide-react";
+import { useState, createContext, useContext } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+
+const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
+const usePilotForm = () => useContext(PilotFormContext);
 
 const COLORS = {
   bg: "#f5f0e8",
@@ -241,6 +247,7 @@ const Features = () => {
 };
 
 const Pricing = () => {
+  const { open } = usePilotForm();
   const plans = [
     { name: "Starter", price: "29 €", per: "/Monat", setup: "zzgl. 149 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 100 Weine im Katalog", "Direkte Shop-Integration", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
     { name: "Professional", price: "59 €", per: "/Monat", setup: "zzgl. 249 € Einrichtung", recommended: false, soon: true, features: ["Alles aus Starter", "Bis zu 500 Weine", "A/B Testing", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Demnächst verfügbar" },
@@ -285,7 +292,7 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button disabled={p.soon} className="w-full py-3 rounded-md text-sm font-semibold disabled:cursor-not-allowed" style={{
+            <button onClick={() => !p.soon && open()} disabled={p.soon} className="w-full py-3 rounded-md text-sm font-semibold disabled:cursor-not-allowed" style={{
               backgroundColor: p.soon ? "rgba(44,31,14,0.1)" : COLORS.primary,
               color: p.soon ? "rgba(44,31,14,0.5)" : "#fff",
               fontFamily: fontStack.body,
@@ -303,6 +310,12 @@ const Pricing = () => {
 };
 
 const CtaBand = () => (
+  <PilotBandInner />
+);
+
+const PilotBandInner = () => {
+  const { open } = usePilotForm();
+  return (
   <section style={{ backgroundColor: COLORS.ctaBg }}>
     <div className="max-w-3xl mx-auto px-6 py-20 text-center">
       <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.2em", color: COLORS.green, fontFamily: fontStack.body }}>Pilot-Programm</p>
@@ -312,12 +325,18 @@ const CtaBand = () => (
       <p className="mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
         Werde einer der ersten Weinshops mit einem digitalen Sommelier — und sichere dir besondere Konditionen als früher Partner.
       </p>
-      <Link to="/demo" className="inline-block px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-        Demo ausprobieren
-      </Link>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <button onClick={open} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+          Jetzt anfragen
+        </button>
+        <Link to="/demo" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+          Demo ausprobieren
+        </Link>
+      </div>
     </div>
   </section>
-);
+  );
+};
 
 const Footer = () => (
   <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
@@ -333,8 +352,101 @@ const Footer = () => (
   </footer>
 );
 
-const Landing = () => {
+const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
+  const [loading, setLoading] = useState(false);
+  const [form, setForm] = useState({ name: "", email: "", company: "", shop_url: "", phone: "", message: "" });
+
+  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+    setForm((f) => ({ ...f, [k]: e.target.value }));
+
+  const submit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!form.name.trim() || !form.email.trim()) {
+      toast.error("Bitte Name und E-Mail angeben.");
+      return;
+    }
+    setLoading(true);
+    try {
+      const { error } = await supabase.functions.invoke("submit-pilot-request", { body: form });
+      if (error) throw error;
+      toast.success("Vielen Dank! Wir melden uns in Kürze.");
+      onClose();
+    } catch (err) {
+      console.error(err);
+      toast.error("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const inputStyle: React.CSSProperties = {
+    width: "100%",
+    padding: "10px 12px",
+    borderRadius: 6,
+    border: "1px solid rgba(44,31,14,0.18)",
+    backgroundColor: "#fff",
+    color: COLORS.text,
+    fontFamily: fontStack.body,
+    fontSize: 14,
+  };
+  const labelStyle: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: COLORS.text, marginBottom: 6, display: "block", fontFamily: fontStack.body };
+
   return (
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ backgroundColor: "rgba(44,31,14,0.6)" }} onClick={onClose}>
+      <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
+        <div className="flex items-start justify-between p-6 pb-2">
+          <div>
+            <p className="text-xs font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
+            <h3 className="text-2xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Jetzt anfragen</h3>
+          </div>
+          <button onClick={onClose} aria-label="Schließen" className="p-1 rounded hover:bg-black/5">
+            <X size={20} style={{ color: COLORS.text }} />
+          </button>
+        </div>
+        <form onSubmit={submit} className="p-6 pt-4 space-y-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+              <label style={labelStyle}>Name *</label>
+              <input required value={form.name} onChange={update("name")} style={inputStyle} maxLength={120} />
+            </div>
+            <div>
+              <label style={labelStyle}>E-Mail *</label>
+              <input required type="email" value={form.email} onChange={update("email")} style={inputStyle} maxLength={255} />
+            </div>
+            <div>
+              <label style={labelStyle}>Firma</label>
+              <input value={form.company} onChange={update("company")} style={inputStyle} maxLength={200} />
+            </div>
+            <div>
+              <label style={labelStyle}>Shop-URL</label>
+              <input value={form.shop_url} onChange={update("shop_url")} placeholder="https://" style={inputStyle} maxLength={300} />
+            </div>
+            <div className="md:col-span-2">
+              <label style={labelStyle}>Telefon</label>
+              <input value={form.phone} onChange={update("phone")} style={inputStyle} maxLength={60} />
+            </div>
+            <div className="md:col-span-2">
+              <label style={labelStyle}>Nachricht</label>
+              <textarea value={form.message} onChange={update("message")} rows={4} style={inputStyle} maxLength={2000} />
+            </div>
+          </div>
+          <button type="submit" disabled={loading} className="w-full py-3 rounded-md font-semibold text-white hover:opacity-90 transition disabled:opacity-60 inline-flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+            {loading && <Loader2 size={16} className="animate-spin" />}
+            {loading ? "Wird gesendet…" : "Anfrage senden"}
+          </button>
+          <p className="text-xs text-center" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
+            Wir melden uns innerhalb von 1–2 Werktagen bei dir.
+          </p>
+        </form>
+      </div>
+    </div>
+  );
+};
+
+const Landing = () => {
+  const [formOpen, setFormOpen] = useState(false);
+  return (
+    <PilotFormContext.Provider value={{ open: () => setFormOpen(true) }}>
     <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
       <Nav />
@@ -345,7 +457,9 @@ const Landing = () => {
       <Pricing />
       <CtaBand />
       <Footer />
+      {formOpen && <PilotFormModal onClose={() => setFormOpen(false)} />}
     </div>
+    </PilotFormContext.Provider>
   );
 };
 
