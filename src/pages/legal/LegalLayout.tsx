@@ -46,8 +46,8 @@ const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: stri
   </div>
 );
 
-export const LegalSection = ({ title, children }: { title: string; children: React.ReactNode }) => (
-  <section>
+export const LegalSection = ({ id, title, children }: { id?: string; title: string; children: React.ReactNode }) => (
+  <section id={id} style={id ? { scrollMarginTop: 80 } : undefined}>
     <h2 className="text-xl font-bold mb-3 mt-8" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{title}</h2>
     <div className="space-y-3">{children}</div>
   </section>
