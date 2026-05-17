@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2 } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -37,21 +37,51 @@ const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactN
   </p>
 );
 
-const Nav = () => (
-  <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
-    <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-      <Logo />
-      <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-        <a href="#how" className="hover:opacity-70 transition">Wie es funktioniert</a>
-        <a href="#features" className="hover:opacity-70 transition">Features</a>
-        <a href="#pricing" className="hover:opacity-70 transition">Preise</a>
+const Nav = () => {
+  const [open, setOpen] = useState(false);
+  const close = () => setOpen(false);
+  const linkClass = "hover:opacity-70 transition";
+  return (
+    <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
+      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+        <Logo />
+        <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+          <a href="#how" className={linkClass}>Wie es funktioniert</a>
+          <a href="#features" className={linkClass}>Features</a>
+          <a href="#pricing" className={linkClass}>Preise</a>
+        </div>
+        <Link to="/demo" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+          Demo starten
+        </Link>
+        <button
+          onClick={() => setOpen((v) => !v)}
+          aria-label={open ? "Menü schließen" : "Menü öffnen"}
+          aria-expanded={open}
+          className="md:hidden p-2 rounded-md hover:bg-black/5"
+        >
+          {open ? <X size={22} style={{ color: COLORS.text }} /> : <Menu size={22} style={{ color: COLORS.text }} />}
+        </button>
       </div>
-      <Link to="/demo" className="px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-        Demo starten
-      </Link>
-    </div>
-  </nav>
-);
+      {open && (
+        <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
+          <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+            <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
+            <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
+            <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
+            <Link
+              to="/demo"
+              onClick={close}
+              className="mt-3 mb-2 text-center px-5 py-3 rounded-md text-sm font-semibold text-white"
+              style={{ backgroundColor: COLORS.primary }}
+            >
+              Demo starten
+            </Link>
+          </div>
+        </div>
+      )}
+    </nav>
+  );
+};
 
 const BrowserMockup = () => (
   <div className="rounded-xl overflow-hidden shadow-2xl" style={{ backgroundColor: "#fff", border: "1px solid rgba(44,31,14,0.1)" }}>
