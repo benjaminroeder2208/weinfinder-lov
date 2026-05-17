@@ -1,7 +1,14 @@
 import LegalLayout, { LegalSection } from "./LegalLayout";
 import { Mail, Globe } from "lucide-react";
+import SEO from "@/components/SEO";
 
 const Kontakt = () => (
+  <>
+  <SEO
+    title="Kontakt — Weinfinder"
+    description="Frage stellen, Demo vereinbaren oder am Pilot-Programm teilnehmen: Hier erreichst du das Weinfinder-Team."
+    path="/kontakt"
+  />
   <LegalLayout title="Kontakt" kicker="So erreichst du uns">
     <p>
       Du hast Fragen zu Weinfinder, möchtest eine Demo vereinbaren oder am Pilot-Programm teilnehmen?
@@ -27,6 +34,7 @@ const Kontakt = () => (
       </p>
     </LegalSection>
   </LegalLayout>
+  </>
 );
 
 export default Kontakt;

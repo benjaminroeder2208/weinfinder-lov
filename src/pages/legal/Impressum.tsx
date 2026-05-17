@@ -1,6 +1,13 @@
 import LegalLayout, { LegalSection } from "./LegalLayout";
+import SEO from "@/components/SEO";
 
 const Impressum = () => (
+  <>
+  <SEO
+    title="Impressum — Weinfinder"
+    description="Anbieterkennzeichnung gemäß § 5 TMG für den Premium Weinfinder."
+    path="/impressum"
+  />
   <LegalLayout title="Impressum" kicker="Angaben gemäß § 5 TMG">
     <LegalSection title="Anbieter">
       <p>
@@ -44,6 +51,7 @@ const Impressum = () => (
       </p>
     </LegalSection>
   </LegalLayout>
+  </>
 );
 
 export default Impressum;

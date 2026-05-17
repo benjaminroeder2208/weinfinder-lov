@@ -4,6 +4,7 @@ import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, 
 import { useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
+import SEO from "@/components/SEO";
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
 const usePilotForm = () => useContext(PilotFormContext);
@@ -495,13 +496,35 @@ const Landing = () => {
     <PilotFormContext.Provider value={{ open: () => setFormOpen(true) }}>
     <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
+      <SEO
+        title="Weinfinder — Digitaler Sommelier für deinen Weinshop"
+        description="White-Label Weinberater für Online-Weinhändler: Steigere Conversion mit einer geführten Empfehlung in 6 Fragen. Integration in unter 48 Stunden."
+        path="/"
+        jsonLd={[
+          {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            name: "Weinfinder",
+            url: "https://premium-weinfinder.de/",
+            logo: "https://premium-weinfinder.de/logo.svg",
+          },
+          {
+            "@context": "https://schema.org",
+            "@type": "WebSite",
+            name: "Weinfinder",
+            url: "https://premium-weinfinder.de/",
+          },
+        ]}
+      />
       <Nav />
-      <Hero />
-      <Stats />
-      <HowItWorks />
-      <Features />
-      <Pricing />
-      <CtaBand />
+      <main>
+        <Hero />
+        <Stats />
+        <HowItWorks />
+        <Features />
+        <Pricing />
+        <CtaBand />
+      </main>
       <Footer />
       {formOpen && <PilotFormModal onClose={() => setFormOpen(false)} />}
     </div>
