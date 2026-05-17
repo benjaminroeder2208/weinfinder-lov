@@ -123,6 +123,51 @@ Deno.serve(async (req) => {
       if (!emailRes.ok) {
         console.error("Resend failed", emailRes.status, await emailRes.text());
       }
+
+      // Confirmation email to the requester
+      const confirmHtml = `
+        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#2c1f0e;background:#fdfaf3;padding:32px 24px;border-radius:8px">
+          <h2 style="color:#8b2615;font-family:Georgia,serif;margin:0 0 16px">
+            Vielen Dank für Ihre Anfrage, ${escapeHtml(d.name)}!
+          </h2>
+          <p style="font-size:15px;line-height:1.6;margin:0 0 16px">
+            Wir haben Ihre Anfrage zum Pilot-Programm des Premium Weinfinders erhalten
+            und melden uns innerhalb der nächsten 1–2 Werktage persönlich bei Ihnen.
+          </p>
+          <p style="font-size:15px;line-height:1.6;margin:0 0 24px">
+            Falls Sie in der Zwischenzeit Fragen haben, antworten Sie einfach direkt
+            auf diese E-Mail.
+          </p>
+          <div style="border-top:1px solid #ede8de;padding-top:16px;margin-top:24px">
+            <p style="font-size:13px;color:#6b4a2a;margin:0 0 4px"><strong>Ihre Angaben:</strong></p>
+            <p style="font-size:13px;color:#6b4a2a;margin:2px 0">Name: ${escapeHtml(d.name)}</p>
+            <p style="font-size:13px;color:#6b4a2a;margin:2px 0">E-Mail: ${escapeHtml(d.email)}</p>
+            ${d.company ? `<p style="font-size:13px;color:#6b4a2a;margin:2px 0">Firma: ${escapeHtml(d.company)}</p>` : ""}
+            ${d.shop_url ? `<p style="font-size:13px;color:#6b4a2a;margin:2px 0">Shop: ${escapeHtml(d.shop_url)}</p>` : ""}
+          </div>
+          <p style="margin-top:32px;font-size:13px;color:#8b4a2a">
+            Herzliche Grüße<br/>
+            Ihr Premium Weinfinder Team
+          </p>
+        </div>`;
+
+      const confirmRes = await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${RESEND_API_KEY}`,
+        },
+        body: JSON.stringify({
+          from: FROM,
+          to: [d.email],
+          reply_to: RECIPIENT,
+          subject: "Ihre Anfrage zum Premium Weinfinder Pilot-Programm",
+          html: confirmHtml,
+        }),
+      });
+      if (!confirmRes.ok) {
+        console.error("Resend confirmation failed", confirmRes.status, await confirmRes.text());
+      }
     } else {
       console.warn("RESEND_API_KEY not set — skipped email");
     }
