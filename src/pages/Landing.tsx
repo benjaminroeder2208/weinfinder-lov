@@ -348,7 +348,6 @@ const PilotBandInner = () => {
   return (
   <section style={{ backgroundColor: COLORS.ctaBg }}>
     <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-      <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.2em", color: COLORS.green, fontFamily: fontStack.body }}>Pilot-Programm</p>
       <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white" style={{ fontFamily: fontStack.display }}>
         Jetzt als Pilotkunde einsteigen
       </h2>
