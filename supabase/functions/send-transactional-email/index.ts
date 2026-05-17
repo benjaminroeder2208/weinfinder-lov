@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { renderAsync } from "npm:@react-email/render@0.0.12";
+import { z } from "npm:zod@3.23.8";
 import QuizResultsEmail from "../_shared/email-templates/quiz-results.tsx";
 
 const corsHeaders = {
@@ -7,6 +8,24 @@ const corsHeaders = {
   "Access-Control-Allow-Headers":
     "authorization, x-client-info, apikey, content-type, x-supabase-client-platform, x-supabase-client-platform-version, x-supabase-client-runtime, x-supabase-client-runtime-version",
 };
+
+const optStr = (max: number) =>
+  z.string().trim().max(max).optional().or(z.literal("")).transform((v) => v ?? "");
+
+const BodySchema = z.object({
+  email: z.string().trim().toLowerCase().email().max(255),
+  wineName: optStr(200),
+  winery: optStr(200),
+  description: optStr(2000),
+  price: optStr(60),
+  grapeVariety: optStr(200),
+  region: optStr(200),
+  bodyStyle: optStr(100),
+  foodPairings: z.array(z.string().max(120)).max(20).optional(),
+  wineLink: z.string().trim().url().max(500).optional().or(z.literal("")),
+  alternativeName: optStr(200),
+  alternativeWinery: optStr(200),
+});
 
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
@@ -23,6 +42,13 @@ Deno.serve(async (req) => {
     const serviceKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY")!;
     const supabase = createClient(supabaseUrl, serviceKey);
 
+    const parsed = BodySchema.safeParse(await req.json());
+    if (!parsed.success) {
+      return new Response(
+        JSON.stringify({ error: "invalid_input", details: parsed.error.flatten().fieldErrors }),
+        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } },
+      );
+    }
     const {
       email,
       wineName,
@@ -36,14 +62,7 @@ Deno.serve(async (req) => {
       wineLink,
       alternativeName,
       alternativeWinery,
-    } = await req.json();
-
-    if (!email) {
-      return new Response(
-        JSON.stringify({ error: "Email is required" }),
-        { status: 400, headers: { ...corsHeaders, "Content-Type": "application/json" } }
-      );
-    }
+    } = parsed.data;
 
     // Check suppression list
     const { data: suppressed } = await supabase
