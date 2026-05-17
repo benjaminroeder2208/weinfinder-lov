@@ -8,6 +8,7 @@ import { questions } from "@/data/questions";
 import { wines } from "@/data/wines";
 import { matchWines, type MatchResult } from "@/lib/matchWines";
 import type { QuizAnswers } from "@/types/quiz";
+import SEO from "@/components/SEO";
 
 type Phase = "start" | "quiz" | "result";
 
@@ -73,6 +74,11 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-background flex flex-col">
+      <SEO
+        title="Weinfinder Demo — Erlebe die automatisierte Weinberatung"
+        description="Beantworte sechs einfache Fragen und erlebe live, wie der Weinfinder personalisierte Weinempfehlungen für deine Kundschaft generiert."
+        path="/demo"
+      />
       <header className="border-b border-foreground/10">
         <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
           <Link
