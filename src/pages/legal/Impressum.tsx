@@ -4,23 +4,20 @@ const Impressum = () => (
   <LegalLayout title="Impressum" kicker="Angaben gemäß § 5 TMG">
     <LegalSection title="Anbieter">
       <p>
-        Benjamin [Nachname]<br />
-        [Straße und Hausnummer]<br />
-        [PLZ und Ort]<br />
+        Benjamin Röder<br />
+        Mainkurstr. 16<br />
+        63075 Offenbach am Main<br />
         Deutschland
       </p>
     </LegalSection>
     <LegalSection title="Kontakt">
       <p>
-        E-Mail: <a href="mailto:benjamin@kontakt-2.de" className="underline">benjamin@kontakt-2.de</a><br />
+        E-Mail: <a href="mailto:info@premium-weinfinder.de" className="underline">info@premium-weinfinder.de</a><br />
         Web: <a href="https://premium-weinfinder.de" className="underline">premium-weinfinder.de</a>
       </p>
     </LegalSection>
-    <LegalSection title="Umsatzsteuer-ID">
-      <p>Umsatzsteuer-Identifikationsnummer gemäß § 27 a Umsatzsteuergesetz: [USt-IdNr. eintragen]</p>
-    </LegalSection>
     <LegalSection title="Verantwortlich für den Inhalt nach § 55 Abs. 2 RStV">
-      <p>Benjamin [Nachname], Anschrift wie oben</p>
+      <p>Benjamin Röder, Anschrift wie oben</p>
     </LegalSection>
     <LegalSection title="Haftung für Inhalte">
       <p>
@@ -46,10 +43,6 @@ const Impressum = () => (
         jeweiligen Autors bzw. Erstellers.
       </p>
     </LegalSection>
-    <p className="text-xs mt-8" style={{ color: "rgba(44,31,14,0.55)" }}>
-      Hinweis: Bitte ergänze die mit [...] markierten Platzhalter mit deinen tatsächlichen Angaben,
-      bevor die Seite öffentlich geht.
-    </p>
   </LegalLayout>
 );
 
