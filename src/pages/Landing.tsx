@@ -1,6 +1,12 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2 } from "lucide-react";
+import { useState, createContext, useContext } from "react";
+import { supabase } from "@/integrations/supabase/client";
+import { toast } from "sonner";
+
+const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
+const usePilotForm = () => useContext(PilotFormContext);
 
 const COLORS = {
   bg: "#f5f0e8",
@@ -303,6 +309,12 @@ const Pricing = () => {
 };
 
 const CtaBand = () => (
+  <PilotBandInner />
+);
+
+const PilotBandInner = () => {
+  const { open } = usePilotForm();
+  return (
   <section style={{ backgroundColor: COLORS.ctaBg }}>
     <div className="max-w-3xl mx-auto px-6 py-20 text-center">
       <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.2em", color: COLORS.green, fontFamily: fontStack.body }}>Pilot-Programm</p>
@@ -312,12 +324,18 @@ const CtaBand = () => (
       <p className="mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
         Werde einer der ersten Weinshops mit einem digitalen Sommelier — und sichere dir besondere Konditionen als früher Partner.
       </p>
-      <Link to="/demo" className="inline-block px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-        Demo ausprobieren
-      </Link>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <button onClick={open} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+          Jetzt anfragen
+        </button>
+        <Link to="/demo" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+          Demo ausprobieren
+        </Link>
+      </div>
     </div>
   </section>
-);
+  );
+};
 
 const Footer = () => (
   <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
@@ -334,7 +352,9 @@ const Footer = () => (
 );
 
 const Landing = () => {
+  const [formOpen, setFormOpen] = useState(false);
   return (
+    <PilotFormContext.Provider value={{ open: () => setFormOpen(true) }}>
     <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
       <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
       <Nav />
@@ -345,7 +365,9 @@ const Landing = () => {
       <Pricing />
       <CtaBand />
       <Footer />
+      {formOpen && <PilotFormModal onClose={() => setFormOpen(false)} />}
     </div>
+    </PilotFormContext.Provider>
   );
 };
 
