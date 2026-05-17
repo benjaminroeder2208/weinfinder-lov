@@ -355,6 +355,8 @@ const Footer = () => (
 const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
   const [loading, setLoading] = useState(false);
   const [form, setForm] = useState({ name: "", email: "", company: "", shop_url: "", phone: "", message: "" });
+  const [website, setWebsite] = useState(""); // honeypot
+  const [mountedAt] = useState(() => Date.now());
 
   const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
     setForm((f) => ({ ...f, [k]: e.target.value }));
@@ -367,7 +369,9 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
     }
     setLoading(true);
     try {
-      const { error } = await supabase.functions.invoke("submit-pilot-request", { body: form });
+      const { error } = await supabase.functions.invoke("submit-pilot-request", {
+        body: { ...form, website, elapsed_ms: Date.now() - mountedAt },
+      });
       if (error) throw error;
       toast.success("Vielen Dank! Wir melden uns in Kürze.");
       onClose();
@@ -404,6 +408,19 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
           </button>
         </div>
         <form onSubmit={submit} className="p-6 pt-4 space-y-4">
+          {/* Honeypot field — hidden from real users, often filled by bots */}
+          <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
+            <label>
+              Website (bitte leer lassen)
+              <input
+                type="text"
+                tabIndex={-1}
+                autoComplete="off"
+                value={website}
+                onChange={(e) => setWebsite(e.target.value)}
+              />
+            </label>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div>
               <label style={labelStyle}>Name *</label>

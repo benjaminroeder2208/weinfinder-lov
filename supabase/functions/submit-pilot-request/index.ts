@@ -14,6 +14,10 @@ const BodySchema = z.object({
   shop_url: z.string().trim().max(300).optional().or(z.literal("")),
   phone: z.string().trim().max(60).optional().or(z.literal("")),
   message: z.string().trim().max(2000).optional().or(z.literal("")),
+  // Honeypot: must be empty. Bots typically fill all fields.
+  website: z.string().max(0).optional().or(z.literal("")),
+  // Minimum time (ms) the form was visible before submission.
+  elapsed_ms: z.number().int().nonnegative().optional(),
 });
 
 const RECIPIENT = "benjamin@kontakt-2.de";
@@ -34,6 +38,21 @@ Deno.serve(async (req) => {
       });
     }
     const d = parsed.data;
+
+    // Spam checks
+    if (d.website && d.website.length > 0) {
+      console.warn("Honeypot triggered", { email: d.email });
+      // Pretend success so bots don't retry
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
+    if (typeof d.elapsed_ms === "number" && d.elapsed_ms < 1500) {
+      console.warn("Form submitted too fast", { ms: d.elapsed_ms, email: d.email });
+      return new Response(JSON.stringify({ ok: true }), {
+        headers: { ...corsHeaders, "Content-Type": "application/json" },
+      });
+    }
 
     const supabase = createClient(
       Deno.env.get("SUPABASE_URL")!,
