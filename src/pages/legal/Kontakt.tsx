@@ -34,6 +34,7 @@ const Kontakt = () => (
       </p>
     </LegalSection>
   </LegalLayout>
+  </>
 );
 
 export default Kontakt;
