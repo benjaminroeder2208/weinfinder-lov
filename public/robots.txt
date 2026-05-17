@@ -1,14 +1,22 @@
 User-agent: Googlebot
 Allow: /
+Disallow: /email-dashboard
+Disallow: /leads
 
 User-agent: Bingbot
 Allow: /
+Disallow: /email-dashboard
+Disallow: /leads
 
 User-agent: Twitterbot
 Allow: /
+Disallow: /email-dashboard
+Disallow: /leads
 
 User-agent: facebookexternalhit
 Allow: /
+Disallow: /email-dashboard
+Disallow: /leads
 
 User-agent: *
 Allow: /
