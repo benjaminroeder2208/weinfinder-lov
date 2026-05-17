@@ -11,7 +11,8 @@ const Datenschutz = () => (
     <LegalSection title="1. Verantwortlicher">
       <p>
         Verantwortlich für die Datenverarbeitung auf dieser Website ist:<br />
-        Benjamin [Nachname], [Adresse], E-Mail: <a href="mailto:benjamin@kontakt-2.de" className="underline">benjamin@kontakt-2.de</a>
+        Benjamin Röder, Mainkurstr. 16, 63075 Offenbach am Main, E-Mail:{" "}
+        <a href="mailto:info@premium-weinfinder.de" className="underline">info@premium-weinfinder.de</a>
       </p>
     </LegalSection>
 
@@ -71,7 +72,7 @@ const Datenschutz = () => (
         Du hast jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO), Löschung
         (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO), Datenübertragbarkeit (Art. 20
         DSGVO) und Widerspruch (Art. 21 DSGVO). Wende dich dazu formlos an{" "}
-        <a href="mailto:benjamin@kontakt-2.de" className="underline">benjamin@kontakt-2.de</a>.
+        <a href="mailto:info@premium-weinfinder.de" className="underline">info@premium-weinfinder.de</a>.
         Außerdem steht dir ein Beschwerderecht bei einer Datenschutz-Aufsichtsbehörde zu.
       </p>
     </LegalSection>
@@ -82,11 +83,6 @@ const Datenschutz = () => (
         erforderlich ist oder gesetzliche Aufbewahrungsfristen dies vorsehen.
       </p>
     </LegalSection>
-
-    <p className="text-xs mt-8" style={{ color: "rgba(44,31,14,0.55)" }}>
-      Hinweis: Diese Datenschutzerklärung ist eine Vorlage. Bitte prüfe sie vor dem Live-Gang juristisch
-      und ergänze die mit [...] markierten Platzhalter mit deinen tatsächlichen Angaben.
-    </p>
   </LegalLayout>
 );
 
