@@ -1,6 +1,13 @@
 import LegalLayout, { LegalSection } from "./LegalLayout";
+import SEO from "@/components/SEO";
 
 const Datenschutz = () => (
+  <>
+  <SEO
+    title="Datenschutzerklärung — Weinfinder"
+    description="DSGVO-konforme Information zur Verarbeitung deiner Daten beim Besuch von Weinfinder und der Nutzung von Quiz und Pilot-Programm."
+    path="/datenschutz"
+  />
   <LegalLayout title="Datenschutzerklärung" kicker="DSGVO-konforme Information">
     <p>
       Wir freuen uns über dein Interesse am Premium Weinfinder. Der Schutz deiner personenbezogenen
@@ -314,6 +321,7 @@ const Datenschutz = () => (
       </p>
     </LegalSection>
   </LegalLayout>
+  </>
 );
 
 export default Datenschutz;
