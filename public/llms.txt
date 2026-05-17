@@ -1,0 +1,14 @@
+# Weinfinder
+
+> Premium White-Label Weinfinder: ein digitaler Sommelier, der Online-Weinhändlern in 6 Fragen personalisierte Empfehlungen für ihre Kundschaft liefert.
+
+## Pages
+
+- [Startseite](/): Produktübersicht, Funktionen, Preise und Pilot-Programm-Anfrage.
+- [Demo](/demo): Interaktive Live-Demo des Weinfinder-Quiz mit echter Empfehlungslogik.
+- [Kontakt](/kontakt): Anfragen, Demo-Vereinbarungen und Pilot-Programm-Teilnahme.
+
+## Optional
+
+- [Impressum](/impressum): Anbieterkennzeichnung gemäß § 5 TMG.
+- [Datenschutz](/datenschutz): DSGVO-konforme Datenschutzerklärung inkl. Betroffenenrechten und Löschfristen.
