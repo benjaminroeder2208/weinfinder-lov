@@ -36,7 +36,8 @@ const Datenschutz = () => (
         des Abrufs, übertragene Datenmenge, Browsertyp und -version, Betriebssystem,
         Referrer-URL. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO (berechtigtes Interesse an
         einem stabilen, sicheren Betrieb). Diese Logs werden nicht mit anderen Daten
-        zusammengeführt und nach maximal 30 Tagen gelöscht.
+        zusammengeführt und nach maximal 30 Tagen gelöscht
+        (siehe <a href="#speicherdauer" className="underline">Speicherdauer</a>).
       </p>
     </LegalSection>
 
@@ -95,6 +96,8 @@ const Datenschutz = () => (
         Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (Durchführung vorvertraglicher Maßnahmen auf
         deine Anfrage) und Art. 6 Abs. 1 lit. f DSGVO (Verbesserung des Empfehlungsalgorithmus
         anhand aggregierter, nicht-individueller Auswertungen).
+        Quiz-Leads werden automatisch nach 24 Monaten gelöscht
+        (siehe <a href="#speicherdauer" className="underline">Speicherdauer</a>).
       </p>
     </LegalSection>
 
@@ -113,8 +116,9 @@ const Datenschutz = () => (
       </p>
       <p className="mt-3">
         Rechtsgrundlage: Art. 6 Abs. 1 lit. b DSGVO (vorvertragliche Maßnahmen) sowie Art. 6
-        Abs. 1 lit. f DSGVO für die Spam-Abwehr. Speicherdauer: bis zu 24 Monate nach letztem
-        Kontakt; danach Löschung, sofern keine Vertragsbeziehung zustande gekommen ist.
+        Abs. 1 lit. f DSGVO für die Spam-Abwehr. Pilot-Anfragen werden automatisch nach
+        24 Monaten gelöscht, sofern keine Vertragsbeziehung zustande gekommen ist
+        (siehe <a href="#speicherdauer" className="underline">Speicherdauer</a>).
       </p>
     </LegalSection>
 
@@ -129,7 +133,9 @@ const Datenschutz = () => (
       <p className="mt-3">
         Jede E-Mail enthält einen funktionierenden Abmelde-Link. Beim Klick wird deine Adresse
         in unsere Sperrliste („suppressed_emails") aufgenommen und es werden keine weiteren
-        E-Mails dieser Art mehr an dich versendet.
+        E-Mails dieser Art mehr an dich versendet. Versandprotokolle werden nach 90 Tagen
+        automatisch gelöscht; die Sperrliste bleibt dauerhaft bestehen, damit kein erneuter
+        Versand erfolgt (siehe <a href="#speicherdauer" className="underline">Speicherdauer</a>).
       </p>
     </LegalSection>
 
@@ -162,14 +168,25 @@ const Datenschutz = () => (
       </p>
     </LegalSection>
 
-    <LegalSection title="9. Speicherdauer">
-      <ul className="list-disc pl-5 space-y-1">
-        <li>Server-Logfiles: max. 30 Tage</li>
-        <li>Quiz-Leads (E-Mail + Antworten): max. 24 Monate nach Eingang</li>
-        <li>Pilot-Anfragen: bis zu 24 Monate nach letztem Kontakt</li>
-        <li>E-Mail-Versand-Protokolle (Resend / „email_send_log"): 90 Tage</li>
-        <li>Sperrliste abgemeldeter E-Mail-Adressen: dauerhaft, um erneuten Versand zu verhindern</li>
+    <LegalSection id="speicherdauer" title="9. Speicherdauer & automatische Löschung">
+      <p>
+        Die folgenden Fristen werden technisch durchgesetzt: Ein täglicher Datenbank-Job
+        (<code>apply_data_retention</code>, geplant für 03:15 Uhr UTC) löscht abgelaufene
+        Datensätze automatisch und unwiderruflich.
+      </p>
+      <ul className="list-disc pl-5 space-y-1 mt-3">
+        <li><strong>Server-Logfiles:</strong> max. 30 Tage (über Hosting-Infrastruktur)</li>
+        <li><strong>Quiz-Leads</strong> (E-Mail + Antworten, Tabelle „leads"): 24 Monate ab Eingang</li>
+        <li><strong>Pilot-Anfragen</strong> (Tabelle „pilot_requests"): 24 Monate ab Eingang</li>
+        <li><strong>E-Mail-Versandprotokolle</strong> (Tabelle „email_send_log"): 90 Tage</li>
+        <li><strong>Verwendete Abmelde-Tokens:</strong> 90 Tage nach Nutzung; ungenutzte Tokens nach 12 Monaten</li>
+        <li><strong>Sperrliste abgemeldeter E-Mail-Adressen</strong> („suppressed_emails"): dauerhaft, ausschließlich zur Verhinderung eines erneuten Versands (Art. 17 Abs. 3 lit. b DSGVO i.&nbsp;V.&nbsp;m. Art. 21 Abs. 3 DSGVO)</li>
       </ul>
+      <p className="mt-3">
+        Eine vorzeitige Löschung deiner Daten kannst du jederzeit formlos unter{" "}
+        <a href="mailto:info@premium-weinfinder.de" className="underline">info@premium-weinfinder.de</a>{" "}
+        beantragen. Gesetzliche Aufbewahrungspflichten (z.&nbsp;B. handels- oder steuerrechtlich) bleiben unberührt.
+      </p>
     </LegalSection>
 
     <LegalSection title="10. Deine Rechte">
