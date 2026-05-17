@@ -1,5 +1,5 @@
 import { useState, useCallback, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import StartScreen from "@/components/StartScreen";
 import QuestionCard from "@/components/QuestionCard";
@@ -72,24 +72,51 @@ const Index = () => {
   }, [navigate]);
 
   return (
-    <div className="min-h-screen bg-background flex justify-center">
-      <div className="w-full max-w-quiz">
-        <AnimatePresence mode="wait">
-          {phase === "start" && <StartScreen key="start" onStart={handleStart} />}
-          {phase === "quiz" && (
-            <QuestionCard
-              key={`q-${questionIndex}`}
-              question={questions[questionIndex]}
-              questionIndex={questionIndex}
-              totalQuestions={questions.length}
-              onAnswer={handleAnswer}
-            />
-          )}
-          {phase === "result" && (
-            <ResultScreen key="result" results={results} answers={quizAnswers} onRestart={handleRestart} />
-          )}
-        </AnimatePresence>
-      </div>
+    <div className="min-h-screen bg-background flex flex-col">
+      <header className="border-b border-foreground/10">
+        <div className="max-w-5xl mx-auto px-6 py-5 flex items-center justify-between">
+          <Link
+            to="/"
+            className="font-bold text-2xl tracking-tight font-serif text-foreground"
+          >
+            Wein<span className="text-primary">finder</span>
+          </Link>
+          <Link to="/" className="text-sm text-foreground/80 hover:opacity-70">
+            ← Zurück zur Startseite
+          </Link>
+        </div>
+      </header>
+
+      <main className="flex-1 flex justify-center">
+        <div className="w-full max-w-quiz">
+          <AnimatePresence mode="wait">
+            {phase === "start" && <StartScreen key="start" onStart={handleStart} />}
+            {phase === "quiz" && (
+              <QuestionCard
+                key={`q-${questionIndex}`}
+                question={questions[questionIndex]}
+                questionIndex={questionIndex}
+                totalQuestions={questions.length}
+                onAnswer={handleAnswer}
+              />
+            )}
+            {phase === "result" && (
+              <ResultScreen key="result" results={results} answers={quizAnswers} onRestart={handleRestart} />
+            )}
+          </AnimatePresence>
+        </div>
+      </main>
+
+      <footer className="border-t border-foreground/10 mt-10">
+        <div className="max-w-5xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between text-sm text-foreground/70">
+          <span>© {new Date().getFullYear()} Weinfinder</span>
+          <div className="flex gap-6">
+            <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
+            <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
+            <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 };
