@@ -6,6 +6,14 @@ const corsHeaders = {
     "authorization, x-client-info, apikey, content-type",
 };
 
+const escapeHtml = (s: string) =>
+  String(s ?? "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") {
     return new Response(null, { headers: corsHeaders });
@@ -42,7 +50,7 @@ Deno.serve(async (req) => {
     }
 
     if (tokenRecord.used_at) {
-      return new Response(htmlPage("Bereits abgemeldet", `Die E-Mail-Adresse <strong>${tokenRecord.email}</strong> wurde bereits abgemeldet.`), {
+      return new Response(htmlPage("Bereits abgemeldet", `Die E-Mail-Adresse <strong>${escapeHtml(tokenRecord.email)}</strong> wurde bereits abgemeldet.`), {
         status: 200,
         headers: { "Content-Type": "text/html; charset=utf-8" },
       });
@@ -64,7 +72,7 @@ Deno.serve(async (req) => {
     return new Response(
       htmlPage(
         "Erfolgreich abgemeldet",
-        `Die E-Mail-Adresse <strong>${tokenRecord.email}</strong> wurde erfolgreich abgemeldet. Du erhältst keine weiteren E-Mails von uns.`
+        `Die E-Mail-Adresse <strong>${escapeHtml(tokenRecord.email)}</strong> wurde erfolgreich abgemeldet. Du erhältst keine weiteren E-Mails von uns.`
       ),
       { status: 200, headers: { "Content-Type": "text/html; charset=utf-8" } }
     );
