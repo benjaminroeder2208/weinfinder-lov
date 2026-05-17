@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
 import Index from "./pages/Index.tsx";
+import Landing from "./pages/Landing.tsx";
 import EmailDashboard from "./pages/EmailDashboard.tsx";
 import LeadsDashboard from "./pages/LeadsDashboard.tsx";
 import NotFound from "./pages/NotFound.tsx";
@@ -21,7 +22,8 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
-            <Route path="/" element={<Index />} />
+            <Route path="/" element={<Landing />} />
+            <Route path="/demo" element={<Index />} />
             <Route path="/email-dashboard" element={<EmailDashboard />} />
             <Route path="/leads" element={<LeadsDashboard />} />
             <Route path="*" element={<NotFound />} />
