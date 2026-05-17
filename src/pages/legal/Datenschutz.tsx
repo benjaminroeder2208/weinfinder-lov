@@ -189,20 +189,111 @@ const Datenschutz = () => (
       </p>
     </LegalSection>
 
-    <LegalSection title="10. Deine Rechte">
+    <LegalSection id="betroffenenrechte" title="10. Deine Rechte als betroffene Person">
       <p>
-        Du hast jederzeit das Recht auf Auskunft (Art. 15 DSGVO), Berichtigung (Art. 16 DSGVO),
-        Löschung (Art. 17 DSGVO), Einschränkung der Verarbeitung (Art. 18 DSGVO),
-        Datenübertragbarkeit (Art. 20 DSGVO) sowie Widerspruch (Art. 21 DSGVO). Für eine auf
-        Einwilligung gestützte Verarbeitung kannst du deine Einwilligung jederzeit mit Wirkung
-        für die Zukunft widerrufen.
+        Nach der DSGVO stehen dir umfassende Rechte gegenüber dem Verantwortlichen zu. Eine
+        Bearbeitung ist für dich kostenlos und erfolgt in der Regel innerhalb eines Monats nach
+        Eingang deiner Anfrage (Art. 12 Abs. 3 DSGVO).
       </p>
-      <p className="mt-3">
-        Wende dich dazu formlos an{" "}
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Auskunft (Art. 15 DSGVO)
+      </h3>
+      <p>
+        Du kannst eine Bestätigung verlangen, ob wir personenbezogene Daten von dir verarbeiten.
+        Ist dies der Fall, erhältst du eine Kopie deiner Daten samt Informationen zu Zwecken,
+        Empfängern, Speicherdauer und Herkunft.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Berichtigung (Art. 16 DSGVO)
+      </h3>
+      <p>
+        Du kannst die unverzügliche Berichtigung unrichtiger oder die Vervollständigung
+        unvollständiger Daten verlangen – z.&nbsp;B. eine Korrektur deiner E-Mail-Adresse oder
+        deiner Firmenangaben aus dem Pilot-Formular.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Löschung („Recht auf Vergessenwerden", Art. 17 DSGVO)
+      </h3>
+      <p>
+        Du kannst die Löschung deiner Daten verlangen, sofern keine gesetzliche Aufbewahrungspflicht
+        entgegensteht. Wir setzen deinen Löschwunsch in der Regel innerhalb von 7 Werktagen um.
+        Unabhängig davon werden Daten nach den festgelegten Fristen automatisch gelöscht
+        (siehe <a href="#speicherdauer" className="underline">Speicherdauer & automatische Löschung</a>).
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Einschränkung der Verarbeitung (Art. 18 DSGVO)
+      </h3>
+      <p>
+        Du kannst verlangen, dass deine Daten lediglich gespeichert, aber nicht weiter verarbeitet
+        werden – z.&nbsp;B. während wir die Richtigkeit deiner Angaben prüfen.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Datenübertragbarkeit (Art. 20 DSGVO)
+      </h3>
+      <p>
+        Du hast das Recht, die von dir bereitgestellten Daten in einem strukturierten, gängigen
+        und maschinenlesbaren Format (JSON) zu erhalten oder an einen anderen Verantwortlichen
+        übermitteln zu lassen.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Recht auf Widerspruch (Art. 21 DSGVO)
+      </h3>
+      <p>
+        Soweit wir Daten auf Grundlage berechtigter Interessen (Art. 6 Abs. 1 lit. f DSGVO)
+        verarbeiten – etwa für Server-Logfiles, Spam-Abwehr oder die Verbesserung des
+        Empfehlungsalgorithmus – kannst du dieser Verarbeitung jederzeit aus Gründen, die sich
+        aus deiner besonderen Situation ergeben, widersprechen. Einem Widerspruch gegen
+        Direktwerbung entsprechen wir ohne weitere Prüfung; dazu genügt der Klick auf den
+        Abmelde-Link in jeder unserer E-Mails.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Widerruf einer Einwilligung (Art. 7 Abs. 3 DSGVO)
+      </h3>
+      <p>
+        Hast du in eine Verarbeitung eingewilligt, kannst du diese Einwilligung jederzeit mit
+        Wirkung für die Zukunft widerrufen. Die Rechtmäßigkeit der bis dahin erfolgten
+        Verarbeitung bleibt davon unberührt.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Keine automatisierte Entscheidung im Einzelfall (Art. 22 DSGVO)
+      </h3>
+      <p>
+        Es findet keine ausschließlich automatisierte Entscheidungsfindung mit rechtlicher
+        Wirkung dir gegenüber statt. Die Wein-Empfehlung des Quiz hat empfehlenden Charakter
+        und entfaltet keine rechtliche oder vergleichbar erhebliche Wirkung.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Geltendmachung deiner Rechte
+      </h3>
+      <p>
+        Wende dich formlos und kostenfrei an:{" "}
         <a href="mailto:info@premium-weinfinder.de" className="underline">info@premium-weinfinder.de</a>.
-        Dir steht außerdem ein Beschwerderecht bei der zuständigen Datenschutz-Aufsichtsbehörde
-        zu (für unseren Sitz: Der Hessische Beauftragte für Datenschutz und Informationsfreiheit,
-        Wiesbaden).
+        Zur Sicherstellung deiner Identität können wir in Einzelfällen ergänzende Angaben
+        anfragen.
+      </p>
+
+      <h3 className="font-bold mt-5 mb-1" style={{ color: "#2c1f0e" }}>
+        Beschwerderecht bei einer Aufsichtsbehörde (Art. 77 DSGVO)
+      </h3>
+      <p>
+        Unbeschadet eines anderweitigen Rechtsbehelfs steht dir ein Beschwerderecht bei einer
+        Datenschutz-Aufsichtsbehörde zu, insbesondere in dem Mitgliedstaat deines Aufenthaltsorts,
+        deines Arbeitsplatzes oder des Orts des mutmaßlichen Verstoßes. Für unseren Sitz zuständig
+        ist:<br />
+        <em>Der Hessische Beauftragte für Datenschutz und Informationsfreiheit</em>,
+        Gustav-Stresemann-Ring 1, 65189 Wiesbaden,{" "}
+        <a href="https://datenschutz.hessen.de" target="_blank" rel="noreferrer" className="underline">
+          datenschutz.hessen.de
+        </a>.
       </p>
     </LegalSection>
 
