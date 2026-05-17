@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Helmet } from "react-helmet-async";
 import { Input } from "@/components/ui/input";
 
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -142,6 +143,8 @@ export default function EmailDashboard() {
 
   if (!authenticated) {
     return (
+      <>
+      <Helmet><meta name="robots" content="noindex, nofollow" /></Helmet>
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <Card className="w-full max-w-sm">
           <CardHeader className="text-center">
@@ -166,10 +169,13 @@ export default function EmailDashboard() {
           </CardContent>
         </Card>
       </div>
+      </>
     );
   }
 
   return (
+    <>
+    <Helmet><meta name="robots" content="noindex, nofollow" /></Helmet>
     <div className="min-h-screen bg-background p-4 md:p-8">
       <div className="max-w-6xl mx-auto space-y-6">
         {/* Header */}
