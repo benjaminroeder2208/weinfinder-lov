@@ -11,3 +11,5 @@ project_id = "lidcdyngxwwtwepfmesc"
     verify_jwt = false
   [functions.get-email-stats]
     verify_jwt = false
+  [functions.submit-lead]
+    verify_jwt = false
