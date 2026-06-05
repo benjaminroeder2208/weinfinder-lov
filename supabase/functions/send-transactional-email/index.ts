@@ -22,7 +22,14 @@ const BodySchema = z.object({
   region: optStr(200),
   bodyStyle: optStr(100),
   foodPairings: z.array(z.string().max(120)).max(20).optional(),
-  wineLink: z.string().trim().url().max(500).optional().or(z.literal("")),
+  wineLink: z
+    .string()
+    .trim()
+    .url()
+    .regex(/^https?:\/\//i, "Only http/https URLs allowed")
+    .max(500)
+    .optional()
+    .or(z.literal("")),
   alternativeName: optStr(200),
   alternativeWinery: optStr(200),
 });
@@ -183,7 +190,7 @@ Deno.serve(async (req) => {
   } catch (err) {
     console.error("send-transactional-email error:", err);
     return new Response(
-      JSON.stringify({ error: err.message || "Internal server error" }),
+      JSON.stringify({ error: "internal_error" }),
       { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
     );
   }
