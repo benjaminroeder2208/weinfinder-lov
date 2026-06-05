@@ -28,13 +28,15 @@ const LeadCaptureCard = ({ wine, alternative, answers }: LeadCaptureCardProps) =
       setError(null);
 
       try {
-        // 1. Save lead to database
-        const { error: dbError } = await supabase.from("leads").insert([{
-          email: email.trim(),
-          wine_name: wine?.name ?? null,
-          wine_id: wine?.id ?? null,
-          quiz_answers: answers ? JSON.parse(JSON.stringify(answers)) : null,
-        }]);
+        // 1. Save lead via validated edge function
+        const { error: dbError } = await supabase.functions.invoke("submit-lead", {
+          body: {
+            email: email.trim(),
+            wine_name: wine?.name ?? null,
+            wine_id: wine?.id ?? null,
+            quiz_answers: answers ? JSON.parse(JSON.stringify(answers)) : null,
+          },
+        });
 
         if (dbError) throw dbError;
 
