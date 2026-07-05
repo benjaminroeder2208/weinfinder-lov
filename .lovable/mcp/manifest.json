@@ -119,9 +119,9 @@
               "type": "string",
               "description": "Price bracket: unter10, 10-20, ueber20, egal."
             },
-            "experience": {
-              "description": "Experience level: einsteiger, kenner, egal.",
-              "type": "string"
+            "acidity": {
+              "type": "string",
+              "description": "Acidity preference: niedrig, mittel, hoch, egal."
             }
           },
           "required": [
@@ -129,7 +129,8 @@
             "color",
             "style",
             "food",
-            "price"
+            "price",
+            "acidity"
           ]
         },
         "outputSchema": null
