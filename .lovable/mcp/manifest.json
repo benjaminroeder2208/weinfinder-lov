@@ -1,0 +1,140 @@
+{
+  "version": 1,
+  "sdk_version": "0.20.0",
+  "path": "/functions/v1/mcp",
+  "auth": {
+    "type": "none"
+  },
+  "mcp": {
+    "server": {
+      "name": "weinfinder-mcp",
+      "version": "0.1.0",
+      "title": "Weinfinder MCP"
+    },
+    "tools": [
+      {
+        "name": "list_wines",
+        "title": "List wines",
+        "description": "List wines from the Weinfinder catalog with optional filters by color, style, price category, or food pairing.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "color": {
+              "description": "Filter by wine color.",
+              "type": "string",
+              "enum": [
+                "weiss",
+                "rot",
+                "rose"
+              ]
+            },
+            "style": {
+              "description": "Filter by taste style, e.g. leicht_frisch, fruchtig_aromatisch.",
+              "type": "string"
+            },
+            "price_category": {
+              "description": "Filter by price bracket.",
+              "type": "string",
+              "enum": [
+                "unter10",
+                "10-20",
+                "ueber20"
+              ]
+            },
+            "food_pairing": {
+              "description": "Filter to wines matching this food pairing tag, e.g. fisch, pasta, kaese.",
+              "type": "string"
+            },
+            "limit": {
+              "description": "Max results, default 20.",
+              "type": "integer",
+              "minimum": 1,
+              "maximum": 50
+            }
+          }
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "get_wine",
+        "title": "Get wine details",
+        "description": "Return full details for a single wine by its ID.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "minLength": 1,
+              "description": "Wine ID, e.g. wein_001."
+            }
+          },
+          "required": [
+            "id"
+          ]
+        },
+        "outputSchema": null
+      },
+      {
+        "name": "recommend_wine",
+        "title": "Recommend wine",
+        "description": "Run the Weinfinder matching algorithm and return the top wine plus alternatives for a set of quiz answers.",
+        "annotations": {
+          "readOnlyHint": true,
+          "idempotentHint": true,
+          "openWorldHint": false
+        },
+        "inputSchema": {
+          "$schema": "http://json-schema.org/draft-07/schema#",
+          "type": "object",
+          "properties": {
+            "occasion": {
+              "type": "string",
+              "description": "Occasion, e.g. abend, essen, party, geschenk."
+            },
+            "color": {
+              "type": "string",
+              "description": "Preferred color: weiss, rot, rose, egal."
+            },
+            "style": {
+              "type": "string",
+              "description": "Taste style, e.g. leicht_frisch, fruchtig_aromatisch, kraeftig_intensiv."
+            },
+            "food": {
+              "type": "string",
+              "description": "Food pairing, e.g. fisch, fleisch, pasta, kaese, vegetarisch, keine."
+            },
+            "price": {
+              "type": "string",
+              "description": "Price bracket: unter10, 10-20, ueber20, egal."
+            },
+            "acidity": {
+              "type": "string",
+              "description": "Acidity preference: niedrig, mittel, hoch, egal."
+            }
+          },
+          "required": [
+            "occasion",
+            "color",
+            "style",
+            "food",
+            "price",
+            "acidity"
+          ]
+        },
+        "outputSchema": null
+      }
+    ]
+  }
+}
