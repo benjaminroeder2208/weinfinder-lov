@@ -8,7 +8,449 @@ import { defineMcp } from "npm:@lovable.dev/mcp-js@0.20.0";
 // src/lib/mcp/tools/list-wines.ts
 import { defineTool } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z } from "npm:zod@^4.4.3";
-import { wines } from "npm:@/data/wines";
+
+// src/data/wines.ts
+var wines = [
+  {
+    id: "wein_001",
+    name: "Riesling Kabinett",
+    weingut: "Weingut ABC",
+    price: 9.9,
+    price_category: "unter10",
+    color: "weiss",
+    style: "fruchtig_aromatisch",
+    occasion: ["abend", "party"],
+    food_pairing: ["fisch", "vegetarisch"],
+    description: "Frischer Riesling mit Apfel und Zitrusnoten.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "hoch",
+    sweetness: "trocken",
+    aroma_notes: ["Apfel", "Zitrus", "Pfirsich"],
+    grape_variety: "Riesling",
+    region: "Mosel",
+    vintage: "2022",
+    alcohol: "11.5%",
+    gift_score: 2,
+    featured_score: 3
+  },
+  {
+    id: "wein_002",
+    name: "Grauburgunder Classic",
+    weingut: "Weingut ABC",
+    price: 12.5,
+    price_category: "10-20",
+    color: "weiss",
+    style: "weich_harmonisch",
+    occasion: ["abend", "essen"],
+    food_pairing: ["pasta", "vegetarisch"],
+    description: "Harmonischer Grauburgunder mit feiner Birnenfrucht.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Birne", "Apfel"],
+    grape_variety: "Grauburgunder",
+    region: "Pfalz",
+    vintage: "2021",
+    alcohol: "12.5%",
+    gift_score: 3,
+    featured_score: 3
+  },
+  {
+    id: "wein_003",
+    name: "Sauvignon Blanc",
+    weingut: "Weingut ABC",
+    price: 14.9,
+    price_category: "10-20",
+    color: "weiss",
+    style: "leicht_frisch",
+    occasion: ["party", "abend"],
+    food_pairing: ["fisch", "aperitif"],
+    description: "Lebendiger Sauvignon Blanc mit Stachelbeere und Limette.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "hoch",
+    sweetness: "trocken",
+    aroma_notes: ["Limette", "Stachelbeere"],
+    grape_variety: "Sauvignon Blanc",
+    region: "Nahe",
+    vintage: "2022",
+    alcohol: "12%",
+    gift_score: 3,
+    featured_score: 3
+  },
+  {
+    id: "wein_004",
+    name: "Chardonnay Reserve",
+    weingut: "Weingut ABC",
+    price: 24.9,
+    price_category: "ueber20",
+    color: "weiss",
+    style: "kraeftig_intensiv",
+    occasion: ["dinner", "geschenk"],
+    food_pairing: ["fleisch", "pasta"],
+    description: "Kr\xE4ftiger Chardonnay mit Vanille und reifer Frucht.",
+    link: "https://kontakt-2.de",
+    body: "kraeftig",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Vanille", "Apfel", "Butter"],
+    grape_variety: "Chardonnay",
+    region: "Baden",
+    vintage: "2020",
+    alcohol: "13.5%",
+    gift_score: 5,
+    featured_score: 5
+  },
+  {
+    id: "wein_005",
+    name: "Wei\xDFburgunder",
+    weingut: "Weingut ABC",
+    price: 11.5,
+    price_category: "10-20",
+    color: "weiss",
+    style: "leicht_frisch",
+    occasion: ["abend", "essen"],
+    food_pairing: ["fisch", "vegetarisch"],
+    description: "Eleganter Wei\xDFburgunder mit feiner Frische.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Apfel", "Mandeln"],
+    grape_variety: "Wei\xDFburgunder",
+    region: "Rheinhessen",
+    vintage: "2022",
+    alcohol: "12%",
+    gift_score: 2,
+    featured_score: 2
+  },
+  {
+    id: "wein_006",
+    name: "Ros\xE9 Sommerwein",
+    weingut: "Weingut ABC",
+    price: 8.9,
+    price_category: "unter10",
+    color: "rose",
+    style: "leicht_frisch",
+    occasion: ["party", "abend"],
+    food_pairing: ["aperitif", "vegetarisch"],
+    description: "Frischer Ros\xE9 mit Erdbeer- und Himbeeraromen.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Erdbeere", "Himbeere"],
+    grape_variety: "Cuv\xE9e",
+    region: "Pfalz",
+    vintage: "2022",
+    alcohol: "11.5%",
+    gift_score: 3,
+    featured_score: 2
+  },
+  {
+    id: "wein_007",
+    name: "Sp\xE4tburgunder Classic",
+    weingut: "Weingut ABC",
+    price: 15.9,
+    price_category: "10-20",
+    color: "rot",
+    style: "weich_harmonisch",
+    occasion: ["abend", "dinner"],
+    food_pairing: ["pasta", "fleisch"],
+    description: "Eleganter Pinot Noir mit roten Beeren.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Kirsche", "Himbeere"],
+    grape_variety: "Sp\xE4tburgunder",
+    region: "Baden",
+    vintage: "2021",
+    alcohol: "13%",
+    gift_score: 4,
+    featured_score: 4
+  },
+  {
+    id: "wein_008",
+    name: "Merlot Barrique",
+    weingut: "Weingut ABC",
+    price: 22.5,
+    price_category: "ueber20",
+    color: "rot",
+    style: "kraeftig_intensiv",
+    occasion: ["dinner"],
+    food_pairing: ["fleisch"],
+    description: "Kr\xE4ftiger Merlot mit dunklen Beeren und Vanille.",
+    link: "https://kontakt-2.de",
+    body: "kraeftig",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Brombeere", "Schokolade"],
+    grape_variety: "Merlot",
+    region: "Pfalz",
+    vintage: "2020",
+    alcohol: "14%",
+    gift_score: 4,
+    featured_score: 5
+  },
+  {
+    id: "wein_009",
+    name: "Dornfelder",
+    weingut: "Weingut ABC",
+    price: 7.9,
+    price_category: "unter10",
+    color: "rot",
+    style: "fruchtig_aromatisch",
+    occasion: ["party", "abend"],
+    food_pairing: ["pasta", "fleisch"],
+    description: "Fruchtiger Dornfelder mit Brombeere und Kirsche.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Brombeere", "Kirsche"],
+    grape_variety: "Dornfelder",
+    region: "Rheinhessen",
+    vintage: "2022",
+    alcohol: "12.5%",
+    gift_score: 2,
+    featured_score: 2
+  },
+  {
+    id: "wein_010",
+    name: "Primitivo",
+    weingut: "Weingut ABC",
+    price: 13.9,
+    price_category: "10-20",
+    color: "rot",
+    style: "kraeftig_intensiv",
+    occasion: ["abend", "dinner"],
+    food_pairing: ["fleisch", "pasta"],
+    description: "S\xFCditalienischer Primitivo mit dunkler Frucht.",
+    link: "https://kontakt-2.de",
+    body: "kraeftig",
+    acidity: "niedrig",
+    sweetness: "trocken",
+    aroma_notes: ["Pflaume", "Schokolade"],
+    grape_variety: "Primitivo",
+    region: "Apulien",
+    vintage: "2021",
+    alcohol: "14%",
+    gift_score: 3,
+    featured_score: 3
+  },
+  {
+    id: "wein_011",
+    name: "M\xFCller-Thurgau",
+    weingut: "Weingut ABC",
+    price: 6.9,
+    price_category: "unter10",
+    color: "weiss",
+    style: "leicht_frisch",
+    occasion: ["abend", "party"],
+    food_pairing: ["fisch", "aperitif"],
+    description: "Unkomplizierter M\xFCller-Thurgau mit zartem Muskatduft.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "halbtrocken",
+    aroma_notes: ["Muskat", "Apfel", "Bl\xFCten"],
+    grape_variety: "M\xFCller-Thurgau",
+    region: "Franken",
+    vintage: "2023",
+    alcohol: "11%",
+    gift_score: 1,
+    featured_score: 1
+  },
+  {
+    id: "wein_012",
+    name: "Trollinger",
+    weingut: "Weingut ABC",
+    price: 7.5,
+    price_category: "unter10",
+    color: "rot",
+    style: "leicht_frisch",
+    occasion: ["abend", "essen"],
+    food_pairing: ["pasta", "vegetarisch"],
+    description: "Leichter Trollinger \u2013 der schw\xE4bische Alltagswein.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Kirsche", "Johannisbeere"],
+    grape_variety: "Trollinger",
+    region: "W\xFCrttemberg",
+    vintage: "2022",
+    alcohol: "11.5%",
+    gift_score: 1,
+    featured_score: 1
+  },
+  {
+    id: "wein_013",
+    name: "Sp\xE4tburgunder R\xE9serve",
+    weingut: "Weingut ABC",
+    price: 28,
+    price_category: "ueber20",
+    color: "rot",
+    style: "weich_harmonisch",
+    occasion: ["dinner", "geschenk"],
+    food_pairing: ["fleisch", "pasta"],
+    description: "Eleganter Sp\xE4tburgunder mit seidigen Tanninen und feiner W\xFCrze.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Kirsche", "Nelke", "Zedernholz"],
+    grape_variety: "Sp\xE4tburgunder",
+    region: "Baden",
+    vintage: "2019",
+    alcohol: "13.5%",
+    gift_score: 5,
+    featured_score: 4
+  },
+  {
+    id: "wein_014",
+    name: "Riesling Gro\xDFe Lage",
+    weingut: "Weingut ABC",
+    price: 32,
+    price_category: "ueber20",
+    color: "weiss",
+    style: "leicht_frisch",
+    occasion: ["dinner", "geschenk"],
+    food_pairing: ["fisch", "vegetarisch"],
+    description: "Mineralischer Riesling aus einer der besten Lagen der Mosel.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "hoch",
+    sweetness: "trocken",
+    aroma_notes: ["Pfirsich", "Schiefer", "Limette"],
+    grape_variety: "Riesling",
+    region: "Mosel",
+    vintage: "2020",
+    alcohol: "12%",
+    gift_score: 5,
+    featured_score: 5
+  },
+  {
+    id: "wein_015",
+    name: "Ros\xE9 Prestige",
+    weingut: "Weingut ABC",
+    price: 22.9,
+    price_category: "ueber20",
+    color: "rose",
+    style: "weich_harmonisch",
+    occasion: ["dinner", "geschenk"],
+    food_pairing: ["fisch", "vegetarisch", "aperitif"],
+    description: "Eleganter Ros\xE9 aus handverlesenen Sp\xE4tburgunder-Trauben.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Erdbeere", "Rose", "Grapefruit"],
+    grape_variety: "Sp\xE4tburgunder",
+    region: "Pfalz",
+    vintage: "2021",
+    alcohol: "12.5%",
+    gift_score: 4,
+    featured_score: 4
+  },
+  {
+    id: "wein_016",
+    name: "Ros\xE9 Provence Style",
+    weingut: "Weingut ABC",
+    price: 13.5,
+    price_category: "10-20",
+    color: "rose",
+    style: "leicht_frisch",
+    occasion: ["party", "essen"],
+    food_pairing: ["fisch", "aperitif", "vegetarisch"],
+    description: "Provenzalisch inspirierter Ros\xE9 \u2013 blass, elegant, trocken.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "hoch",
+    sweetness: "trocken",
+    aroma_notes: ["Pfirsich", "Lavendel", "Zitrus"],
+    grape_variety: "Cuv\xE9e",
+    region: "Pfalz",
+    vintage: "2023",
+    alcohol: "12%",
+    gift_score: 3,
+    featured_score: 3
+  },
+  {
+    id: "wein_017",
+    name: "Silvaner Alte Reben",
+    weingut: "Weingut ABC",
+    price: 16.9,
+    price_category: "10-20",
+    color: "weiss",
+    style: "weich_harmonisch",
+    occasion: ["essen", "dinner"],
+    food_pairing: ["fisch", "pasta", "vegetarisch"],
+    description: "Dichter Silvaner von alten Reben mit cremiger Textur.",
+    link: "https://kontakt-2.de",
+    body: "mittel",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Birne", "Kr\xE4uter", "Nuss"],
+    grape_variety: "Silvaner",
+    region: "Franken",
+    vintage: "2021",
+    alcohol: "13%",
+    gift_score: 3,
+    featured_score: 3
+  },
+  {
+    id: "wein_018",
+    name: "Ros\xE9 Secco",
+    weingut: "Weingut ABC",
+    price: 7.9,
+    price_category: "unter10",
+    color: "rose",
+    style: "fruchtig_aromatisch",
+    occasion: ["party", "abend"],
+    food_pairing: ["aperitif", "vegetarisch"],
+    description: "Perlender Ros\xE9 mit frischen Beerennoten \u2013 perfekt als Aperitif.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "halbtrocken",
+    aroma_notes: ["Himbeere", "Johannisbeere", "Bl\xFCten"],
+    grape_variety: "Portugieser",
+    region: "W\xFCrttemberg",
+    vintage: "2023",
+    alcohol: "10.5%",
+    gift_score: 2,
+    featured_score: 2
+  },
+  {
+    id: "wein_019",
+    name: "Sp\xE4tburgunder Ros\xE9",
+    weingut: "Weingut ABC",
+    price: 8.5,
+    price_category: "unter10",
+    color: "rose",
+    style: "weich_harmonisch",
+    occasion: ["essen", "abend"],
+    food_pairing: ["fisch", "pasta", "vegetarisch"],
+    description: "Zarter Ros\xE9 mit feiner Frucht und sanfter Textur.",
+    link: "https://kontakt-2.de",
+    body: "leicht",
+    acidity: "mittel",
+    sweetness: "trocken",
+    aroma_notes: ["Erdbeere", "Kirsche", "Melone"],
+    grape_variety: "Sp\xE4tburgunder",
+    region: "Rheinhessen",
+    vintage: "2023",
+    alcohol: "11.5%",
+    gift_score: 2,
+    featured_score: 2
+  }
+];
+
+// src/lib/mcp/tools/list-wines.ts
 var list_wines_default = defineTool({
   name: "list_wines",
   title: "List wines",
@@ -47,7 +489,6 @@ var list_wines_default = defineTool({
 // src/lib/mcp/tools/get-wine.ts
 import { defineTool as defineTool2 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z as z2 } from "npm:zod@^4.4.3";
-import { wines as wines2 } from "npm:@/data/wines";
 var get_wine_default = defineTool2({
   name: "get_wine",
   title: "Get wine details",
@@ -57,7 +498,7 @@ var get_wine_default = defineTool2({
   },
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: ({ id }) => {
-    const wine = wines2.find((w) => w.id === id);
+    const wine = wines.find((w) => w.id === id);
     if (!wine) {
       return {
         content: [{ type: "text", text: `No wine found with id ${id}.` }],
@@ -74,8 +515,83 @@ var get_wine_default = defineTool2({
 // src/lib/mcp/tools/recommend-wine.ts
 import { defineTool as defineTool3 } from "npm:@lovable.dev/mcp-js@0.20.0";
 import { z as z3 } from "npm:zod@^4.4.3";
-import { matchWines } from "npm:@/lib/matchWines";
-import { wines as wines3 } from "npm:@/data/wines";
+
+// src/lib/matchWines.ts
+var STYLE_SIMILARITY = {
+  leicht_frisch: ["fruchtig_aromatisch"],
+  fruchtig_aromatisch: ["leicht_frisch", "weich_harmonisch"],
+  weich_harmonisch: ["fruchtig_aromatisch", "kraeftig_intensiv"],
+  kraeftig_intensiv: ["weich_harmonisch"]
+};
+var BODY_STYLE_AFFINITY = {
+  leicht: ["leicht_frisch"],
+  mittel: ["fruchtig_aromatisch", "weich_harmonisch"],
+  voll: ["kraeftig_intensiv", "weich_harmonisch"],
+  kraeftig: ["kraeftig_intensiv"]
+};
+function matchWines(allWines, answers) {
+  let filtered = answers.color !== "egal" ? allWines.filter((w) => w.color === answers.color) : [...allWines];
+  if (answers.price !== "egal") {
+    const priceFiltered = filtered.filter((w) => w.price_category === answers.price);
+    if (priceFiltered.length > 0) {
+      filtered = priceFiltered;
+    }
+  }
+  const scored = filtered.map((wine) => {
+    let score = 0;
+    let styleScore = 0;
+    let foodOccasionScore = 0;
+    if (wine.style === answers.style) {
+      score += 3;
+      styleScore += 3;
+    } else if (STYLE_SIMILARITY[answers.style]?.includes(wine.style)) {
+      score += 1;
+      styleScore += 1;
+    }
+    if (answers.food !== "ohne_essen" && wine.food_pairing.includes(answers.food)) {
+      score += 2;
+      foodOccasionScore += 2;
+    }
+    if (wine.occasion.includes(answers.occasion)) {
+      score += 2;
+      foodOccasionScore += 2;
+    }
+    if (answers.price !== "egal" && wine.price_category === answers.price) {
+      score += 2;
+    }
+    if (wine.acidity === answers.acidity) {
+      score += 2;
+    } else if (answers.acidity === "hoch" && wine.acidity === "mittel" || answers.acidity === "niedrig" && wine.acidity === "mittel" || answers.acidity === "mittel" && (wine.acidity === "hoch" || wine.acidity === "niedrig")) {
+      score += 1;
+    }
+    if (answers.occasion === "geschenk" && wine.gift_score) {
+      score += wine.gift_score >= 8 ? 2 : wine.gift_score >= 4 ? 1 : 0;
+    }
+    if (wine.body && BODY_STYLE_AFFINITY[wine.body]?.includes(answers.style)) {
+      score += 1;
+    }
+    score += (wine.featured_score ?? 0) * 0.05;
+    return { wine, score, styleScore, foodOccasionScore };
+  });
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    if (b.styleScore !== a.styleScore) return b.styleScore - a.styleScore;
+    if (b.foodOccasionScore !== a.foodOccasionScore) return b.foodOccasionScore - a.foodOccasionScore;
+    return (b.wine.featured_score ?? 0) - (a.wine.featured_score ?? 0);
+  });
+  const top = scored[0]?.wine ?? null;
+  const usedIds = new Set(top ? [top.id] : []);
+  const alternative = scored.find((s) => !usedIds.has(s.wine.id))?.wine ?? null;
+  if (alternative) usedIds.add(alternative.id);
+  const alternative2 = scored.find((s) => !usedIds.has(s.wine.id))?.wine ?? null;
+  if (alternative2) usedIds.add(alternative2.id);
+  const valueTip = scored.find(
+    (s) => !usedIds.has(s.wine.id) && s.wine.price < (top?.price ?? 999) && s.score > 3
+  )?.wine ?? null;
+  return { top, alternative, alternative2, valueTip };
+}
+
+// src/lib/mcp/tools/recommend-wine.ts
 var recommend_wine_default = defineTool3({
   name: "recommend_wine",
   title: "Recommend wine",
@@ -91,7 +607,7 @@ var recommend_wine_default = defineTool3({
   annotations: { readOnlyHint: true, idempotentHint: true, openWorldHint: false },
   handler: (input) => {
     const answers = input;
-    const { top, alternative, alternative2, valueTip } = matchWines(wines3, answers);
+    const { top, alternative, alternative2, valueTip } = matchWines(wines, answers);
     if (!top) {
       return {
         content: [{ type: "text", text: "No matching wine found for these preferences." }],

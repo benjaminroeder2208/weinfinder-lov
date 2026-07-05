@@ -1,8 +1,8 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { matchWines } from "@/lib/matchWines";
-import { wines } from "@/data/wines";
-import type { QuizAnswers } from "@/types/quiz";
+import { matchWines } from "../../matchWines";
+import { wines } from "../../../data/wines";
+import type { QuizAnswers } from "../../../types/quiz";
 
 export default defineTool({
   name: "recommend_wine",

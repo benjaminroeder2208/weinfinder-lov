@@ -1,6 +1,6 @@
 import { defineTool } from "@lovable.dev/mcp-js";
 import { z } from "zod";
-import { wines } from "@/data/wines";
+import { wines } from "../../../data/wines";
 
 export default defineTool({
   name: "get_wine",
