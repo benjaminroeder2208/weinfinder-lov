@@ -1,15 +1,3 @@
 project_id = "lidcdyngxwwtwepfmesc"
 
 [functions]
-  [functions.auth-email-hook]
-    verify_jwt = false
-  [functions.process-email-queue]
-    verify_jwt = true
-  [functions.send-transactional-email]
-    verify_jwt = false
-  [functions.handle-email-unsubscribe]
-    verify_jwt = false
-  [functions.get-email-stats]
-    verify_jwt = false
-  [functions.submit-lead]
-    verify_jwt = false
