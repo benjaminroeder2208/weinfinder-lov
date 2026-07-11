@@ -1,9 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail } from "lucide-react";
 import { useState, createContext, useContext } from "react";
-import { supabase } from "@/integrations/supabase/client";
-import { toast } from "sonner";
 import SEO from "@/components/SEO";
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
@@ -433,50 +431,7 @@ const Footer = () => (
   </footer>
 );
 
-const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", shop_url: "", phone: "", message: "" });
-  const [website, setWebsite] = useState(""); // honeypot
-  const [mountedAt] = useState(() => Date.now());
-
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim()) {
-      toast.error("Bitte Name und E-Mail angeben.");
-      return;
-    }
-    setLoading(true);
-    try {
-      const { error } = await supabase.functions.invoke("submit-pilot-request", {
-        body: { ...form, website, elapsed_ms: Date.now() - mountedAt },
-      });
-      if (error) throw error;
-      toast.success("Vielen Dank! Wir melden uns in Kürze.");
-      onClose();
-    } catch (err) {
-      console.error(err);
-      toast.error("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "10px 12px",
-    borderRadius: 6,
-    border: "1px solid rgba(44,31,14,0.18)",
-    backgroundColor: "#fff",
-    color: COLORS.text,
-    fontFamily: fontStack.body,
-    fontSize: 14,
-  };
-  const labelStyle: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: COLORS.text, marginBottom: 6, display: "block", fontFamily: fontStack.body };
-
-  return (
+const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ backgroundColor: "rgba(44,31,14,0.6)" }} onClick={onClose}>
       <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between p-6 pb-2">
@@ -488,58 +443,28 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
             <X size={20} style={{ color: COLORS.text }} />
           </button>
         </div>
-        <form onSubmit={submit} className="p-6 pt-4 space-y-4">
-          {/* Honeypot field — hidden from real users, often filled by bots */}
-          <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
-            <label>
-              Website (bitte leer lassen)
-              <input
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-              />
-            </label>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label style={labelStyle}>Name *</label>
-              <input required value={form.name} onChange={update("name")} style={inputStyle} maxLength={120} />
-            </div>
-            <div>
-              <label style={labelStyle}>E-Mail *</label>
-              <input required type="email" value={form.email} onChange={update("email")} style={inputStyle} maxLength={255} />
-            </div>
-            <div>
-              <label style={labelStyle}>Firma</label>
-              <input value={form.company} onChange={update("company")} style={inputStyle} maxLength={200} />
-            </div>
-            <div>
-              <label style={labelStyle}>Shop-URL</label>
-              <input value={form.shop_url} onChange={update("shop_url")} placeholder="https://" style={inputStyle} maxLength={300} />
-            </div>
-            <div className="md:col-span-2">
-              <label style={labelStyle}>Telefon</label>
-              <input value={form.phone} onChange={update("phone")} style={inputStyle} maxLength={60} />
-            </div>
-            <div className="md:col-span-2">
-              <label style={labelStyle}>Nachricht</label>
-              <textarea value={form.message} onChange={update("message")} rows={4} style={inputStyle} maxLength={2000} />
-            </div>
-          </div>
-          <button type="submit" disabled={loading} className="w-full py-3 rounded-md font-semibold text-white hover:opacity-90 transition disabled:opacity-60 inline-flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-            {loading && <Loader2 size={16} className="animate-spin" />}
-            {loading ? "Wird gesendet…" : "Anfrage senden"}
-          </button>
-          <p className="text-xs text-center" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
-            Wir melden uns innerhalb von 1–2 Werktagen bei dir.
+        <div className="p-6 pt-4 space-y-6" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+          <p>
+            Du hast Fragen zu Weinfinder, möchtest eine Demo vereinbaren oder am Pilot-Programm teilnehmen?
+            Wir freuen uns auf deine Nachricht.
           </p>
-        </form>
+          <div>
+            <h4 className="text-sm font-semibold uppercase mb-2" style={{ letterSpacing: "0.05em", color: COLORS.secondary }}>E-Mail</h4>
+            <p className="flex items-center gap-3">
+              <Mail size={18} style={{ color: COLORS.primary }} />
+              <a href="mailto:info@premium-weinfinder.de" className="underline hover:opacity-70">info@premium-weinfinder.de</a>
+            </p>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold uppercase mb-2" style={{ letterSpacing: "0.05em", color: COLORS.secondary }}>Pilot-Programm</h4>
+            <p>
+              Du möchtest direkt einsteigen? Kontaktiere mich direkt — ich melde mich innerhalb von 1–2 Werktagen.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
 
 const Landing = () => {
   const [formOpen, setFormOpen] = useState(false);
