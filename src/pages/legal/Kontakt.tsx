@@ -17,7 +17,7 @@ const Kontakt = () => (
     <LegalSection title="E-Mail">
       <p className="flex items-center gap-3">
         <Mail size={18} style={{ color: "#8b2615" }} />
-        <a href="mailto:benjamin@kontakt-2.de" className="underline hover:opacity-70">benjamin@kontakt-2.de</a>
+        <a href="mailto:info@premium-weinfinder.de" className="underline hover:opacity-70">info@premium-weinfinder.de</a>
       </p>
     </LegalSection>
     <LegalSection title="Pilot-Programm">
