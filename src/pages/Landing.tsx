@@ -308,7 +308,7 @@ const Features = () => {
         </div>
         <div className="grid md:grid-cols-2 gap-6">
           {items.map(({ Icon, title, desc }, index) => (
-            <div key={title} className="rounded-xl p-6 flex gap-5" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
+            <div key={title} className={`rounded-xl p-6 flex gap-5 ${index === items.length - 1 ? "md:col-span-2 md:max-w-xl md:mx-auto" : ""}`} style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
               <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14` }}>
                 <Icon size={22} style={{ color: COLORS.primary }} />
               </div>
