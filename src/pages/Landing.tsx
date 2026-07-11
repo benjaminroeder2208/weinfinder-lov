@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Layers, Check, X, Loader2, Menu } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -297,7 +297,6 @@ const Features = () => {
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
     { Icon: Gift, title: "Geschenkmodus", desc: "Eigene Logik für Geschenk-Anlässe — perfekt für Weihnachten und Geburtstage." },
     { Icon: Smartphone, title: "Mobile First", desc: "Optimiert für Smartphones — denn deine Kunden shoppen unterwegs." },
-    { Icon: Layers, title: "Mehrere Sortimente kombinierbar", desc: "Zeige Interessenten, wie die Beratung mit unterschiedlichen Weinshops funktioniert - ganz ohne technischen Aufwand." },
   ];
   return (
     <section id="features" style={{ backgroundColor: COLORS.featuresBg }}>
@@ -309,8 +308,8 @@ const Features = () => {
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {items.map(({ Icon, title, desc }, index) => (
-            <div key={title} className={`rounded-xl p-6 flex gap-5 ${index === items.length - 1 ? "md:col-span-2 md:max-w-xl md:mx-auto" : ""}`} style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
+          {items.map(({ Icon, title, desc }) => (
+            <div key={title} className="rounded-xl p-6 flex gap-5" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
               <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14` }}>
                 <Icon size={22} style={{ color: COLORS.primary }} />
               </div>
