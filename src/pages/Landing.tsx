@@ -68,16 +68,17 @@ const Nav = () => {
         <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
           <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
             <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
+            <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
-            <Link
-              to="/demo"
+            <a
+              href="#demo-erklaerung"
               onClick={close}
               className="mt-3 mb-2 text-center px-5 py-3 rounded-md text-sm font-semibold text-white"
               style={{ backgroundColor: COLORS.primary }}
             >
               Demo starten
-            </Link>
+            </a>
           </div>
         </div>
       )}
