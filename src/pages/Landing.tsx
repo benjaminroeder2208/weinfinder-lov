@@ -433,50 +433,7 @@ const Footer = () => (
   </footer>
 );
 
-const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
-  const [loading, setLoading] = useState(false);
-  const [form, setForm] = useState({ name: "", email: "", company: "", shop_url: "", phone: "", message: "" });
-  const [website, setWebsite] = useState(""); // honeypot
-  const [mountedAt] = useState(() => Date.now());
-
-  const update = (k: keyof typeof form) => (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
-    setForm((f) => ({ ...f, [k]: e.target.value }));
-
-  const submit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    if (!form.name.trim() || !form.email.trim()) {
-      toast.error("Bitte Name und E-Mail angeben.");
-      return;
-    }
-    setLoading(true);
-    try {
-      const { error } = await supabase.functions.invoke("submit-pilot-request", {
-        body: { ...form, website, elapsed_ms: Date.now() - mountedAt },
-      });
-      if (error) throw error;
-      toast.success("Vielen Dank! Wir melden uns in Kürze.");
-      onClose();
-    } catch (err) {
-      console.error(err);
-      toast.error("Etwas ist schiefgelaufen. Bitte versuche es erneut.");
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  const inputStyle: React.CSSProperties = {
-    width: "100%",
-    padding: "10px 12px",
-    borderRadius: 6,
-    border: "1px solid rgba(44,31,14,0.18)",
-    backgroundColor: "#fff",
-    color: COLORS.text,
-    fontFamily: fontStack.body,
-    fontSize: 14,
-  };
-  const labelStyle: React.CSSProperties = { fontSize: 12, fontWeight: 600, color: COLORS.text, marginBottom: 6, display: "block", fontFamily: fontStack.body };
-
-  return (
+const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ backgroundColor: "rgba(44,31,14,0.6)" }} onClick={onClose}>
       <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between p-6 pb-2">
