@@ -20,11 +20,6 @@ const Kontakt = () => (
         <a href="mailto:info@premium-weinfinder.de" className="underline hover:opacity-70">info@premium-weinfinder.de</a>
       </p>
     </LegalSection>
-    <LegalSection title="Pilot-Programm">
-      <p>
-        Du möchtest direkt einsteigen? Kontaktiere mich direkt — ich melde mich innerhalb von 1–2 Werktagen.
-      </p>
-    </LegalSection>
   </LegalLayout>
   </>
 );
