@@ -48,12 +48,13 @@ const Nav = () => {
         <Logo />
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
+          <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
           <a href="#pricing" className={linkClass}>Preise</a>
         </div>
-        <Link to="/demo" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <a href="#demo-erklaerung" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Demo starten
-        </Link>
+        </a>
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
