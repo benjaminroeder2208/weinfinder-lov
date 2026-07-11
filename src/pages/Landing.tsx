@@ -236,9 +236,9 @@ const HowItWorks = () => (
       </QuizCard>
     </div>
     <div className="text-center mt-10">
-      <Link to="/demo" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
-        Selbst ausprobieren → premium-weinfinder.de/demo
-      </Link>
+      <a href="#demo-erklaerung" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
+        Mehr erfahren →
+      </a>
     </div>
   </section>
 );
