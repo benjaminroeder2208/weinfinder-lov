@@ -467,7 +467,6 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
       </div>
     </div>
   );
-};
 
 const Landing = () => {
   const [formOpen, setFormOpen] = useState(false);
