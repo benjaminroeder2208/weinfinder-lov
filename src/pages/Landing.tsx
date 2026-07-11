@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Layers, Check, X, Loader2, Menu } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -241,6 +241,52 @@ const HowItWorks = () => (
   </section>
 );
 
+const DemoErklaerung = () => {
+  const shops = [
+    { name: "Weingut Müller", checked: true },
+    { name: "Vinothek Schmidt", checked: true },
+    { name: "Wein & Co Berlin", checked: false },
+    { name: "Premium Weinhändler", checked: false },
+  ];
+  return (
+    <section id="demo-erklaerung" className="max-w-6xl mx-auto px-6 py-20">
+      <div className="grid md:grid-cols-2 gap-12 items-center">
+        <div>
+          <Kicker color={COLORS.secondary}>ECHTE WEINE, ECHTE SHOPS</Kicker>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+            Probier's mit echten Weinen aus
+          </h2>
+          <p className="text-lg mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+            Unsere Demo zeigt keine Fantasieweine. Wähle einen oder mehrere echte Weinshops aus unserem Kundenkreis aus und erlebe die Empfehlung mit deren tatsächlichem Sortiment - genau so, wie es später bei dir aussehen wird.
+          </p>
+          <a
+            href="https://app.premium-weinfinder.de/w/demo"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-8 py-4 rounded-md font-semibold text-white hover:opacity-90 transition text-lg"
+            style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}
+          >
+            Demo jetzt starten
+          </a>
+        </div>
+        <div className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+          <p className="text-xs uppercase mb-4" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Kunden-Sortimente</p>
+          <div className="space-y-1">
+            {shops.map((shop) => (
+              <div key={shop.name} className="flex items-center gap-3 py-3 border-b last:border-0" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
+                <div className="w-5 h-5 rounded flex items-center justify-center" style={{ backgroundColor: shop.checked ? COLORS.primary : "rgba(44,31,14,0.08)" }}>
+                  {shop.checked && <Check size={14} color="#fff" />}
+                </div>
+                <span className="text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>{shop.name}</span>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const Features = () => {
   const items = [
     { Icon: Sparkles, title: "Regelbasiertes Matching", desc: "Transparente Logik statt Black-Box-KI. Du behältst die Kontrolle über jede Empfehlung." },
@@ -249,6 +295,7 @@ const Features = () => {
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
     { Icon: Gift, title: "Geschenkmodus", desc: "Eigene Logik für Geschenk-Anlässe — perfekt für Weihnachten und Geburtstage." },
     { Icon: Smartphone, title: "Mobile First", desc: "Optimiert für Smartphones — denn deine Kunden shoppen unterwegs." },
+    { Icon: Layers, title: "Mehrere Sortimente kombinierbar", desc: "Zeige Interessenten, wie die Beratung mit unterschiedlichen Weinshops funktioniert - ganz ohne technischen Aufwand." },
   ];
   return (
     <section id="features" style={{ backgroundColor: COLORS.featuresBg }}>
@@ -260,8 +307,8 @@ const Features = () => {
           </h2>
         </div>
         <div className="grid md:grid-cols-2 gap-6">
-          {items.map(({ Icon, title, desc }) => (
-            <div key={title} className="rounded-xl p-6 flex gap-5" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
+          {items.map(({ Icon, title, desc }, index) => (
+            <div key={title} className={`rounded-xl p-6 flex gap-5 ${index === items.length - 1 ? "md:col-span-2 md:max-w-xl md:mx-auto" : ""}`} style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
               <div className="shrink-0 w-12 h-12 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14` }}>
                 <Icon size={22} style={{ color: COLORS.primary }} />
               </div>
@@ -521,6 +568,7 @@ const Landing = () => {
         <Hero />
         <Stats />
         <HowItWorks />
+        <DemoErklaerung />
         <Features />
         <Pricing />
         <CtaBand />
