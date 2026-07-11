@@ -488,54 +488,25 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => {
             <X size={20} style={{ color: COLORS.text }} />
           </button>
         </div>
-        <form onSubmit={submit} className="p-6 pt-4 space-y-4">
-          {/* Honeypot field — hidden from real users, often filled by bots */}
-          <div aria-hidden="true" style={{ position: "absolute", left: "-10000px", width: 1, height: 1, overflow: "hidden" }}>
-            <label>
-              Website (bitte leer lassen)
-              <input
-                type="text"
-                tabIndex={-1}
-                autoComplete="off"
-                value={website}
-                onChange={(e) => setWebsite(e.target.value)}
-              />
-            </label>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div>
-              <label style={labelStyle}>Name *</label>
-              <input required value={form.name} onChange={update("name")} style={inputStyle} maxLength={120} />
-            </div>
-            <div>
-              <label style={labelStyle}>E-Mail *</label>
-              <input required type="email" value={form.email} onChange={update("email")} style={inputStyle} maxLength={255} />
-            </div>
-            <div>
-              <label style={labelStyle}>Firma</label>
-              <input value={form.company} onChange={update("company")} style={inputStyle} maxLength={200} />
-            </div>
-            <div>
-              <label style={labelStyle}>Shop-URL</label>
-              <input value={form.shop_url} onChange={update("shop_url")} placeholder="https://" style={inputStyle} maxLength={300} />
-            </div>
-            <div className="md:col-span-2">
-              <label style={labelStyle}>Telefon</label>
-              <input value={form.phone} onChange={update("phone")} style={inputStyle} maxLength={60} />
-            </div>
-            <div className="md:col-span-2">
-              <label style={labelStyle}>Nachricht</label>
-              <textarea value={form.message} onChange={update("message")} rows={4} style={inputStyle} maxLength={2000} />
-            </div>
-          </div>
-          <button type="submit" disabled={loading} className="w-full py-3 rounded-md font-semibold text-white hover:opacity-90 transition disabled:opacity-60 inline-flex items-center justify-center gap-2" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-            {loading && <Loader2 size={16} className="animate-spin" />}
-            {loading ? "Wird gesendet…" : "Anfrage senden"}
-          </button>
-          <p className="text-xs text-center" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
-            Wir melden uns innerhalb von 1–2 Werktagen bei dir.
+        <div className="p-6 pt-4 space-y-6" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+          <p>
+            Du hast Fragen zu Weinfinder, möchtest eine Demo vereinbaren oder am Pilot-Programm teilnehmen?
+            Wir freuen uns auf deine Nachricht.
           </p>
-        </form>
+          <div>
+            <h4 className="text-sm font-semibold uppercase mb-2" style={{ letterSpacing: "0.05em", color: COLORS.secondary }}>E-Mail</h4>
+            <p className="flex items-center gap-3">
+              <Mail size={18} style={{ color: COLORS.primary }} />
+              <a href="mailto:info@premium-weinfinder.de" className="underline hover:opacity-70">info@premium-weinfinder.de</a>
+            </p>
+          </div>
+          <div>
+            <h4 className="text-sm font-semibold uppercase mb-2" style={{ letterSpacing: "0.05em", color: COLORS.secondary }}>Pilot-Programm</h4>
+            <p>
+              Du möchtest direkt einsteigen? Kontaktiere mich direkt — ich melde mich innerhalb von 1–2 Werktagen.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   );
