@@ -104,9 +104,9 @@ const BrowserMockup = () => (
       <p className="italic text-sm mb-8" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>
         Ihr digitaler Sommelier
       </p>
-      <Link to="/demo" className="inline-block px-6 py-3 rounded-md font-semibold text-sm hover:opacity-90 transition" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
+      <a href="#demo-erklaerung" className="inline-block px-6 py-3 rounded-md font-semibold text-sm hover:opacity-90 transition" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
         Weinberatung starten
-      </Link>
+      </a>
     </div>
   </div>
 );
