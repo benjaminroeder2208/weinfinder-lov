@@ -245,10 +245,10 @@ const HowItWorks = () => (
 
 const DemoErklaerung = () => {
   const shops = [
-    { name: "Weingut Müller", checked: true },
-    { name: "Vinothek Schmidt", checked: true },
-    { name: "Wein & Co Berlin", checked: false },
-    { name: "Premium Weinhändler", checked: false },
+    { name: "Anette Closheim", checked: true },
+    { name: "Weingut GEBRÜDERKAUER", checked: true },
+    { name: "Weingut Gibbert", checked: true },
+    { name: "Weingut Lichti", checked: true },
   ];
   return (
     <section id="demo-erklaerung" className="max-w-6xl mx-auto px-6 py-20">
