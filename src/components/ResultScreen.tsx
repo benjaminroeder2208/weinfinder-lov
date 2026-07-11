@@ -9,7 +9,6 @@ import { generateMatchReason, getSeasonalHint, type MatchResult } from "@/lib/ma
 import { trackEvent } from "@/lib/analytics";
 import ResultCard from "@/components/ResultCard";
 import AlternativeCard from "@/components/AlternativeCard";
-import LeadCaptureCard from "@/components/LeadCaptureCard";
 import SeasonalHint from "@/components/SeasonalHint";
 
 interface ResultScreenProps {
@@ -135,9 +134,6 @@ const ResultScreen = ({ results, answers, onRestart }: ResultScreenProps) => {
           )}
         </div>
       )}
-
-      {/* Lead Capture */}
-      <LeadCaptureCard wine={top} alternative={alternative} answers={answers} />
 
       {/* Share */}
       <motion.div
