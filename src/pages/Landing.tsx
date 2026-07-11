@@ -272,14 +272,17 @@ const DemoErklaerung = () => {
           </a>
         </div>
         <div className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <p className="text-xs uppercase mb-4" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Kunden-Sortimente</p>
+          <p className="text-xs uppercase mb-4" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilotkunden-Sortimente</p>
           <div className="space-y-1">
             {shops.map((shop) => (
-              <div key={shop.name} className="flex items-center gap-3 py-3 border-b last:border-0" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-                <div className="w-5 h-5 rounded flex items-center justify-center" style={{ backgroundColor: shop.checked ? COLORS.primary : "rgba(44,31,14,0.08)" }}>
-                  {shop.checked && <Check size={14} color="#fff" />}
+              <div key={shop.name} className="flex items-center justify-between gap-3 py-3 border-b last:border-0" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
+                <div className="flex items-center gap-3">
+                  <div className="w-5 h-5 rounded flex items-center justify-center" style={{ backgroundColor: shop.checked ? COLORS.primary : "rgba(44,31,14,0.08)" }}>
+                    {shop.checked && <Check size={14} color="#fff" />}
+                  </div>
+                  <span className="text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>{shop.name}</span>
                 </div>
-                <span className="text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>{shop.name}</span>
+                <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded" style={{ backgroundColor: `${COLORS.green}20`, color: COLORS.demoBg, fontFamily: fontStack.body, letterSpacing: "0.05em" }}>Pilotkunde</span>
               </div>
             ))}
           </div>
