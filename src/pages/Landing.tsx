@@ -48,12 +48,13 @@ const Nav = () => {
         <Logo />
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
+          <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
           <a href="#pricing" className={linkClass}>Preise</a>
         </div>
-        <Link to="/demo" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <a href="#demo-erklaerung" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Demo starten
-        </Link>
+        </a>
         <button
           onClick={() => setOpen((v) => !v)}
           aria-label={open ? "Menü schließen" : "Menü öffnen"}
@@ -67,16 +68,17 @@ const Nav = () => {
         <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
           <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
             <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
+            <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
-            <Link
-              to="/demo"
+            <a
+              href="#demo-erklaerung"
               onClick={close}
               className="mt-3 mb-2 text-center px-5 py-3 rounded-md text-sm font-semibold text-white"
               style={{ backgroundColor: COLORS.primary }}
             >
               Demo starten
-            </Link>
+            </a>
           </div>
         </div>
       )}
@@ -102,9 +104,9 @@ const BrowserMockup = () => (
       <p className="italic text-sm mb-8" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>
         Ihr digitaler Sommelier
       </p>
-      <Link to="/demo" className="inline-block px-6 py-3 rounded-md font-semibold text-sm hover:opacity-90 transition" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
+      <a href="#demo-erklaerung" className="inline-block px-6 py-3 rounded-md font-semibold text-sm hover:opacity-90 transition" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
         Weinberatung starten
-      </Link>
+      </a>
     </div>
   </div>
 );
@@ -120,9 +122,9 @@ const Hero = () => (
         Weinfinder führt deine Shopbesucher in 60 Sekunden zum richtigen Wein. 6 kurze Fragen, eine persönliche Empfehlung — fast wie im Gespräch mit einem echten Sommelier.
       </p>
       <div className="flex flex-wrap gap-4">
-        <Link to="/demo" className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <a href="#demo-erklaerung" className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Demo ausprobieren
-        </Link>
+        </a>
         <a href="#how" className="px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
           Mehr erfahren
         </a>
@@ -234,9 +236,9 @@ const HowItWorks = () => (
       </QuizCard>
     </div>
     <div className="text-center mt-10">
-      <Link to="/demo" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
-        Selbst ausprobieren → premium-weinfinder.de/demo
-      </Link>
+      <a href="#demo-erklaerung" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
+        Mehr erfahren →
+      </a>
     </div>
   </section>
 );
@@ -406,9 +408,9 @@ const PilotBandInner = () => {
         <button onClick={open} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Jetzt anfragen
         </button>
-        <Link to="/demo" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+        <a href="#demo-erklaerung" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
           Demo ausprobieren
-        </Link>
+        </a>
       </div>
     </div>
   </section>
