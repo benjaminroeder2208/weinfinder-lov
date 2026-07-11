@@ -10,6 +10,7 @@ import Landing from "./pages/Landing.tsx";
 import Kontakt from "./pages/legal/Kontakt.tsx";
 import Impressum from "./pages/legal/Impressum.tsx";
 import Datenschutz from "./pages/legal/Datenschutz.tsx";
+import Unsubscribe from "./pages/Unsubscribe.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -28,6 +29,7 @@ const App = () => (
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
+            <Route path="/unsubscribe" element={<Unsubscribe />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </BrowserRouter>
