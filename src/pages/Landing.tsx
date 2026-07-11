@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Gift, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Loader2, Menu } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import { supabase } from "@/integrations/supabase/client";
 import { toast } from "sonner";
@@ -295,10 +295,10 @@ const DemoErklaerung = () => {
 const Features = () => {
   const items = [
     { Icon: Sparkles, title: "Regelbasiertes Matching", desc: "Transparente Logik statt Black-Box-KI. Du behältst die Kontrolle über jede Empfehlung." },
-    { Icon: Palette, title: "White-Label Branding", desc: "Logo, Farben, Schriften — alles anpassbar an deinen Shop und deine Marke." },
+    { Icon: Palette, title: "White-Label Branding", desc: "Logo, Farben, Texte — alles anpassbar an deinen Shop und deine Marke." },
     { Icon: Link2, title: "Direkte Shop-Links", desc: "Vom Ergebnis mit einem Klick zur Produktseite und in den Warenkorb." },
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
-    { Icon: Gift, title: "Geschenkmodus", desc: "Eigene Logik für Geschenk-Anlässe — perfekt für Weihnachten und Geburtstage." },
+    { Icon: Code, title: "iFrame-Einbindung", desc: "Integriere den Weinfinder mit wenigen Zeilen Code direkt auf deiner Website oder in deinem Shop." },
     { Icon: Smartphone, title: "Mobile First", desc: "Optimiert für Smartphones — denn deine Kunden shoppen unterwegs." },
   ];
   return (
@@ -331,8 +331,8 @@ const Features = () => {
 const Pricing = () => {
   const { open } = usePilotForm();
   const plans = [
-    { name: "Starter", price: "39 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 100 Weine im Katalog", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
-    { name: "Professional", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: false, soon: true, features: ["Alles aus Starter", "Bis zu 500 Weine", "A/B Testing", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Demnächst verfügbar" },
+    { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 100 Weine im Katalog", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
+    { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: false, soon: true, features: ["Alles aus Basis", "Bis zu 500 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Demnächst verfügbar" },
     { name: "Enterprise", price: "Individuell", per: "", setup: "Auf Anfrage", recommended: false, soon: true, features: ["Unbegrenzte Weine", "Mehrere Shops", "API-Zugang", "Custom Features", "Dedicated Account Manager"], cta: "Demnächst verfügbar" },
   ];
   return (
