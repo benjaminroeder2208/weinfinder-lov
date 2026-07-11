@@ -69,6 +69,39 @@ Deno.serve(async (req) => {
       });
     }
 
+    // Fire-and-log both emails: internal notification + confirmation to requester.
+    // Failures are logged but do not fail the user's submission.
+    const templateData = {
+      name: d.name,
+      email: d.email,
+      company: d.company || "",
+      shop_url: d.shop_url || "",
+      phone: d.phone || "",
+      message: d.message || "",
+    };
+
+    const idempotencyBase = `pilot-${d.email}-${Date.now()}`;
+
+    const [notifyRes, confirmRes] = await Promise.allSettled([
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "pilot-request-notification",
+          idempotencyKey: `${idempotencyBase}-notify`,
+          templateData,
+        },
+      }),
+      supabase.functions.invoke("send-transactional-email", {
+        body: {
+          templateName: "pilot-request-confirmation",
+          recipientEmail: d.email,
+          idempotencyKey: `${idempotencyBase}-confirm`,
+          templateData: { name: d.name },
+        },
+      }),
+    ]);
+    if (notifyRes.status === "rejected") console.error("notify email failed", notifyRes.reason);
+    if (confirmRes.status === "rejected") console.error("confirm email failed", confirmRes.reason);
+
     return new Response(JSON.stringify({ ok: true }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
