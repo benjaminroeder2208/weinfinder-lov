@@ -122,9 +122,9 @@ const Hero = () => (
         Weinfinder führt deine Shopbesucher in 60 Sekunden zum richtigen Wein. 6 kurze Fragen, eine persönliche Empfehlung — fast wie im Gespräch mit einem echten Sommelier.
       </p>
       <div className="flex flex-wrap gap-4">
-        <Link to="/demo" className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <a href="#demo-erklaerung" className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Demo ausprobieren
-        </Link>
+        </a>
         <a href="#how" className="px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
           Mehr erfahren
         </a>
