@@ -20,12 +20,6 @@ const BodySchema = z.object({
   elapsed_ms: z.number().int().nonnegative().optional(),
 });
 
-const RECIPIENT = "benjamin@kontakt-2.de";
-const FROM = "Weinfinder Pilot <noreply@mail.premium-weinfinder.de>";
-
-const escapeHtml = (s: string) =>
-  s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
-
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
 
@@ -73,103 +67,6 @@ Deno.serve(async (req) => {
         status: 500,
         headers: { ...corsHeaders, "Content-Type": "application/json" },
       });
-    }
-
-    const RESEND_API_KEY = Deno.env.get("RESEND_API_KEY");
-    if (RESEND_API_KEY) {
-      const rows = [
-        ["Name", d.name],
-        ["E-Mail", d.email],
-        ["Firma", d.company || "—"],
-        ["Shop-URL", d.shop_url || "—"],
-        ["Telefon", d.phone || "—"],
-        ["Nachricht", d.message || "—"],
-      ];
-      const html = `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#2c1f0e">
-          <h2 style="color:#8b2615;border-bottom:2px solid #8b2615;padding-bottom:8px">
-            Neue Pilot-Anfrage
-          </h2>
-          <table style="width:100%;border-collapse:collapse;margin-top:16px">
-            ${rows
-              .map(
-                ([k, v]) => `
-              <tr>
-                <td style="padding:8px;border-bottom:1px solid #ede8de;font-weight:bold;width:140px;vertical-align:top">${k}</td>
-                <td style="padding:8px;border-bottom:1px solid #ede8de;white-space:pre-wrap">${escapeHtml(String(v))}</td>
-              </tr>`,
-              )
-              .join("")}
-          </table>
-          <p style="margin-top:24px;font-size:12px;color:#8b4a2a">
-            Eingegangen über das Pilot-Programm-Formular auf premium-weinfinder.de
-          </p>
-        </div>`;
-
-      const emailRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({
-          from: FROM,
-          to: [RECIPIENT],
-          reply_to: d.email,
-          subject: `Neue Pilot-Anfrage von ${d.name}${d.company ? ` (${d.company})` : ""}`,
-          html,
-        }),
-      });
-      if (!emailRes.ok) {
-        console.error("Resend failed", emailRes.status, await emailRes.text());
-      }
-
-      // Confirmation email to the requester
-      const confirmHtml = `
-        <div style="font-family:Arial,sans-serif;max-width:600px;margin:0 auto;color:#2c1f0e;background:#fdfaf3;padding:32px 24px;border-radius:8px">
-          <h2 style="color:#8b2615;font-family:Georgia,serif;margin:0 0 16px">
-            Vielen Dank für Ihre Anfrage, ${escapeHtml(d.name)}!
-          </h2>
-          <p style="font-size:15px;line-height:1.6;margin:0 0 16px">
-            Wir haben Ihre Anfrage zum Pilot-Programm des Premium Weinfinders erhalten
-            und melden uns innerhalb der nächsten 1–2 Werktage persönlich bei Ihnen.
-          </p>
-          <p style="font-size:15px;line-height:1.6;margin:0 0 24px">
-            Falls Sie in der Zwischenzeit Fragen haben, antworten Sie einfach direkt
-            auf diese E-Mail.
-          </p>
-          <div style="border-top:1px solid #ede8de;padding-top:16px;margin-top:24px">
-            <p style="font-size:13px;color:#6b4a2a;margin:0 0 4px"><strong>Ihre Angaben:</strong></p>
-            <p style="font-size:13px;color:#6b4a2a;margin:2px 0">Name: ${escapeHtml(d.name)}</p>
-            <p style="font-size:13px;color:#6b4a2a;margin:2px 0">E-Mail: ${escapeHtml(d.email)}</p>
-            ${d.company ? `<p style="font-size:13px;color:#6b4a2a;margin:2px 0">Firma: ${escapeHtml(d.company)}</p>` : ""}
-            ${d.shop_url ? `<p style="font-size:13px;color:#6b4a2a;margin:2px 0">Shop: ${escapeHtml(d.shop_url)}</p>` : ""}
-          </div>
-          <p style="margin-top:32px;font-size:13px;color:#8b4a2a">
-            Herzliche Grüße<br/>
-            Ihr Premium Weinfinder Team
-          </p>
-        </div>`;
-
-      const confirmRes = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-        },
-        body: JSON.stringify({
-          from: FROM,
-          to: [d.email],
-          reply_to: RECIPIENT,
-          subject: "Ihre Anfrage zum Premium Weinfinder Pilot-Programm",
-          html: confirmHtml,
-        }),
-      });
-      if (!confirmRes.ok) {
-        console.error("Resend confirmation failed", confirmRes.status, await confirmRes.text());
-      }
-    } else {
-      console.warn("RESEND_API_KEY not set — skipped email");
     }
 
     return new Response(JSON.stringify({ ok: true }), {
