@@ -243,10 +243,10 @@ const HowItWorks = () => (
 
 const DemoErklaerung = () => {
   const shops = [
-    { name: "Anette Closheim", checked: true },
-    { name: "Weingut GEBRÜDERKAUER", checked: true },
-    { name: "Weingut Gibbert", checked: true },
-    { name: "Weingut Lichti", checked: true },
+    { name: "Weingut A.", checked: true },
+    { name: "Weingut K.", checked: true },
+    { name: "Weingut G.", checked: true },
+    { name: "Weingut L.", checked: true },
   ];
   return (
     <section id="demo-erklaerung" className="max-w-6xl mx-auto px-6 py-20">
