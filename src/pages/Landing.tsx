@@ -329,8 +329,8 @@ const Features = () => {
 const Pricing = () => {
   const { open } = usePilotForm();
   const plans = [
-    { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 100 Weine im Katalog", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
-    { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: false, soon: true, features: ["Alles aus Basis", "Bis zu 500 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Demnächst verfügbar" },
+    { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 299 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 50 Weine im Katalog", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
+    { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: false, soon: true, features: ["Alles aus Basis", "Bis zu 100 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Demnächst verfügbar" },
     { name: "Enterprise", price: "Individuell", per: "", setup: "Auf Anfrage", recommended: false, soon: true, features: ["Unbegrenzte Weine", "Mehrere Shops", "API-Zugang", "Custom Features", "Dedicated Account Manager"], cta: "Demnächst verfügbar" },
   ];
   return (
