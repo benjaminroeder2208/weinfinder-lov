@@ -270,6 +270,7 @@ const SoFunktionierts = () => (
     <Nav />
     <main>
       <Hero />
+      <WhatItMeans />
       <QuestionsGrid />
       <HowItWorksLogic />
       <FinalCta />
