@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2 } from "lucide-react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Calculator } from "lucide-react";
 import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
 
