@@ -106,7 +106,7 @@ const whatItMeansPoints = [
 
 const WhatItMeans = () => (
   <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
-    <div className="max-w-3xl mx-auto rounded-2xl p-8 md:p-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+    <div className="max-w-3xl mx-auto rounded-xl p-8 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
       <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
         Was bedeutet das für deine Entscheidung?
       </h2>
@@ -171,7 +171,7 @@ const QuestionsGrid = () => (
       </div>
       <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
         {questions.map(({ Icon, title, text }) => (
-          <div key={title} className="rounded-xl p-6" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
+          <div key={title} className="rounded-xl p-6" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
             <div className="w-12 h-12 rounded-full flex items-center justify-center mb-5" style={{ backgroundColor: `${COLORS.primary}14` }}>
               <Icon size={22} style={{ color: COLORS.primary }} />
             </div>
@@ -209,7 +209,7 @@ const HowItWorksLogic = () => (
     </div>
     <div className="grid md:grid-cols-3 gap-6">
       {logicBlocks.map(({ title, text }) => (
-        <div key={title} className="rounded-xl p-6" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}>
+        <div key={title} className="rounded-xl p-6" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
           <h3 className="text-xl font-semibold mb-3" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{title}</h3>
           <p className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>{text}</p>
         </div>
@@ -249,7 +249,7 @@ const ScoreExample = () => {
   const maxTotal = exampleWines.reduce((max, wine) => Math.max(max, Object.values(wine.scores).reduce((a, b) => a + b, 0)), 0);
   return (
     <section style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-5xl mx-auto px-6 py-20">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14 max-w-2xl mx-auto">
           <Kicker>Konkretes Beispiel</Kicker>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
@@ -260,7 +260,7 @@ const ScoreExample = () => {
           </p>
         </div>
 
-        <div className="rounded-2xl p-6 md:p-8 mb-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+        <div className="rounded-xl p-6 shadow-sm mb-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
           <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Kundenwunsch</h3>
           <div className="flex flex-wrap gap-3">
             {Object.entries(exampleProfile).map(([key, value]) => (
@@ -275,7 +275,7 @@ const ScoreExample = () => {
           {exampleWines.map((wine) => {
             const total = Object.values(wine.scores).reduce((a, b) => a + b, 0);
             return (
-              <div key={wine.name} className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <div key={wine.name} className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     <h3 className="text-xl font-semibold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{wine.name}</h3>
@@ -376,7 +376,7 @@ const MatchingRechner = () => {
 
   return (
     <section style={{ backgroundColor: COLORS.bg }}>
-      <div className="max-w-5xl mx-auto px-6 py-20">
+      <div className="max-w-6xl mx-auto px-6 py-20">
         <div className="text-center mb-14 max-w-2xl mx-auto">
           <Kicker>Interaktiver Rechner</Kicker>
           <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
@@ -387,7 +387,7 @@ const MatchingRechner = () => {
           </p>
         </div>
 
-        <div className="rounded-2xl p-6 md:p-8 mb-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+        <div className="rounded-xl p-6 shadow-sm mb-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
           <div className="flex items-center gap-3 mb-6">
             <Calculator size={22} style={{ color: COLORS.primary }} />
             <h3 className="text-lg font-semibold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Kundenwunsch</h3>
@@ -436,7 +436,7 @@ const MatchingRechner = () => {
             return (
               <div
                 key={wine.name}
-                className="rounded-2xl p-6 md:p-8"
+                className="rounded-xl p-6 shadow-sm"
                 style={{
                   backgroundColor: COLORS.card,
                   border: `1px solid ${isTop ? COLORS.green : "rgba(44,31,14,0.08)"}`,
@@ -555,7 +555,7 @@ const Faq = () => {
                 key={id}
                 id={id}
                 className="rounded-xl overflow-hidden scroll-mt-24"
-                style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}
+                style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}
               >
                 <div className="flex items-stretch">
                   <button
@@ -573,7 +573,7 @@ const Faq = () => {
                     href={`#${id}`}
                     onClick={handleDeepLink}
                     className="flex items-center px-4 border-l transition-colors hover:text-[#8b2615]"
-                    style={{ borderColor: "rgba(44,31,14,0.06)", color: "rgba(44,31,14,0.45)" }}
+                    style={{ borderColor: "rgba(44,31,14,0.08)", color: "rgba(44,31,14,0.45)" }}
                     aria-label={`Direktlink zu „${question}“`}
                     title="Direktlink zu dieser Antwort"
                   >
