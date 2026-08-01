@@ -41,7 +41,6 @@ const Nav = () => {
         <Logo />
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
           <Link to="/#how" className={linkClass}>Wie es funktioniert</Link>
-          <Link to="/so-funktionierts" className={linkClass}>So funktioniert's</Link>
           <Link to="/#demo-erklaerung" className={linkClass}>Demo</Link>
           <Link to="/#features" className={linkClass}>Features</Link>
           <Link to="/#pricing" className={linkClass}>Preise</Link>
@@ -66,7 +65,6 @@ const Nav = () => {
         <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
           <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
             <Link to="/#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</Link>
-            <Link to="/so-funktionierts" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>So funktioniert's</Link>
             <Link to="/#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</Link>
             <Link to="/#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</Link>
             <Link to="/#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</Link>
