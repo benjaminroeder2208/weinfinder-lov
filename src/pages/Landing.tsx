@@ -93,7 +93,7 @@ const BrowserMockup = () => (
         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#28c840" }} />
       </div>
       <div className="flex-1 mx-3 px-3 py-1 rounded text-xs text-center" style={{ backgroundColor: "#fff", color: "#8b4a2a", fontFamily: fontStack.body }}>
-        premium-weinfinder.de/demo
+        app.premium-weinfinder.de/w/demo
       </div>
     </div>
     <div className="px-6 py-16 text-center" style={{ backgroundColor: COLORS.demoBg }}>
