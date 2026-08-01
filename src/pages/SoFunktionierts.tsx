@@ -210,7 +210,7 @@ const HowItWorksLogic = () => (
     <div className="grid md:grid-cols-3 gap-6">
       {logicBlocks.map(({ title, text }) => (
         <div key={title} className="rounded-xl p-6" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <h3 className="text-xl font-semibold mb-3" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{title}</h3>
+          <h3 className="text-lg font-semibold mb-1.5" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{title}</h3>
           <p className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>{text}</p>
         </div>
       ))}
