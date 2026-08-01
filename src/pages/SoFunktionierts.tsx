@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Calculator } from "lucide-react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Calculator, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
 
@@ -658,7 +658,9 @@ const Footer = () => (
   </footer>
 );
 
-const SoFunktionierts = () => (
+const SoFunktionierts = () => {
+  const [formOpen, setFormOpen] = useState(false);
+  return (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
     <SEO
@@ -695,10 +697,12 @@ const SoFunktionierts = () => (
       <ScoreExample />
       <MatchingRechner />
       <Faq />
-      <FinalCta />
+      <CtaBand onRequest={() => setFormOpen(true)} />
     </main>
     <Footer />
+    {formOpen && <PilotFormModal onClose={() => setFormOpen(false)} />}
   </div>
-);
+  );
+};
 
 export default SoFunktionierts;
