@@ -5,15 +5,16 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
-import Index from "./pages/Index.tsx";
-import Landing from "./pages/Landing.tsx";
-import SoFunktionierts from "./pages/SoFunktionierts.tsx";
-import SoFunktioniertsRechner from "./pages/SoFunktioniertsRechner.tsx";
-import Kontakt from "./pages/legal/Kontakt.tsx";
-import Impressum from "./pages/legal/Impressum.tsx";
-import Datenschutz from "./pages/legal/Datenschutz.tsx";
+import { Suspense, lazy } from "react";
 
-import NotFound from "./pages/NotFound.tsx";
+const Index = lazy(() => import("./pages/Index.tsx"));
+const Landing = lazy(() => import("./pages/Landing.tsx"));
+const SoFunktionierts = lazy(() => import("./pages/SoFunktionierts.tsx"));
+const SoFunktioniertsRechner = lazy(() => import("./pages/SoFunktioniertsRechner.tsx"));
+const Kontakt = lazy(() => import("./pages/legal/Kontakt.tsx"));
+const Impressum = lazy(() => import("./pages/legal/Impressum.tsx"));
+const Datenschutz = lazy(() => import("./pages/legal/Datenschutz.tsx"));
+const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: "#f5f0e8" }} />}>
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/demo" element={<Index />} />
@@ -36,6 +38,7 @@ const App = () => (
             
             <Route path="*" element={<NotFound />} />
           </Routes>
+          </Suspense>
         </BrowserRouter>
       </TooltipProvider>
     </QueryClientProvider>

@@ -13,7 +13,6 @@ const fontStack = {
 
 const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: string; children: React.ReactNode }) => (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');`}</style>
     <header className="border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
       <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
         <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: COLORS.text }}>

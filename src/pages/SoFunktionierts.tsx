@@ -499,7 +499,7 @@ const SoFunktionierts = () => {
   const [formOpen, setFormOpen] = useState(false);
   return (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
+    <style>{`html { scroll-behavior: smooth; }`}</style>
     <SEO
       title="So funktioniert's: Matching-Logik des Weinfinders"
       description="6 Fragen, klare Punkteregeln: So findet der Weinfinder in Sekunden passende Weine aus deinem Sortiment - mit Beispielrechnung und FAQ."

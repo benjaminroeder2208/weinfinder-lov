@@ -237,7 +237,6 @@ const MatchingRechner = () => {
 
 const SoFunktioniertsRechner = () => (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
-    <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap');`}</style>
     <SEO
       title="Matching-Rechner | Weinfinder"
       description="Interaktiver Matching-Rechner des Weinfinders."
