@@ -1,26 +1,21 @@
 User-agent: Googlebot
 Allow: /
-Disallow: /email-dashboard
-Disallow: /leads
+Disallow: /so-funktionierts/rechner
 
 User-agent: Bingbot
 Allow: /
-Disallow: /email-dashboard
-Disallow: /leads
+Disallow: /so-funktionierts/rechner
 
 User-agent: Twitterbot
 Allow: /
-Disallow: /email-dashboard
-Disallow: /leads
+Disallow: /so-funktionierts/rechner
 
 User-agent: facebookexternalhit
 Allow: /
-Disallow: /email-dashboard
-Disallow: /leads
+Disallow: /so-funktionierts/rechner
 
 User-agent: *
 Allow: /
-Disallow: /email-dashboard
-Disallow: /leads
+Disallow: /so-funktionierts/rechner
 
 Sitemap: https://premium-weinfinder.de/sitemap.xml
