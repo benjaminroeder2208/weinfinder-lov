@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
 
 const COLORS = {
@@ -311,24 +311,40 @@ const ScoreExample = () => {
   );
 };
 
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .slice(0, 50);
+
 const faqItems = [
   {
+    id: "keine-einschraenkung",
     question: "Werden meine Kunden durch ein festes Ergebnis eingeschränkt?",
     answer: "Nein. Die Logik filtert und sortiert, schließt aber keine Weine kategorisch aus. Am Ende sieht der Kunde mehrere passende Vorschläge aus deinem Sortiment.",
   },
   {
+    id: "empfehlungen-beeinflussen",
     question: "Kann ich die Empfehlungen beeinflussen?",
     answer: "Ja. Du legst fest, welche Weine bei gleicher Punktzahl bevorzugt werden — etwa Eigenprodukte, höhermarge Sortimente oder aktuelle Highlights.",
   },
   {
+    id: "anzahl-fragen",
     question: "Wie viele Fragen muss der Kunde beantworten?",
     answer: "Maximal sechs. Viele Fragen lassen sich überspringen, wenn der Kunde keine Präferenz hat. Das Ziel ist eine schnelle, aber fundierte Beratung.",
   },
   {
+    id: "kleines-sortiment",
     question: "Funktioniert das auch ohne großes Weinsortiment?",
     answer: "Ja. Die Logik skaliert mit deinem Angebot. Auch mit wenigen Weinen entsteht ein rundes Beratungserlebnis, weil jeder Wein gezielt in Szene gesetzt wird.",
   },
   {
+    id: "keine-ki",
     question: "Ist das wirklich keine KI?",
     answer: "Richtig. Hinter dem Matching stehen transparente, regelbasierte Entscheidungen — nachvollziehbar, anpassbar und jederzeit auditierbar.",
   },
@@ -336,6 +352,24 @@ const faqItems = [
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      const idx = faqItems.findIndex((item) => item.id === hash);
+      if (idx >= 0) {
+        setOpenIndex(idx);
+        requestAnimationFrame(() => {
+          document.getElementById(hash)?.scrollIntoView({ behavior: "auto", block: "start" });
+        });
+      }
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
   return (
     <section style={{ backgroundColor: COLORS.featuresBg }}>
       <div className="max-w-3xl mx-auto px-6 py-20">
@@ -346,25 +380,44 @@ const Faq = () => {
           </h2>
         </div>
         <div className="flex flex-col gap-4">
-          {faqItems.map(({ question, answer }, index) => {
+          {faqItems.map(({ question, answer, id }, index) => {
             const isOpen = openIndex === index;
+            const handleDeepLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.preventDefault();
+              setOpenIndex(index);
+              window.history.pushState(null, "", `#${id}`);
+              document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+            };
             return (
               <div
-                key={question}
-                className="rounded-xl overflow-hidden"
+                key={id}
+                id={id}
+                className="rounded-xl overflow-hidden scroll-mt-24"
                 style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-5 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
-                  <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
-                    <ChevronDown size={20} />
-                  </span>
-                </button>
+                <div className="flex items-stretch">
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="flex-1 flex items-center justify-between p-5 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
+                    <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
+                      <ChevronDown size={20} />
+                    </span>
+                  </button>
+                  <a
+                    href={`#${id}`}
+                    onClick={handleDeepLink}
+                    className="flex items-center px-4 border-l transition-colors hover:text-[#8b2615]"
+                    style={{ borderColor: "rgba(44,31,14,0.06)", color: "rgba(44,31,14,0.45)" }}
+                    aria-label={`Direktlink zu „${question}“`}
+                    title="Direktlink zu dieser Antwort"
+                  >
+                    <Link2 size={18} />
+                  </a>
+                </div>
                 {isOpen && (
                   <div className="px-5 pb-5">
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>{answer}</p>
