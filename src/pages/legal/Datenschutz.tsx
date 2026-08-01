@@ -80,11 +80,11 @@ const Datenschutz = () => (
       </p>
     </LegalSection>
 
-    <LegalSection title="4. Weinfinder-Quiz (/demo)">
+    <LegalSection title="4. Weinfinder-Quiz">
       <p>
-        Das Quiz unter <a href="/demo" className="underline">/demo</a> stellt dir Fragen zu deinen
-        Geschmacks- und Anlassvorlieben. Die Antworten werden zunächst ausschließlich lokal in
-        deinem Browser verarbeitet, um sofort eine passende Wein-Empfehlung zu berechnen.
+        Das Weinfinder-Quiz stellt dir Fragen zu deinen Geschmacks- und Anlassvorlieben. Die
+        Antworten werden zunächst ausschließlich lokal in deinem Browser verarbeitet, um sofort
+        eine passende Wein-Empfehlung zu berechnen.
       </p>
       <p className="mt-3">
         Erst wenn du am Ende deine E-Mail-Adresse angibst, um die Empfehlung zugeschickt zu

@@ -16,7 +16,6 @@ interface SitemapEntry {
 // Ausgeschlossen: /so-funktionierts/rechner (noindex) und * (404).
 const entries: SitemapEntry[] = [
   { path: "/", changefreq: "weekly", priority: "1.0" },
-  { path: "/demo", changefreq: "monthly", priority: "0.9" },
   { path: "/so-funktionierts", changefreq: "monthly", priority: "0.8" },
   { path: "/kontakt", changefreq: "yearly", priority: "0.5" },
   { path: "/impressum", changefreq: "yearly", priority: "0.3" },

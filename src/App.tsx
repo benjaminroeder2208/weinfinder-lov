@@ -7,7 +7,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
 import { Suspense, lazy } from "react";
 
-const Index = lazy(() => import("./pages/Index.tsx"));
 const Landing = lazy(() => import("./pages/Landing.tsx"));
 const SoFunktionierts = lazy(() => import("./pages/SoFunktionierts.tsx"));
 const SoFunktioniertsRechner = lazy(() => import("./pages/SoFunktioniertsRechner.tsx"));
@@ -29,7 +28,6 @@ const App = () => (
           <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: "#f5f0e8" }} />}>
           <Routes>
             <Route path="/" element={<Landing />} />
-            <Route path="/demo" element={<Index />} />
             <Route path="/so-funktionierts" element={<SoFunktionierts />} />
             <Route path="/so-funktionierts/rechner" element={<SoFunktioniertsRechner />} />
             <Route path="/kontakt" element={<Kontakt />} />
