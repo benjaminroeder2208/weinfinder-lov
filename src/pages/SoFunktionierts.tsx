@@ -664,6 +664,7 @@ const SoFunktionierts = () => (
       <QuestionsGrid />
       <HowItWorksLogic />
       <ScoreExample />
+      <MatchingRechner />
       <Faq />
       <FinalCta />
     </main>
