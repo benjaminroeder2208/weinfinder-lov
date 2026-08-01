@@ -502,7 +502,7 @@ const SoFunktionierts = () => {
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
     <SEO
       title="So funktioniert's: Matching-Logik des Weinfinders"
-      description="6 Fragen, klare Punkteregeln: So findet der Weinfinder passende Weine aus deinem Sortiment - mit Beispielrechnung, interaktivem Rechner und FAQ."
+      description="6 Fragen, klare Punkteregeln: So findet der Weinfinder in Sekunden passende Weine aus deinem Sortiment - mit Beispielrechnung und FAQ."
       path="/so-funktionierts"
       jsonLd={[
         {
@@ -510,7 +510,7 @@ const SoFunktionierts = () => {
           "@type": "WebPage",
           name: "So funktioniert der Weinfinder",
           description:
-            "6 Fragen, klare Punkteregeln: So findet der Weinfinder passende Weine aus deinem Sortiment.",
+            "6 Fragen, klare Punkteregeln: So findet der Weinfinder in Sekunden passende Weine aus deinem Sortiment.",
           inLanguage: "de-DE",
           url: "https://premium-weinfinder.de/so-funktionierts",
         },
