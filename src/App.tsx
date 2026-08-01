@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
 import Index from "./pages/Index.tsx";
 import Landing from "./pages/Landing.tsx";
+import SoFunktionierts from "./pages/SoFunktionierts.tsx";
 import Kontakt from "./pages/legal/Kontakt.tsx";
 import Impressum from "./pages/legal/Impressum.tsx";
 import Datenschutz from "./pages/legal/Datenschutz.tsx";
@@ -26,6 +27,7 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Landing />} />
             <Route path="/demo" element={<Index />} />
+            <Route path="/so-funktionierts" element={<SoFunktionierts />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
