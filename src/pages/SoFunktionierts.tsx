@@ -99,6 +99,36 @@ const Hero = () => (
   </section>
 );
 
+const whatItMeansPoints = [
+  "Weniger Rückfragen, mehr direkte Verkäufe — der Kunde findet selbstständig den passenden Wein.",
+  "Dein Sortiment wird gezielt in Szene gesetzt, nicht durch externe Empfehlungen verdrängt.",
+  "Nachvollziehbare Regeln, die du jederzeit anpassen kannst — volle Kontrolle über das Ergebnis.",
+  "Eine Beratung, die sich wie ein guter Sommelier anfühlt, aber rund um die Uhr verfügbar ist.",
+];
+
+const WhatItMeans = () => (
+  <section className="max-w-6xl mx-auto px-6 pb-20 md:pb-28">
+    <div className="max-w-3xl mx-auto rounded-2xl p-8 md:p-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+      <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+        Was bedeutet das für deine Entscheidung?
+      </h2>
+      <p className="text-center mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        Du bekommst ein Beratungstool, das deine Kunden führt — ohne dein Sortiment aus dem Blick zu verlieren.
+      </p>
+      <ul className="grid md:grid-cols-2 gap-4">
+        {whatItMeansPoints.map((point) => (
+          <li key={point} className="flex items-start gap-3">
+            <span className="mt-1 flex-shrink-0 w-5 h-5 rounded-full flex items-center justify-center" style={{ backgroundColor: COLORS.green }}>
+              <Check size={12} className="text-white" />
+            </span>
+            <span className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.8)", fontFamily: fontStack.body, fontWeight: 300 }}>{point}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+);
+
 const questions = [
   {
     Icon: CalendarClock,
