@@ -341,6 +341,7 @@ const SoFunktionierts = () => (
       <WhatItMeans />
       <QuestionsGrid />
       <HowItWorksLogic />
+      <Faq />
       <FinalCta />
     </main>
     <Footer />
