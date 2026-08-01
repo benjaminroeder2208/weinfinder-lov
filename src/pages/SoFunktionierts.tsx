@@ -86,12 +86,12 @@ const Nav = () => {
 const Hero = () => (
   <section className="max-w-6xl mx-auto px-6 py-20 md:py-28 text-center">
     <div className="max-w-3xl mx-auto">
-      <Kicker>Transparente Logik statt Black-Box-KI</Kicker>
+      <Kicker>Transparente Matching-Logik</Kicker>
       <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
         So findet der Weinfinder den richtigen Wein
       </h1>
       <p className="text-lg leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
-        Keine geheimnisvolle KI, sondern nachvollziehbare Regeln — genau wie ein guter Verkäufer sie anwenden würde.
+        Nachvollziehbare Regeln statt undurchsichtiger Automatik — genau wie ein guter Verkäufer sie anwenden würde. In wenigen Sekunden zum passenden Ergebnis.
       </p>
     </div>
   </section>
@@ -343,9 +343,9 @@ const faqItems = [
     answer: "Ja. Die Logik skaliert mit deinem Angebot. Auch mit wenigen Weinen entsteht ein rundes Beratungserlebnis, weil jeder Wein gezielt in Szene gesetzt wird.",
   },
   {
-    id: "keine-ki",
-    question: "Ist das wirklich keine KI?",
-    answer: "Richtig. Hinter dem Matching stehen transparente, regelbasierte Entscheidungen — nachvollziehbar, anpassbar und jederzeit auditierbar.",
+    id: "wie-transparent",
+    question: "Wie transparent ist das Matching?",
+    answer: "Vollständig. Hinter jeder Empfehlung stehen klare, regelbasierte Entscheidungen — nachvollziehbar, anpassbar und jederzeit überprüfbar.",
   },
 ];
 
