@@ -564,7 +564,7 @@ const Faq = () => {
                     className="flex-1 flex items-center justify-between p-5 text-left"
                     aria-expanded={isOpen}
                   >
-                    <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
+                    <h3 className="font-semibold pr-4 text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</h3>
                     <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
                       <ChevronDown size={20} />
                     </span>
@@ -664,15 +664,26 @@ const SoFunktionierts = () => {
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
     <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
     <SEO
-      title="So funktioniert der Weinfinder — Transparente Matching-Logik"
-      description="Erfahre, wie der Weinfinder in 6 Fragen zum passenden Wein kommt. Nachvollziehbare Regeln statt Black-Box-KI."
+      title="So funktioniert's: Matching-Logik des Weinfinders"
+      description="6 Fragen, klare Punkteregeln: So findet der Weinfinder passende Weine aus deinem Sortiment - mit Beispielrechnung, interaktivem Rechner und FAQ."
       path="/so-funktionierts"
       jsonLd={[
         {
           "@context": "https://schema.org",
           "@type": "WebPage",
           name: "So funktioniert der Weinfinder",
+          description:
+            "6 Fragen, klare Punkteregeln: So findet der Weinfinder passende Weine aus deinem Sortiment.",
+          inLanguage: "de-DE",
           url: "https://premium-weinfinder.de/so-funktionierts",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            { "@type": "ListItem", position: 1, name: "Startseite", item: "https://premium-weinfinder.de/" },
+            { "@type": "ListItem", position: 2, name: "So funktioniert's", item: "https://premium-weinfinder.de/so-funktionierts" },
+          ],
         },
         {
           "@context": "https://schema.org",
