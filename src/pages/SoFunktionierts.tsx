@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2 } from "lucide-react";
+import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
 
 const COLORS = {
