@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check } from "lucide-react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import SEO from "@/components/SEO";
 
@@ -220,6 +220,74 @@ const HowItWorksLogic = () => (
   </section>
 );
 
+const faqItems = [
+  {
+    question: "Werden meine Kunden durch ein festes Ergebnis eingeschränkt?",
+    answer: "Nein. Die Logik filtert und sortiert, schließt aber keine Weine kategorisch aus. Am Ende sieht der Kunde mehrere passende Vorschläge aus deinem Sortiment.",
+  },
+  {
+    question: "Kann ich die Empfehlungen beeinflussen?",
+    answer: "Ja. Du legst fest, welche Weine bei gleicher Punktzahl bevorzugt werden — etwa Eigenprodukte, höhermarge Sortimente oder aktuelle Highlights.",
+  },
+  {
+    question: "Wie viele Fragen muss der Kunde beantworten?",
+    answer: "Maximal sechs. Viele Fragen lassen sich überspringen, wenn der Kunde keine Präferenz hat. Das Ziel ist eine schnelle, aber fundierte Beratung.",
+  },
+  {
+    question: "Funktioniert das auch ohne großes Weinsortiment?",
+    answer: "Ja. Die Logik skaliert mit deinem Angebot. Auch mit wenigen Weinen entsteht ein rundes Beratungserlebnis, weil jeder Wein gezielt in Szene gesetzt wird.",
+  },
+  {
+    question: "Ist das wirklich keine KI?",
+    answer: "Richtig. Hinter dem Matching stehen transparente, regelbasierte Entscheidungen — nachvollziehbar, anpassbar und jederzeit auditierbar.",
+  },
+];
+
+const Faq = () => {
+  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  return (
+    <section style={{ backgroundColor: COLORS.featuresBg }}>
+      <div className="max-w-3xl mx-auto px-6 py-20">
+        <div className="text-center mb-14">
+          <Kicker>Häufige Fragen</Kicker>
+          <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+            Zur Matching-Logik
+          </h2>
+        </div>
+        <div className="flex flex-col gap-4">
+          {faqItems.map(({ question, answer }, index) => {
+            const isOpen = openIndex === index;
+            return (
+              <div
+                key={question}
+                className="rounded-xl overflow-hidden"
+                style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}
+              >
+                <button
+                  type="button"
+                  onClick={() => setOpenIndex(isOpen ? null : index)}
+                  className="w-full flex items-center justify-between p-5 text-left"
+                  aria-expanded={isOpen}
+                >
+                  <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
+                  <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
+                    <ChevronDown size={20} />
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-5 pb-5">
+                    <p className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>{answer}</p>
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const FinalCta = () => (
   <section style={{ backgroundColor: COLORS.ctaBg }}>
     <div className="max-w-3xl mx-auto px-6 py-20 text-center">
@@ -273,6 +341,7 @@ const SoFunktionierts = () => (
       <WhatItMeans />
       <QuestionsGrid />
       <HowItWorksLogic />
+      <Faq />
       <FinalCta />
     </main>
     <Footer />
