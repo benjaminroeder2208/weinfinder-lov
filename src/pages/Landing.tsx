@@ -46,7 +46,6 @@ const Nav = () => {
         <Logo />
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
-          <Link to="/so-funktionierts" className={linkClass}>So funktioniert's</Link>
           <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
           <a href="#pricing" className={linkClass}>Preise</a>
@@ -67,7 +66,6 @@ const Nav = () => {
         <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
           <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
             <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
-            <Link to="/so-funktionierts" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>So funktioniert's</Link>
             <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
@@ -186,10 +184,10 @@ const HowItWorks = () => (
     <div className="text-center mb-14 max-w-2xl mx-auto">
       <Kicker>Wie es funktioniert</Kicker>
       <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-        In drei einfachen Schritten zum passenden Wein
+        Der passende Wein für deine Kunden
       </h2>
       <p style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-        Deine Kunden klicken durch sechs schnelle Fragen — und erhalten eine fundierte, personalisierte Empfehlung.
+        Sechs einfache Fragen und deine Kunden erhalten eine fundierte, personalisierte Weinempfehlung aus deinem Sortiment.
       </p>
     </div>
     <div className="grid md:grid-cols-3 gap-6">
@@ -236,9 +234,9 @@ const HowItWorks = () => (
       </QuizCard>
     </div>
     <div className="text-center mt-10">
-      <a href="#demo-erklaerung" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
-        Mehr erfahren →
-      </a>
+      <Link to="/so-funktionierts" className="inline-block px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
+        Details zur Matching-Logik erfahren →
+      </Link>
     </div>
   </section>
 );
