@@ -4,12 +4,13 @@ interface SEOProps {
   title: string;
   description: string;
   path: string;
+  noindex?: boolean;
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
 }
 
 const SITE_URL = "https://premium-weinfinder.de";
 
-const SEO = ({ title, description, path, jsonLd }: SEOProps) => {
+const SEO = ({ title, description, path, noindex, jsonLd }: SEOProps) => {
   const url = `${SITE_URL}${path}`;
   const ldArray = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
   return (
@@ -17,6 +18,7 @@ const SEO = ({ title, description, path, jsonLd }: SEOProps) => {
       <html lang="de" />
       <title>{title}</title>
       <meta name="description" content={description} />
+      {noindex && <meta name="robots" content="noindex, nofollow" />}
       <link rel="canonical" href={url} />
       <meta property="og:title" content={title} />
       <meta property="og:description" content={description} />
