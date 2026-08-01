@@ -419,12 +419,26 @@ const SoFunktionierts = () => (
       title="So funktioniert der Weinfinder — Transparente Matching-Logik"
       description="Erfahre, wie der Weinfinder in 6 Fragen zum passenden Wein kommt. Nachvollziehbare Regeln statt Black-Box-KI."
       path="/so-funktionierts"
-      jsonLd={{
-        "@context": "https://schema.org",
-        "@type": "WebPage",
-        name: "So funktioniert der Weinfinder",
-        url: "https://premium-weinfinder.de/so-funktionierts",
-      }}
+      jsonLd={[
+        {
+          "@context": "https://schema.org",
+          "@type": "WebPage",
+          name: "So funktioniert der Weinfinder",
+          url: "https://premium-weinfinder.de/so-funktionierts",
+        },
+        {
+          "@context": "https://schema.org",
+          "@type": "FAQPage",
+          mainEntity: faqItems.map(({ question, answer }) => ({
+            "@type": "Question",
+            name: question,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: answer,
+            },
+          })),
+        },
+      ]}
     />
     <Nav />
     <main>
