@@ -292,7 +292,7 @@ const DemoErklaerung = () => {
 
 const Features = () => {
   const items = [
-    { Icon: Sparkles, title: "Regelbasiertes Matching", desc: "Transparente Logik statt Black-Box-KI. Du behältst die Kontrolle über jede Empfehlung." },
+    { Icon: Sparkles, title: "Regelbasiertes Matching", desc: "Transparente, nachvollziehbare Logik. Du behältst die Kontrolle über jede Empfehlung." },
     { Icon: Palette, title: "White-Label Branding", desc: "Logo, Farben, Texte — alles anpassbar an deinen Shop und deine Marke." },
     { Icon: Link2, title: "Direkte Shop-Links", desc: "Vom Ergebnis mit einem Klick zur Produktseite und in den Warenkorb." },
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
