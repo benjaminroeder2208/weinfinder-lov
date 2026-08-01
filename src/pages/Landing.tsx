@@ -465,7 +465,7 @@ const Landing = () => {
   return (
     <PilotFormContext.Provider value={{ open: () => setFormOpen(true) }}>
     <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body, scrollBehavior: "smooth" }}>
-      <style>{`@import url('https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap'); html { scroll-behavior: smooth; }`}</style>
+      <style>{`html { scroll-behavior: smooth; }`}</style>
       <SEO
         title="Weinfinder — Digitaler Sommelier für deinen Weinshop"
         description="White-Label Weinberater für Online-Weinhändler: Steigere Conversion mit einer geführten Empfehlung in 6 Fragen. Integration in unter 48 Stunden."
