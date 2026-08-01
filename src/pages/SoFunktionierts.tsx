@@ -220,6 +220,97 @@ const HowItWorksLogic = () => (
   </section>
 );
 
+const exampleProfile = {
+  occasion: "Dinner zu zweit",
+  style: "Kräftig & intensiv",
+  color: "Rot",
+  food: "Rind",
+  budget: "bis 15 €",
+};
+
+const exampleWines = [
+  {
+    name: "Cuvée Reserve",
+    style: "Kräftig & intensiv",
+    color: "Rot",
+    food: "Rind",
+    price: "14,90 €",
+    scores: { style: 3, food: 2, occasion: 2, color: 1, budget: 1 },
+  },
+  {
+    name: "Weißburgunder Trocken",
+    style: "Leicht & frisch",
+    color: "Weiß",
+    food: "Fisch",
+    price: "11,50 €",
+    scores: { style: 0, food: 0, occasion: 1, color: 0, budget: 1 },
+  },
+];
+
+const ScoreExample = () => {
+  const maxTotal = exampleWines.reduce((max, wine) => Math.max(max, Object.values(wine.scores).reduce((a, b) => a + b, 0)), 0);
+  return (
+    <section style={{ backgroundColor: COLORS.bg }}>
+      <div className="max-w-5xl mx-auto px-6 py-20">
+        <div className="text-center mb-14 max-w-2xl mx-auto">
+          <Kicker>Konkretes Beispiel</Kicker>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+            So werden die Punkte vergeben
+          </h2>
+          <p className="leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+            Ein Kunde gibt seine Präferenzen an. Jeder Wein im Sortiment sammelt Punkte — je besser die Übereinstimmung, desto höher die Platzierung.
+          </p>
+        </div>
+
+        <div className="rounded-2xl p-6 md:p-8 mb-10" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+          <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Kundenwunsch</h3>
+          <div className="flex flex-wrap gap-3">
+            {Object.entries(exampleProfile).map(([key, value]) => (
+              <span key={key} className="inline-flex items-center px-3 py-1.5 rounded-full text-sm" style={{ backgroundColor: `${COLORS.primary}14`, color: COLORS.primary, fontFamily: fontStack.body }}>
+                {value}
+              </span>
+            ))}
+          </div>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6">
+          {exampleWines.map((wine) => {
+            const total = Object.values(wine.scores).reduce((a, b) => a + b, 0);
+            return (
+              <div key={wine.name} className="rounded-2xl p-6 md:p-8" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+                <div className="flex items-start justify-between gap-4 mb-6">
+                  <div>
+                    <h3 className="text-xl font-semibold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{wine.name}</h3>
+                    <p className="text-sm" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body, fontWeight: 300 }}>{wine.style} · {wine.color} · {wine.price}</p>
+                  </div>
+                  <div className="text-center px-4 py-2 rounded-xl" style={{ backgroundColor: total === maxTotal ? COLORS.green : `${COLORS.primary}14` }}>
+                    <span className="block text-2xl font-bold" style={{ color: total === maxTotal ? "#ffffff" : COLORS.primary, fontFamily: fontStack.display }}>{total}</span>
+                    <span className="text-xs uppercase" style={{ color: total === maxTotal ? "rgba(255,255,255,0.85)" : COLORS.secondary, fontFamily: fontStack.body }}>Punkte</span>
+                  </div>
+                </div>
+                <div className="space-y-3">
+                  {[
+                    { label: "Stil passt", value: wine.scores.style },
+                    { label: "Essenspaarung", value: wine.scores.food },
+                    { label: "Anlass passt", value: wine.scores.occasion },
+                    { label: "Farbe passt", value: wine.scores.color },
+                    { label: "Budget passt", value: wine.scores.budget },
+                  ].map(({ label, value }) => (
+                    <div key={label} className="flex items-center justify-between text-sm">
+                      <span style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>{label}</span>
+                      <span className="font-semibold" style={{ color: value > 0 ? COLORS.primary : "rgba(44,31,14,0.35)", fontFamily: fontStack.body }}>+{value}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const faqItems = [
   {
     question: "Werden meine Kunden durch ein festes Ergebnis eingeschränkt?",
@@ -341,6 +432,7 @@ const SoFunktionierts = () => (
       <WhatItMeans />
       <QuestionsGrid />
       <HowItWorksLogic />
+      <ScoreExample />
       <Faq />
       <FinalCta />
     </main>
