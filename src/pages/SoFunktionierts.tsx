@@ -311,24 +311,40 @@ const ScoreExample = () => {
   );
 };
 
+const slugify = (text: string) =>
+  text
+    .toLowerCase()
+    .replace(/ä/g, "ae")
+    .replace(/ö/g, "oe")
+    .replace(/ü/g, "ue")
+    .replace(/ß/g, "ss")
+    .replace(/[^\w\s-]/g, "")
+    .replace(/\s+/g, "-")
+    .slice(0, 50);
+
 const faqItems = [
   {
+    id: "keine-einschraenkung",
     question: "Werden meine Kunden durch ein festes Ergebnis eingeschränkt?",
     answer: "Nein. Die Logik filtert und sortiert, schließt aber keine Weine kategorisch aus. Am Ende sieht der Kunde mehrere passende Vorschläge aus deinem Sortiment.",
   },
   {
+    id: "empfehlungen-beeinflussen",
     question: "Kann ich die Empfehlungen beeinflussen?",
     answer: "Ja. Du legst fest, welche Weine bei gleicher Punktzahl bevorzugt werden — etwa Eigenprodukte, höhermarge Sortimente oder aktuelle Highlights.",
   },
   {
+    id: "anzahl-fragen",
     question: "Wie viele Fragen muss der Kunde beantworten?",
     answer: "Maximal sechs. Viele Fragen lassen sich überspringen, wenn der Kunde keine Präferenz hat. Das Ziel ist eine schnelle, aber fundierte Beratung.",
   },
   {
+    id: "kleines-sortiment",
     question: "Funktioniert das auch ohne großes Weinsortiment?",
     answer: "Ja. Die Logik skaliert mit deinem Angebot. Auch mit wenigen Weinen entsteht ein rundes Beratungserlebnis, weil jeder Wein gezielt in Szene gesetzt wird.",
   },
   {
+    id: "keine-ki",
     question: "Ist das wirklich keine KI?",
     answer: "Richtig. Hinter dem Matching stehen transparente, regelbasierte Entscheidungen — nachvollziehbar, anpassbar und jederzeit auditierbar.",
   },
