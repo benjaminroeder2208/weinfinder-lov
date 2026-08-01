@@ -594,24 +594,54 @@ const Faq = () => {
   );
 };
 
-const FinalCta = () => (
+const CtaBand = ({ onRequest }: { onRequest: () => void }) => (
   <section style={{ backgroundColor: COLORS.ctaBg }}>
     <div className="max-w-3xl mx-auto px-6 py-20 text-center">
       <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white" style={{ fontFamily: fontStack.display }}>
-        Volle Kontrolle, keine Blackbox
+        Jetzt als Pilotkunde einsteigen
       </h2>
       <p className="mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
-        Du entscheidest, welche Weine bei Gleichstand bevorzugt werden. Die Logik ist nachvollziehbar, anpassbar und gehört dir — nicht einem Algorithmus, den niemand versteht.
+        Werde einer der ersten Weinshops mit einem digitalen Sommelier — und sichere dir besondere Konditionen als früher Partner.
       </p>
-      <Link
-        to="/#demo-erklaerung"
-        className="inline-block px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition"
-        style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}
-      >
-        Demo ausprobieren
-      </Link>
+      <div className="flex flex-wrap gap-4 justify-center">
+        <button onClick={onRequest} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+          Jetzt anfragen
+        </button>
+        <Link to="/#demo-erklaerung" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+          Demo ausprobieren
+        </Link>
+      </div>
     </div>
   </section>
+);
+
+const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
+  <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ backgroundColor: "rgba(44,31,14,0.6)" }} onClick={onClose}>
+    <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
+      <div className="flex items-start justify-between p-6 pb-2">
+        <div>
+          <p className="text-xs font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
+          <h3 className="text-2xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Jetzt anfragen</h3>
+        </div>
+        <button onClick={onClose} aria-label="Schließen" className="p-1 rounded hover:bg-black/5">
+          <X size={20} style={{ color: COLORS.text }} />
+        </button>
+      </div>
+      <div className="p-6 pt-4 space-y-6" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+        <p>
+          Du hast Fragen zu Weinfinder, möchtest eine Demo vereinbaren oder am Pilot-Programm teilnehmen?
+          Wir freuen uns auf deine Nachricht.
+        </p>
+        <div>
+          <h4 className="text-sm font-semibold uppercase mb-2" style={{ letterSpacing: "0.05em", color: COLORS.secondary }}>E-Mail</h4>
+          <p className="flex items-center gap-3">
+            <Mail size={18} style={{ color: COLORS.primary }} />
+            <a href="mailto:info@premium-weinfinder.de" className="underline hover:opacity-70">info@premium-weinfinder.de</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
 );
 
 const Footer = () => (
@@ -619,6 +649,7 @@ const Footer = () => (
     <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
       <Logo />
       <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
+        <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
         <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
