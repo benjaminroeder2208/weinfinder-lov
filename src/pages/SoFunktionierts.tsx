@@ -352,6 +352,24 @@ const faqItems = [
 
 const Faq = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
+
+  useEffect(() => {
+    const applyHash = () => {
+      const hash = window.location.hash.replace("#", "");
+      const idx = faqItems.findIndex((item) => item.id === hash);
+      if (idx >= 0) {
+        setOpenIndex(idx);
+        requestAnimationFrame(() => {
+          document.getElementById(hash)?.scrollIntoView({ behavior: "auto", block: "start" });
+        });
+      }
+    };
+
+    applyHash();
+    window.addEventListener("hashchange", applyHash);
+    return () => window.removeEventListener("hashchange", applyHash);
+  }, []);
+
   return (
     <section style={{ backgroundColor: COLORS.featuresBg }}>
       <div className="max-w-3xl mx-auto px-6 py-20">
@@ -362,25 +380,44 @@ const Faq = () => {
           </h2>
         </div>
         <div className="flex flex-col gap-4">
-          {faqItems.map(({ question, answer }, index) => {
+          {faqItems.map(({ question, answer, id }, index) => {
             const isOpen = openIndex === index;
+            const handleDeepLink = (e: React.MouseEvent<HTMLAnchorElement>) => {
+              e.preventDefault();
+              setOpenIndex(index);
+              window.history.pushState(null, "", `#${id}`);
+              document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+            };
             return (
               <div
-                key={question}
-                className="rounded-xl overflow-hidden"
+                key={id}
+                id={id}
+                className="rounded-xl overflow-hidden scroll-mt-24"
                 style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.06)" }}
               >
-                <button
-                  type="button"
-                  onClick={() => setOpenIndex(isOpen ? null : index)}
-                  className="w-full flex items-center justify-between p-5 text-left"
-                  aria-expanded={isOpen}
-                >
-                  <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
-                  <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
-                    <ChevronDown size={20} />
-                  </span>
-                </button>
+                <div className="flex items-stretch">
+                  <button
+                    type="button"
+                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    className="flex-1 flex items-center justify-between p-5 text-left"
+                    aria-expanded={isOpen}
+                  >
+                    <span className="font-semibold pr-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{question}</span>
+                    <span className="flex-shrink-0 transition-transform duration-200" style={{ transform: isOpen ? "rotate(180deg)" : "rotate(0deg)", color: COLORS.primary }}>
+                      <ChevronDown size={20} />
+                    </span>
+                  </button>
+                  <a
+                    href={`#${id}`}
+                    onClick={handleDeepLink}
+                    className="flex items-center px-4 border-l transition-colors hover:text-[#8b2615]"
+                    style={{ borderColor: "rgba(44,31,14,0.06)", color: "rgba(44,31,14,0.45)" }}
+                    aria-label={`Direktlink zu „${question}“`}
+                    title="Direktlink zu dieser Antwort"
+                  >
+                    <Link2 size={18} />
+                  </a>
+                </div>
                 {isOpen && (
                   <div className="px-5 pb-5">
                     <p className="text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>{answer}</p>
