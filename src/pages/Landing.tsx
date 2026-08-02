@@ -405,6 +405,7 @@ const UeberMich = () => (
         width={400}
         height={400}
         loading="lazy"
+        decoding="async"
         className="w-full max-w-[400px] mx-auto md:mx-0 aspect-square object-cover rounded-2xl shadow-xl"
         style={{ border: "1px solid rgba(44,31,14,0.1)" }}
       />
