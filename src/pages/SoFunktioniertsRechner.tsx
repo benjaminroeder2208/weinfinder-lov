@@ -43,6 +43,7 @@ const Nav = () => {
           <Link to="/#demo-erklaerung" className={linkClass}>Demo</Link>
           <Link to="/#features" className={linkClass}>Features</Link>
           <Link to="/#pricing" className={linkClass}>Preise</Link>
+          <Link to="/#ueber" className={linkClass}>Über mich</Link>
         </div>
         <Link
           to="/#demo-erklaerung"
@@ -67,6 +68,7 @@ const Nav = () => {
             <Link to="/#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</Link>
             <Link to="/#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</Link>
             <Link to="/#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</Link>
+            <Link to="/#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</Link>
           </div>
         </div>
       )}
