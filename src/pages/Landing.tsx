@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
 
@@ -463,6 +463,16 @@ const Footer = () => (
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
         <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
+        <a
+          href="https://www.instagram.com/premium.weinfinder"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-70 inline-flex items-center gap-1.5"
+          aria-label="Weinfinder auf Instagram"
+        >
+          <Instagram size={16} />
+          Instagram
+        </a>
       </div>
     </div>
   </footer>

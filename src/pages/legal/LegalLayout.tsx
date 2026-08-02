@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import { Instagram } from "lucide-react";
 
 const COLORS = {
   bg: "#f5f0e8",
@@ -35,10 +36,20 @@ const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: stri
     <footer className="border-t mt-10" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
       <div className="max-w-3xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between text-sm" style={{ color: "rgba(44,31,14,0.7)" }}>
         <span>© {new Date().getFullYear()} Weinfinder</span>
-        <div className="flex gap-6">
+        <div className="flex gap-6 items-center">
           <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
           <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
           <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
+          <a
+            href="https://www.instagram.com/premium.weinfinder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:opacity-70 inline-flex items-center gap-1"
+            aria-label="Weinfinder auf Instagram"
+          >
+            <Instagram size={16} />
+            Instagram
+          </a>
         </div>
       </div>
     </footer>

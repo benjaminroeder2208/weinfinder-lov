@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Mail } from "lucide-react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Mail, Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
 
@@ -492,6 +492,16 @@ const Footer = () => (
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
         <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
+        <a
+          href="https://www.instagram.com/premium.weinfinder"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="hover:opacity-70 inline-flex items-center gap-1.5"
+          aria-label="Weinfinder auf Instagram"
+        >
+          <Instagram size={16} />
+          Instagram
+        </a>
       </div>
     </div>
   </footer>
