@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
-import portrait from "@/assets/benjamin-roeder.jpg.asset.json";
+import portrait from "@/assets/benjamin-roeder-sw.jpg.asset.json";
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
 const usePilotForm = () => useContext(PilotFormContext);
