@@ -400,7 +400,7 @@ const UeberMich = () => (
   <section id="ueber" className="max-w-6xl mx-auto px-6 py-20" style={{ scrollMarginTop: 80 }}>
     <div className="grid md:grid-cols-[400px_1fr] gap-10 md:gap-14 items-center">
       <img
-        src="/benjamin-roeder-sw.jpg"
+        src="/benjamin-roeder.jpg"
         alt="Benjamin Röder, Inhaber der Agentur kontakt² und Gründer von Weinfinder"
         width={400}
         height={400}
