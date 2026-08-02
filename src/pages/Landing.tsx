@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
+import portrait from "@/assets/benjamin-roeder.jpg.asset.json";
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
 const usePilotForm = () => useContext(PilotFormContext);
@@ -49,6 +50,7 @@ const Nav = () => {
           <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
           <a href="#pricing" className={linkClass}>Preise</a>
+          <a href="#ueber" className={linkClass}>Über mich</a>
         </div>
         <a href="#demo-erklaerung" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
           Demo starten
@@ -69,6 +71,7 @@ const Nav = () => {
             <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
+            <a href="#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</a>
             <a
               href="#demo-erklaerung"
               onClick={close}
@@ -393,6 +396,39 @@ const CtaBand = () => (
   <PilotBandInner />
 );
 
+const UeberMich = () => (
+  <section id="ueber" className="max-w-6xl mx-auto px-6 py-20" style={{ scrollMarginTop: 80 }}>
+    <div className="grid md:grid-cols-[400px_1fr] gap-10 md:gap-14 items-center">
+      <img
+        src={portrait.url}
+        alt="Benjamin Röder, Inhaber der Agentur kontakt² und Gründer von Weinfinder"
+        width={400}
+        height={400}
+        loading="lazy"
+        className="w-full max-w-[400px] mx-auto md:mx-0 aspect-square object-cover rounded-2xl shadow-xl"
+        style={{ border: "1px solid rgba(44,31,14,0.1)" }}
+      />
+      <div>
+        <Kicker color={COLORS.primary}>Über mich</Kicker>
+        <h2 className="text-3xl md:text-4xl font-bold mb-6" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+          Hallo, ich bin Benjamin Röder
+        </h2>
+        <div className="space-y-4 leading-relaxed" style={{ fontFamily: fontStack.body, color: "rgba(44,31,14,0.85)", fontWeight: 300 }}>
+          <p>
+            Ich bin Inhaber der Agentur kontakt² und betreue seit Jahren Weingüter im digitalen Bereich. Dabei ist mir über die letzten Jahre immer wieder ein Muster aufgefallen: Onlineshops haben oft ein großes, gutes Sortiment – aber Erstkunden und Bestandskunden, die etwas Neues ausprobieren wollen, wissen häufig nicht, wo sie anfangen sollen, und kaufen am Ende entweder den bekanntesten Wein oder brechen ganz ab.
+          </p>
+          <p>
+            Aus genau diesem Problemverständnis ist der Weinfinder entstanden: ein Tool, das genau das leistet, was eine gute Weinberatung im Laden auch tut – nur automatisch, rund um die Uhr, und im Design Ihres Shops.
+          </p>
+          <p>
+            Ich arbeite eng mit jedem Piloten zusammen, übernehme die technische Einrichtung komplett und bin persönlich erreichbar, wenn Fragen aufkommen.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
 const PilotBandInner = () => {
   const { open } = usePilotForm();
   return (
@@ -494,6 +530,7 @@ const Landing = () => {
         <DemoErklaerung />
         <Features />
         <Pricing />
+        <UeberMich />
         <CtaBand />
       </main>
       <Footer />
