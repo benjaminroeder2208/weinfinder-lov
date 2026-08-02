@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
-import portrait from "@/assets/benjamin-roeder.jpg.asset.json";
+
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
 const usePilotForm = () => useContext(PilotFormContext);
@@ -400,7 +400,7 @@ const UeberMich = () => (
   <section id="ueber" className="max-w-6xl mx-auto px-6 py-20" style={{ scrollMarginTop: 80 }}>
     <div className="grid md:grid-cols-[400px_1fr] gap-10 md:gap-14 items-center">
       <img
-        src={portrait.url}
+        src="/benjamin-roeder-sw.jpg"
         alt="Benjamin Röder, Inhaber der Agentur kontakt² und Gründer von Weinfinder"
         width={400}
         height={400}
