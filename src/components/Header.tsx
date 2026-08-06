@@ -24,7 +24,6 @@ const Header = () => {
   const close = () => setOpen(false);
   const location = useLocation();
   const isHome = location.pathname === "/";
-  const isSocial = location.pathname === "/social";
 
   const linkClass = "hover:opacity-70 transition";
   const activeClass = "font-semibold underline decoration-2 underline-offset-4";
@@ -67,7 +66,6 @@ const Header = () => {
             <NavLink anchor="#how" to="/#how">Wie es funktioniert</NavLink>
             <NavLink anchor="#demo-erklaerung" to="/#demo-erklaerung">Demo</NavLink>
             <NavLink anchor="#features" to="/#features">Features</NavLink>
-            <NavLink to="/social" active={isSocial}>Social</NavLink>
             <NavLink anchor="#pricing" to="/#pricing">Preise</NavLink>
             <NavLink anchor="#ueber" to="/#ueber">Über mich</NavLink>
           </div>
@@ -93,7 +91,6 @@ const Header = () => {
               <NavLink anchor="#how" to="/#how" mobile>Wie es funktioniert</NavLink>
               <NavLink anchor="#demo-erklaerung" to="/#demo-erklaerung" mobile>Demo</NavLink>
               <NavLink anchor="#features" to="/#features" mobile>Features</NavLink>
-              <NavLink to="/social" active={isSocial} mobile>Social</NavLink>
               <NavLink anchor="#pricing" to="/#pricing" mobile>Preise</NavLink>
               <NavLink anchor="#ueber" to="/#ueber" mobile>Über mich</NavLink>
               <Link
