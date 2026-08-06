@@ -181,7 +181,7 @@ const SoFunktioniertsRechner = () => (
       noindex
     />
     <Header />
-    <main>
+    <main id="inhalt">
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-4 text-center">
         <div className="max-w-2xl mx-auto">
           <Kicker>Interaktiver Rechner</Kicker>

@@ -534,7 +534,7 @@ const Landing = () => {
         ]}
       />
       <Header />
-      <main>
+      <main id="inhalt">
         <Hero />
         <Stats />
         <HowItWorks />

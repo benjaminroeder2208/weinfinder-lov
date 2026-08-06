@@ -316,7 +316,7 @@ const Social = () => {
 
         />
         <Header />
-        <main>
+        <main id="inhalt">
           <Hero />
           <Steps />
           <Comparison />

@@ -470,7 +470,7 @@ const SoFunktionierts = () => {
       ]}
     />
     <Header />
-    <main>
+    <main id="inhalt">
       <Hero />
       <WhatItMeans />
       <QuestionsGrid />
