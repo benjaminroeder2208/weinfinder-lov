@@ -297,7 +297,7 @@ const Features = () => {
                 </span>
               </summary>
               <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-                Nein. Mit dem Social-Tarif reicht ein eigener Link – ideal für Weingüter, die vor allem über Instagram, TikTok oder Newsletter Kunden erreichen. Wer den Berater direkt im Shop integrieren möchte, nutzt das Basis- oder Premium-Paket mit iFrame.
+                Nein. Mit dem <Link to="/social" className="underline hover:opacity-70" style={{ color: COLORS.primary }}>Social-Tarif</Link> reicht ein eigener Link – ideal für Weingüter, die vor allem über Instagram, TikTok oder Newsletter Kunden erreichen. Wer den Berater direkt im Shop integrieren möchte, nutzt das Basis- oder Premium-Paket mit iFrame.
               </p>
             </details>
             <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
@@ -381,6 +381,11 @@ const Pricing = () => {
             }}>
               {p.cta}
             </button>
+            {p.name === "Social" && (
+              <Link to="/social" className="block text-center mt-3 text-xs hover:opacity-70 transition" style={{ color: COLORS.primary, fontFamily: fontStack.body }}>
+                Details zum Social-Tarif →
+              </Link>
+            )}
           </div>
         ))}
       </div>
