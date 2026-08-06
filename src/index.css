@@ -113,10 +113,11 @@
   }
 
   .skip-link {
-    position: absolute;
+    position: fixed;
     left: -9999px;
     top: 0;
     z-index: 200;
+    white-space: nowrap;
   }
 
   .skip-link:focus {
