@@ -534,7 +534,7 @@ const Landing = () => {
         ]}
       />
       <Header />
-      <main id="inhalt">
+      <main id="inhalt" tabIndex={-1}>
         <Hero />
         <Stats />
         <HowItWorks />
