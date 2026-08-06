@@ -83,13 +83,13 @@ const Nav = () => {
 };
 
 const PhoneMockup = () => (
-  <div className="mx-auto w-full max-w-[320px] rounded-[2rem] overflow-hidden shadow-2xl" style={{ backgroundColor: "#fff", border: "8px solid #2c1f0e" }}>
-    <div className="px-5 py-5" style={{ backgroundColor: "#fff" }}>
+  <div className="mx-auto w-full max-w-[280px] sm:max-w-[320px] rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden shadow-2xl border-[6px] sm:border-8" style={{ backgroundColor: "#fff", borderColor: "#2c1f0e" }}>
+    <div className="px-4 sm:px-5 py-5" style={{ backgroundColor: "#fff" }}>
       <div className="flex items-center gap-3 mb-4">
-        <span className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14`, border: `2px solid ${COLORS.primary}` }}>
+        <span className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14`, border: `2px solid ${COLORS.primary}` }}>
           <Instagram size={22} style={{ color: COLORS.primary }} />
         </span>
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-semibold" style={{ color: COLORS.text, fontFamily: fontStack.body }}>weingut.muster</p>
           <p className="text-xs" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>Weingut · Pfalz</p>
         </div>
@@ -97,18 +97,18 @@ const PhoneMockup = () => (
       <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body }}>
         Finde deinen Wein in 60 Sekunden — Link in Bio
       </p>
-      <div className="rounded-md px-3 py-2 text-xs font-semibold flex items-center justify-between" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
-        <span>weinfinder.link/muster</span>
-        <Hand size={14} />
+      <div className="rounded-md px-3 py-2 text-xs font-semibold flex items-center justify-between gap-2" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
+        <span className="truncate">weinfinder.link/muster</span>
+        <Hand size={14} className="shrink-0" />
       </div>
       <div className="flex justify-center py-3">
         <ArrowDown size={18} style={{ color: COLORS.secondary }} />
       </div>
     </div>
-    <div className="px-5 py-8 text-center" style={{ backgroundColor: COLORS.demoBg }}>
+    <div className="px-4 sm:px-5 py-7 sm:py-8 text-center" style={{ backgroundColor: COLORS.demoBg }}>
       <h3 className="text-2xl font-bold mb-1 text-white" style={{ fontFamily: fontStack.display }}>Weinfinder</h3>
       <p className="italic text-xs mb-5" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>Ihr digitaler Sommelier</p>
-      <span className="inline-block px-5 py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
+      <span className="inline-block px-4 sm:px-5 py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
         Weinberatung starten
       </span>
     </div>
@@ -118,20 +118,20 @@ const PhoneMockup = () => (
 const Hero = () => {
   const { open } = useContact();
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <section className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-28 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
       <div>
         <Kicker>Für Instagram &amp; Co.</Kicker>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+        <h1 className="text-[2rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold md:leading-tight mb-5 sm:mb-6 break-words" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
           Deine Weinberatung — direkt aus <em style={{ color: COLORS.primary, fontStyle: "italic" }}>Instagram</em>
         </h1>
-        <p className="text-lg mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-base sm:text-lg mb-7 sm:mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Kein Website-Umbau, keine technische Einbindung. Dein Weinfinder läuft über einen einzigen Link — perfekt für die Instagram-Bio, Story-Highlights oder Linktree.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <button onClick={open} className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          <button onClick={open} className="w-full sm:w-auto px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
             Jetzt starten
           </button>
-          <Link to="/#demo-erklaerung" className="px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
+          <Link to="/#demo-erklaerung" className="w-full sm:w-auto text-center px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
             Demo ansehen
           </Link>
         </div>
