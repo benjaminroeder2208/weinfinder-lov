@@ -432,29 +432,6 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
   </div>
 );
 
-const Footer = () => (
-  <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
-    <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
-      <Logo />
-      <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
-        <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
-        <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
-        <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
-        <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
-        <a
-          href="https://www.instagram.com/premium.weinfinder"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-70 inline-flex items-center gap-1.5"
-          aria-label="Weinfinder auf Instagram"
-        >
-          <Instagram size={16} />
-          Instagram
-        </a>
-      </div>
-    </div>
-  </footer>
-);
 
 const SoFunktionierts = () => {
   const [formOpen, setFormOpen] = useState(false);
