@@ -334,9 +334,8 @@ const Pricing = () => {
   const { open } = usePilotForm();
   const plans = [
     { name: "Social", price: "19 €", per: "/Monat", setup: "zzgl. 149 € Einrichtung", recommended: false, soon: false, note: "Keine Website-Einbindung nötig", features: ["Vollständig anpassbares Branding", "Bis zu 30 Weine", "Eigenständiger Link (Instagram-Bio, Linktree, Story)", "Direkte Shop-Verlinkung", "E-Mail-Support"], cta: "Jetzt anfragen" },
-    { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 299 € Einrichtung", recommended: false, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 50 Weine", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
-    { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: true, soon: false, features: ["Alles aus Basis", "Bis zu 100 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Jetzt anfragen" },
-    { name: "Enterprise", price: "Individuell", per: "", setup: "Auf Anfrage", recommended: false, soon: true, features: ["Unbegrenzte Weine", "Mehrere Shops", "API-Zugang", "Custom Features", "Dedicated Account Manager"], cta: "Demnächst verfügbar" },
+    { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 299 € Einrichtung", recommended: true, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 50 Weine", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
+    { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: false, soon: false, features: ["Alles aus Basis", "Bis zu 100 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Jetzt anfragen" },
   ];
   return (
     <section id="pricing" className="max-w-6xl mx-auto px-6 py-20">
@@ -346,21 +345,15 @@ const Pricing = () => {
           Faire Preise für jeden Shop
         </h2>
       </div>
-      <div className="grid md:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-3 gap-6">
         {plans.map((p) => (
           <div key={p.name} className="relative rounded-xl p-8" style={{
             backgroundColor: COLORS.card,
             border: p.recommended ? `1.5px solid ${COLORS.primary}` : "1px solid rgba(44,31,14,0.1)",
-            opacity: p.soon ? 0.5 : 1,
           }}>
             {p.recommended && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold text-white" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
                 Empfohlen
-              </span>
-            )}
-            {p.soon && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: COLORS.secondary, color: "#fff", fontFamily: fontStack.body }}>
-                Coming soon
               </span>
             )}
             <h3 className="text-xl font-bold mb-1" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.name}</h3>
@@ -381,9 +374,9 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button onClick={() => !p.soon && open()} disabled={p.soon} className="w-full py-3 rounded-md text-sm font-semibold disabled:cursor-not-allowed" style={{
-              backgroundColor: p.soon ? "rgba(44,31,14,0.1)" : COLORS.primary,
-              color: p.soon ? "rgba(44,31,14,0.5)" : "#fff",
+            <button onClick={() => open()} className="w-full py-3 rounded-md text-sm font-semibold" style={{
+              backgroundColor: COLORS.primary,
+              color: "#fff",
               fontFamily: fontStack.body,
             }}>
               {p.cta}
@@ -391,7 +384,13 @@ const Pricing = () => {
           </div>
         ))}
       </div>
-      <p className="text-center text-xs mt-10" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
+      <p className="text-center text-sm mt-10 mb-3" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        Größeres Sortiment, mehrere Shops oder individuelle Anforderungen? Wir erstellen gerne eine maßgeschneiderte Lösung —{" "}
+        <button onClick={open} className="underline hover:opacity-70 transition" style={{ color: COLORS.primary, fontFamily: fontStack.body }}>
+          Kontakt aufnehmen
+        </button>
+      </p>
+      <p className="text-center text-xs mt-3" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
         Alle Preise netto zzgl. MwSt. · Monatlich kündbar nach Mindestlaufzeit von 12 Monaten
       </p>
     </section>
