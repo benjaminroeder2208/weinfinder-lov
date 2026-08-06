@@ -10,6 +10,7 @@ import { Suspense, lazy } from "react";
 const Landing = lazy(() => import("./pages/Landing.tsx"));
 const SoFunktionierts = lazy(() => import("./pages/SoFunktionierts.tsx"));
 const SoFunktioniertsRechner = lazy(() => import("./pages/SoFunktioniertsRechner.tsx"));
+const Social = lazy(() => import("./pages/Social.tsx"));
 const Kontakt = lazy(() => import("./pages/legal/Kontakt.tsx"));
 const Impressum = lazy(() => import("./pages/legal/Impressum.tsx"));
 const Datenschutz = lazy(() => import("./pages/legal/Datenschutz.tsx"));
@@ -30,6 +31,7 @@ const App = () => (
             <Route path="/" element={<Landing />} />
             <Route path="/so-funktionierts" element={<SoFunktionierts />} />
             <Route path="/so-funktionierts/rechner" element={<SoFunktioniertsRechner />} />
+            <Route path="/social" element={<Social />} />
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
