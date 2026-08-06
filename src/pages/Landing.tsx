@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram, ChevronDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
 
@@ -325,6 +325,58 @@ const Features = () => {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-16 max-w-3xl mx-auto">
+          <h3 className="text-xl md:text-2xl font-bold text-center mb-8" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+            Flexible Einbindung: iFrame vs. Link
+          </h3>
+          <div className="flex flex-col gap-4">
+            <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+                Was ist der Unterschied zwischen iFrame-Einbindung und eigenständigem Link?
+                <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                Beim iFrame wird der Weinfinder direkt in eine Seite deines Shops eingebettet – der Kunde merkt keinen Wechsel. Der eigenständige Link führt auf eine separate, mit deinem Branding versehene Seite, die du überall teilen kannst (Instagram-Bio, Story, Linktree, E-Mail).
+              </p>
+            </details>
+            <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+                Brauche ich eine eigene Website für den Weinfinder?
+                <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                Nein. Mit dem Social-Tarif reicht ein eigener Link – ideal für Weingüter, die vor allem über Instagram, TikTok oder Newsletter Kunden erreichen. Wer den Berater direkt im Shop integrieren möchte, nutzt das Basis- oder Premium-Paket mit iFrame.
+              </p>
+            </details>
+            <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+                Wie aufwendig ist die technische Einbindung?
+                <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                Der iFrame wird als einzeiliger HTML-Code ausgeliefert und passt sich automatisch an dein Layout an. Bei den meisten Shopsystemen (Shopify, WooCommerce, Shopware etc.) ist die Einbindung in wenigen Minuten erledigt. Wir begleiten dich beim Setup.
+              </p>
+            </details>
+            <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+                Kann ich beide Varianten gleichzeitig nutzen?
+                <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                Ja. Viele Kunden betten den Weinfinder im Shop ein und verwenden parallel den eigenständigen Link für Social-Media-Kampagnen. Das Sortiment und die Empfehlungslogik laufen zentral, unabhängig davon, wo der Kunde startet.
+              </p>
+            </details>
+          </div>
         </div>
       </div>
     </section>
