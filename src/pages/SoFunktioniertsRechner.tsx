@@ -20,7 +20,7 @@ const fontStack = {
 };
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
-  <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
+  <p className="text-sm font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
     {children}
   </p>
 );
@@ -144,13 +144,13 @@ const MatchingRechner = () => {
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     <h3 className="text-xl font-semibold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{wine.name}</h3>
-                    <p className="text-sm" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                    <p className="text-sm" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body, fontWeight: 300 }}>
                       {wine.style} · {wine.color} · {wine.price}
                     </p>
                   </div>
                   <div className="text-center px-4 py-2 rounded-xl" style={{ backgroundColor: isTop ? COLORS.green : `${COLORS.primary}14` }}>
                     <span className="block text-2xl font-bold" style={{ color: isTop ? "#ffffff" : COLORS.primary, fontFamily: fontStack.display }}>{total}</span>
-                    <span className="text-xs uppercase" style={{ color: isTop ? "rgba(255,255,255,0.85)" : COLORS.secondary, fontFamily: fontStack.body }}>Punkte</span>
+                    <span className="text-sm uppercase" style={{ color: isTop ? "rgba(255,255,255,0.85)" : COLORS.secondary, fontFamily: fontStack.body }}>Punkte</span>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -181,7 +181,7 @@ const SoFunktioniertsRechner = () => (
       noindex
     />
     <Header />
-    <main>
+    <main id="inhalt">
       <section className="max-w-6xl mx-auto px-6 pt-16 pb-4 text-center">
         <div className="max-w-2xl mx-auto">
           <Kicker>Interaktiver Rechner</Kicker>

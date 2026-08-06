@@ -23,7 +23,7 @@ const fontStack = {
 
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
-  <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
+  <p className="text-sm font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
     {children}
   </p>
 );
@@ -225,11 +225,11 @@ const ScoreExample = () => {
                 <div className="flex items-start justify-between gap-4 mb-6">
                   <div>
                     <h3 className="text-xl font-semibold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{wine.name}</h3>
-                    <p className="text-sm" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body, fontWeight: 300 }}>{wine.style} · {wine.color} · {wine.price}</p>
+                    <p className="text-sm" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body, fontWeight: 300 }}>{wine.style} · {wine.color} · {wine.price}</p>
                   </div>
                   <div className="text-center px-4 py-2 rounded-xl" style={{ backgroundColor: total === maxTotal ? COLORS.green : `${COLORS.primary}14` }}>
                     <span className="block text-2xl font-bold" style={{ color: total === maxTotal ? "#ffffff" : COLORS.primary, fontFamily: fontStack.display }}>{total}</span>
-                    <span className="text-xs uppercase" style={{ color: total === maxTotal ? "rgba(255,255,255,0.85)" : COLORS.secondary, fontFamily: fontStack.body }}>Punkte</span>
+                    <span className="text-sm uppercase" style={{ color: total === maxTotal ? "rgba(255,255,255,0.85)" : COLORS.secondary, fontFamily: fontStack.body }}>Punkte</span>
                   </div>
                 </div>
                 <div className="space-y-3">
@@ -356,7 +356,7 @@ const Faq = () => {
                     href={`#${id}`}
                     onClick={handleDeepLink}
                     className="flex items-center px-4 border-l transition-colors hover:text-[#8b2615]"
-                    style={{ borderColor: "rgba(44,31,14,0.08)", color: "rgba(44,31,14,0.45)" }}
+                    style={{ borderColor: "rgba(44,31,14,0.08)", color: "rgba(44,31,14,0.72)" }}
                     aria-label={`Direktlink zu „${question}“`}
                     title="Direktlink zu dieser Antwort"
                   >
@@ -403,7 +403,7 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
     <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
       <div className="flex items-start justify-between p-6 pb-2">
         <div>
-          <p className="text-xs font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
+          <p className="text-sm font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
           <h3 className="text-2xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Jetzt anfragen</h3>
         </div>
         <button onClick={onClose} aria-label="Schließen" className="p-1 rounded hover:bg-black/5">
@@ -470,7 +470,7 @@ const SoFunktionierts = () => {
       ]}
     />
     <Header />
-    <main>
+    <main id="inhalt">
       <Hero />
       <WhatItMeans />
       <QuestionsGrid />

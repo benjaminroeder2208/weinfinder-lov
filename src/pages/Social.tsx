@@ -28,7 +28,7 @@ const fontStack = {
 
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
-  <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
+  <p className="text-sm font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
     {children}
   </p>
 );
@@ -43,13 +43,13 @@ const PhoneMockup = () => (
         </span>
         <div className="min-w-0">
           <p className="text-sm font-semibold" style={{ color: COLORS.text, fontFamily: fontStack.body }}>weingut.muster</p>
-          <p className="text-xs" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>Weingut · Pfalz</p>
+          <p className="text-sm" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body }}>Weingut · Pfalz</p>
         </div>
       </div>
-      <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body }}>
+      <p className="text-sm leading-relaxed mb-3" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body }}>
         Finde deinen Wein in 60 Sekunden — Link in Bio
       </p>
-      <div className="rounded-md px-3 py-2 text-xs font-semibold flex items-center justify-between gap-2" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
+      <div className="rounded-md px-3 py-2 text-sm font-semibold flex items-center justify-between gap-2" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
         <span className="truncate">weinfinder.link/muster</span>
         <Hand size={14} className="shrink-0" />
       </div>
@@ -59,7 +59,7 @@ const PhoneMockup = () => (
     </div>
     <div className="px-4 sm:px-5 py-7 sm:py-8 text-center" style={{ backgroundColor: COLORS.demoBg }}>
       <h3 className="text-2xl font-bold mb-1 text-white" style={{ fontFamily: fontStack.display }}>Weinfinder</h3>
-      <p className="italic text-xs mb-5" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>Ihr digitaler Sommelier</p>
+      <p className="italic text-sm mb-5" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>Ihr digitaler Sommelier</p>
       <span className="inline-block px-4 sm:px-5 py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
         Weinberatung starten
       </span>
@@ -179,7 +179,7 @@ const Stats = () => {
         {stats.map((s) => (
           <div key={s.l} className="text-center">
             <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{s.v}</div>
-            <div className="text-xs sm:text-sm leading-snug" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
+            <div className="text-sm sm:text-sm leading-snug" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
           </div>
         ))}
       </div>
@@ -216,7 +216,7 @@ const ContactModal = ({ onClose }: { onClose: () => void }) => (
     <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
       <div className="flex items-start justify-between p-6 pb-2">
         <div>
-          <p className="text-xs font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Kontakt</p>
+          <p className="text-sm font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Kontakt</p>
           <h3 className="text-2xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Jetzt anfragen</h3>
         </div>
         <button onClick={onClose} aria-label="Schließen" className="p-1 rounded hover:bg-black/5">
@@ -316,7 +316,7 @@ const Social = () => {
 
         />
         <Header />
-        <main>
+        <main id="inhalt">
           <Hero />
           <Steps />
           <Comparison />

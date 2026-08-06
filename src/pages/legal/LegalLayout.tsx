@@ -15,9 +15,9 @@ const fontStack = {
 const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: string; children: React.ReactNode }) => (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
     <Header />
-    <main className="max-w-3xl mx-auto px-6 py-16">
+    <main id="inhalt" className="max-w-3xl mx-auto px-6 py-16">
       {kicker && (
-        <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color: COLORS.secondary }}>{kicker}</p>
+        <p className="text-sm font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color: COLORS.secondary }}>{kicker}</p>
       )}
       <h1 className="text-4xl md:text-5xl font-bold mb-10" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
         {title}

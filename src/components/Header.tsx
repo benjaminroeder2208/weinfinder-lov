@@ -59,7 +59,8 @@ const Header = () => {
 
   return (
     <header className="sticky top-0 z-50">
-      <nav className="backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
+      <a href="#inhalt" className="skip-link">Zum Inhalt springen</a>
+      <nav aria-label="Hauptnavigation" className="backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
         <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
           <Logo />
           <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
@@ -80,7 +81,7 @@ const Header = () => {
             onClick={() => setOpen((v) => !v)}
             aria-label={open ? "Menü schließen" : "Menü öffnen"}
             aria-expanded={open}
-            className="md:hidden p-2 rounded-md hover:bg-black/5"
+            className="md:hidden inline-flex items-center justify-center min-h-11 min-w-11 rounded-md hover:bg-black/5"
           >
             {open ? <X size={22} style={{ color: COLORS.text }} /> : <Menu size={22} style={{ color: COLORS.text }} />}
           </button>
