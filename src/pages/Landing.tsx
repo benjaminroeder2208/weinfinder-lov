@@ -29,7 +29,7 @@ const fontStack = {
 
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
-  <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
+  <p className="text-sm font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
     {children}
   </p>
 );
@@ -43,7 +43,7 @@ const BrowserMockup = () => (
         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#febc2e" }} />
         <span className="w-3 h-3 rounded-full" style={{ backgroundColor: "#28c840" }} />
       </div>
-      <div className="flex-1 mx-3 px-3 py-1 rounded text-xs text-center" style={{ backgroundColor: "#fff", color: "#8b4a2a", fontFamily: fontStack.body }}>
+      <div className="flex-1 mx-3 px-3 py-1 rounded text-sm text-center" style={{ backgroundColor: "#fff", color: "#8b4a2a", fontFamily: fontStack.body }}>
         app.premium-weinfinder.de/w/demo
       </div>
     </div>
@@ -143,7 +143,7 @@ const HowItWorks = () => (
     </div>
     <div className="grid md:grid-cols-3 gap-6">
       <QuizCard>
-        <p className="text-xs uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Frage 1 von 6</p>
+        <p className="text-sm uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Frage 1 von 6</p>
         <ProgressBars active={1} />
         <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Wann möchtest du den Wein trinken?</h3>
         <div className="flex flex-col gap-2">
@@ -153,7 +153,7 @@ const HowItWorks = () => (
         </div>
       </QuizCard>
       <QuizCard>
-        <p className="text-xs uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Frage 3 von 6</p>
+        <p className="text-sm uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Frage 3 von 6</p>
         <ProgressBars active={3} />
         <h3 className="text-lg font-semibold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Möchtest du den Wein zu einem Essen trinken?</h3>
         <div className="flex flex-col gap-2">
@@ -163,9 +163,9 @@ const HowItWorks = () => (
         </div>
       </QuizCard>
       <QuizCard>
-        <p className="text-xs uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.primary, fontFamily: fontStack.body }}>Top Empfehlung</p>
+        <p className="text-sm uppercase mb-3" style={{ letterSpacing: "0.15em", color: COLORS.primary, fontFamily: fontStack.body }}>Top Empfehlung</p>
         <h3 className="text-xl font-bold mb-1" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Sauvignon Blanc</h3>
-        <p className="text-xs mb-3" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>Weingut Müller · Pfalz · 2022</p>
+        <p className="text-sm mb-3" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body }}>Weingut Müller · Pfalz · 2022</p>
         <p className="text-2xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>14,90 €</p>
         <button className="w-full py-2.5 rounded-md text-sm font-semibold mb-4" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
           Zum Wein
@@ -173,7 +173,7 @@ const HowItWorks = () => (
         <div className="space-y-2">
           {[{ l: "Frucht", v: 60 }, { l: "Körper", v: 35 }, { l: "Frische", v: 80 }].map((b) => (
             <div key={b.l}>
-              <div className="flex justify-between text-xs mb-1" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
+              <div className="flex justify-between text-sm mb-1" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
                 <span>{b.l}</span><span>{b.v}%</span>
               </div>
               <div className="h-1.5 rounded-full" style={{ backgroundColor: "rgba(44,31,14,0.08)" }}>
@@ -221,7 +221,7 @@ const DemoErklaerung = () => {
           </a>
         </div>
         <div className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <p className="text-xs uppercase mb-4" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilotkunden-Sortimente</p>
+          <p className="text-sm uppercase mb-4" style={{ letterSpacing: "0.15em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilotkunden-Sortimente</p>
           <div className="space-y-1">
             {shops.map((shop) => (
               <div key={shop.name} className="flex items-center justify-between gap-3 py-3 border-b last:border-0" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
@@ -231,7 +231,7 @@ const DemoErklaerung = () => {
                   </div>
                   <span className="text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>{shop.name}</span>
                 </div>
-                <span className="text-[10px] font-semibold uppercase px-2 py-0.5 rounded" style={{ backgroundColor: `${COLORS.green}20`, color: COLORS.demoBg, fontFamily: fontStack.body, letterSpacing: "0.05em" }}>Pilotkunde</span>
+                <span className="text-sm font-semibold uppercase px-2 py-0.5 rounded" style={{ backgroundColor: `${COLORS.green}20`, color: COLORS.demoBg, fontFamily: fontStack.body, letterSpacing: "0.05em" }}>Pilotkunde</span>
               </div>
             ))}
           </div>
@@ -300,20 +300,20 @@ const Pricing = () => {
             border: p.recommended ? `1.5px solid ${COLORS.primary}` : "1px solid rgba(44,31,14,0.1)",
           }}>
             {p.recommended && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold text-white" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-sm font-bold text-white" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
                 Empfohlen
               </span>
             )}
             <h3 className="text-xl font-bold mb-1" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.name}</h3>
             {p.note && (
-              <p className="text-[11px] font-medium mb-4" style={{ color: COLORS.secondary, fontFamily: fontStack.body }}>{p.note}</p>
+              <p className="text-sm font-medium mb-4" style={{ color: COLORS.secondary, fontFamily: fontStack.body }}>{p.note}</p>
             )}
             {!p.note && <div className="mb-4" />}
             <div className="mb-1">
               <span className="text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.price}</span>
-              <span className="text-sm" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>{p.per}</span>
+              <span className="text-sm" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body }}>{p.per}</span>
             </div>
-            <p className="text-xs mb-6" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>{p.setup}</p>
+            <p className="text-sm mb-6" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body }}>{p.setup}</p>
             <ul className="space-y-2.5 mb-8">
               {p.features.map((f) => (
                 <li key={f} className="flex gap-2 text-sm" style={{ color: COLORS.text, fontFamily: fontStack.body, fontWeight: 300 }}>
@@ -330,7 +330,7 @@ const Pricing = () => {
               {p.cta}
             </button>
             {p.name === "Social" && (
-              <Link to="/social" className="block text-center mt-3 text-xs hover:opacity-70 transition" style={{ color: COLORS.primary, fontFamily: fontStack.body }}>
+              <Link to="/social" className="block text-center mt-3 text-sm hover:opacity-70 transition" style={{ color: COLORS.primary, fontFamily: fontStack.body }}>
                 Details zum Social-Tarif →
               </Link>
             )}
@@ -343,7 +343,7 @@ const Pricing = () => {
           Kontakt aufnehmen
         </button>
       </p>
-      <p className="text-center text-xs mt-3" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
+      <p className="text-center text-sm mt-3" style={{ color: "rgba(44,31,14,0.72)", fontFamily: fontStack.body }}>
         Alle Preise netto zzgl. MwSt. · Monatlich kündbar nach Mindestlaufzeit von 12 Monaten
       </p>
     </section>
@@ -483,7 +483,7 @@ const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
       <div className="w-full max-w-lg rounded-xl shadow-2xl max-h-[90vh] overflow-y-auto" style={{ backgroundColor: COLORS.bg }} onClick={(e) => e.stopPropagation()}>
         <div className="flex items-start justify-between p-6 pb-2">
           <div>
-            <p className="text-xs font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
+            <p className="text-sm font-bold uppercase mb-2" style={{ letterSpacing: "0.18em", color: COLORS.secondary, fontFamily: fontStack.body }}>Pilot-Programm</p>
             <h3 className="text-2xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>Jetzt anfragen</h3>
           </div>
           <button onClick={onClose} aria-label="Schließen" className="p-1 rounded hover:bg-black/5">
