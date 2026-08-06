@@ -497,7 +497,7 @@ const SoFunktionierts = () => {
         },
       ]}
     />
-    <Nav />
+    <Header />
     <main>
       <Hero />
       <WhatItMeans />

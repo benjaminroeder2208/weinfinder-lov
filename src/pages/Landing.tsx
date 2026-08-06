@@ -576,7 +576,7 @@ const Landing = () => {
           },
         ]}
       />
-      <Nav />
+      <Header />
       <main>
         <Hero />
         <Stats />

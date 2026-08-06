@@ -20,76 +20,10 @@ const fontStack = {
   body: "'Lato', sans-serif",
 };
 
-const Logo = () => (
-  <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-    Wein<span style={{ color: COLORS.primary }}>finder</span>
-  </Link>
-);
-
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
   <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
     {children}
   </p>
-);
-
-const Nav = () => {
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
-  const linkClass = "hover:opacity-70 transition";
-  return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Logo />
-        <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-          <Link to="/#how" className={linkClass}>Wie es funktioniert</Link>
-          <Link to="/#demo-erklaerung" className={linkClass}>Demo</Link>
-          <Link to="/#features" className={linkClass}>Features</Link>
-          <Link to="/#pricing" className={linkClass}>Preise</Link>
-          <Link to="/#ueber" className={linkClass}>Über mich</Link>
-        </div>
-        <Link
-          to="/#demo-erklaerung"
-          className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition"
-          style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}
-        >
-          Demo starten
-        </Link>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
-          aria-expanded={open}
-          className="md:hidden p-2 rounded-md hover:bg-black/5"
-        >
-          {open ? <X size={22} style={{ color: COLORS.text }} /> : <Menu size={22} style={{ color: COLORS.text }} />}
-        </button>
-      </div>
-      {open && (
-        <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
-          <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-            <Link to="/#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</Link>
-            <Link to="/#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</Link>
-            <Link to="/#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</Link>
-            <Link to="/#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</Link>
-            <Link to="/#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</Link>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
-
-const Footer = () => (
-  <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
-    <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
-      <Logo />
-      <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
-        <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
-        <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
-        <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
-        <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
-      </div>
-    </div>
-  </footer>
 );
 
 type Selections = {

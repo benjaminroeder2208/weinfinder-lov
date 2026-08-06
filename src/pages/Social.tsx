@@ -344,7 +344,7 @@ const Social = () => {
           ]}
 
         />
-        <Nav />
+        <Header />
         <main>
           <Hero />
           <Steps />

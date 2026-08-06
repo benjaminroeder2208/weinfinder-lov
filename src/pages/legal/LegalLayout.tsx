@@ -1,7 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-
 const COLORS = {
   bg: "#f5f0e8",
   primary: "#8b2615",
@@ -15,14 +14,7 @@ const fontStack = {
 
 const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: string; children: React.ReactNode }) => (
   <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
-    <header className="border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-      <div className="max-w-3xl mx-auto px-6 py-5 flex items-center justify-between">
-        <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-          Wein<span style={{ color: COLORS.primary }}>finder</span>
-        </Link>
-        <Link to="/" className="text-sm hover:opacity-70" style={{ color: COLORS.text }}>← Zurück zur Startseite</Link>
-      </div>
-    </header>
+    <Header />
     <main className="max-w-3xl mx-auto px-6 py-16">
       {kicker && (
         <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color: COLORS.secondary }}>{kicker}</p>
@@ -34,26 +26,7 @@ const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: stri
         {children}
       </div>
     </main>
-    <footer className="border-t mt-10" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-      <div className="max-w-3xl mx-auto px-6 py-8 flex flex-wrap gap-4 justify-between text-sm" style={{ color: "rgba(44,31,14,0.7)" }}>
-        <span>© {new Date().getFullYear()} Weinfinder</span>
-        <div className="flex gap-6 items-center">
-          <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
-          <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
-          <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
-          <a
-            href="https://www.instagram.com/premium.weinfinder"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="hover:opacity-70 inline-flex items-center gap-1"
-            aria-label="Weinfinder auf Instagram"
-          >
-            <Instagram size={16} />
-            Instagram
-          </a>
-        </div>
-      </div>
-    </footer>
+    <Footer />
   </div>
 );
 
