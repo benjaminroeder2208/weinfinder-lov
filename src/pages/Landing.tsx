@@ -1,8 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram, ChevronDown } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Mail, ChevronDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });
@@ -25,11 +27,6 @@ const fontStack = {
   body: "'Lato', sans-serif",
 };
 
-const Logo = ({ light = false }: { light?: boolean }) => (
-  <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: light ? "#f5f0e8" : COLORS.text }}>
-    Wein<span style={{ color: COLORS.primary }}>finder</span>
-  </Link>
-);
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
   <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
@@ -37,60 +34,6 @@ const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactN
   </p>
 );
 
-const Nav = () => {
-  const [open, setOpen] = useState(false);
-  const close = () => setOpen(false);
-  const location = useLocation();
-  const isSocial = location.pathname === "/social";
-  const linkClass = "hover:opacity-70 transition";
-  const activeClass = "font-semibold underline decoration-2 underline-offset-4";
-  return (
-    <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
-        <Logo />
-        <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-          <a href="#how" className={linkClass}>Wie es funktioniert</a>
-          <a href="#demo-erklaerung" className={linkClass}>Demo</a>
-          <a href="#features" className={linkClass}>Features</a>
-          <Link to="/social" className={`${linkClass} ${isSocial ? activeClass : ""}`}>Social</Link>
-          <a href="#pricing" className={linkClass}>Preise</a>
-          <a href="#ueber" className={linkClass}>Über mich</a>
-        </div>
-        <a href="#demo-erklaerung" className="hidden md:inline-flex px-5 py-2.5 rounded-md text-sm font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
-          Demo starten
-        </a>
-        <button
-          onClick={() => setOpen((v) => !v)}
-          aria-label={open ? "Menü schließen" : "Menü öffnen"}
-          aria-expanded={open}
-          className="md:hidden p-2 rounded-md hover:bg-black/5"
-        >
-          {open ? <X size={22} style={{ color: COLORS.text }} /> : <Menu size={22} style={{ color: COLORS.text }} />}
-        </button>
-      </div>
-      {open && (
-        <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
-          <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-            <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
-            <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
-            <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
-            <Link to="/social" onClick={close} className={`py-3 border-b ${isSocial ? activeClass : ""}`} style={{ borderColor: "rgba(44,31,14,0.08)" }}>Social</Link>
-            <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
-            <a href="#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</a>
-            <a
-              href="#demo-erklaerung"
-              onClick={close}
-              className="mt-3 mb-2 text-center px-5 py-3 rounded-md text-sm font-semibold text-white"
-              style={{ backgroundColor: COLORS.primary }}
-            >
-              Demo starten
-            </a>
-          </div>
-        </div>
-      )}
-    </nav>
-  );
-};
 
 const BrowserMockup = () => (
   <div className="rounded-xl overflow-hidden shadow-2xl" style={{ backgroundColor: "#fff", border: "1px solid rgba(44,31,14,0.1)" }}>
@@ -572,30 +515,6 @@ const PilotBandInner = () => {
   );
 };
 
-const Footer = () => (
-  <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-    <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
-      <Logo />
-      <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
-        <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
-        <Link to="/social" className="hover:opacity-70">Social</Link>
-        <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
-        <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
-        <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
-        <a
-          href="https://www.instagram.com/premium.weinfinder"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-70 inline-flex items-center gap-1.5"
-          aria-label="Weinfinder auf Instagram"
-        >
-          <Instagram size={16} />
-          Instagram
-        </a>
-      </div>
-    </div>
-  </footer>
-);
 
 const PilotFormModal = ({ onClose }: { onClose: () => void }) => (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ backgroundColor: "rgba(44,31,14,0.6)" }} onClick={onClose}>
@@ -652,7 +571,7 @@ const Landing = () => {
           },
         ]}
       />
-      <Nav />
+      <Header />
       <main>
         <Hero />
         <Stats />
