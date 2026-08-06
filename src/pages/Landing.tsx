@@ -49,6 +49,7 @@ const Nav = () => {
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
           <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
+          <Link to="/social" className={linkClass}>Social</Link>
           <a href="#pricing" className={linkClass}>Preise</a>
           <a href="#ueber" className={linkClass}>Über mich</a>
         </div>
