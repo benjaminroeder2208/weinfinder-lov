@@ -97,3 +97,35 @@
     font-family: var(--font-display);
   }
 }
+
+@layer base {
+  /* Sichtbarer Fokus-Indikator für Tastaturnutzer */
+  a:focus-visible,
+  button:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible {
+    outline: 3px solid #8b2615;
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  .skip-link {
+    position: absolute;
+    left: -9999px;
+    top: 0;
+    z-index: 200;
+  }
+
+  .skip-link:focus {
+    left: 1rem;
+    top: 0.75rem;
+    padding: 0.6rem 1rem;
+    background: #8b2615;
+    color: #fff;
+    border-radius: 6px;
+    font-size: 0.95rem;
+  }
+}
