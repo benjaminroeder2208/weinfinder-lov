@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Calculator } from "lucide-react";
 import { useState } from "react";
 import SEO from "@/components/SEO";
