@@ -180,17 +180,17 @@ const Comparison = () => {
   ];
   return (
     <section style={{ backgroundColor: COLORS.featuresBg }}>
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14 max-w-2xl mx-auto">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+        <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <Kicker>Was bleibt gleich</Kicker>
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+          <h2 className="text-[1.75rem] sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
             Gleiche Logik. Anderer Zugang.
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
           {cols.map((c) => (
-            <div key={c.t} className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-              <h3 className="text-xl font-semibold mb-5" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{c.t}</h3>
+            <div key={c.t} className="rounded-xl p-5 sm:p-6 shadow-sm h-full" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-5" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{c.t}</h3>
               <ul className="space-y-3">
                 {shared.map((s) => (
                   <li key={s} className="flex items-start gap-3 text-sm" style={{ color: "rgba(44,31,14,0.8)", fontFamily: fontStack.body, fontWeight: 300 }}>
@@ -206,7 +206,7 @@ const Comparison = () => {
             </div>
           ))}
         </div>
-        <p className="text-center mt-8 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-center mt-6 sm:mt-8 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Beide Varianten lassen sich jederzeit kombinieren.
         </p>
       </div>
@@ -223,11 +223,11 @@ const Stats = () => {
   ];
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-12 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 sm:gap-8">
         {stats.map((s) => (
           <div key={s.l} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{s.v}</div>
-            <div className="text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{s.v}</div>
+            <div className="text-xs sm:text-sm leading-snug" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
           </div>
         ))}
       </div>
@@ -239,18 +239,18 @@ const CtaBand = () => {
   const { open } = useContact();
   return (
     <section style={{ backgroundColor: COLORS.ctaBg }}>
-      <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white" style={{ fontFamily: fontStack.display }}>
+      <div className="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20 text-center">
+        <h2 className="text-[1.75rem] leading-snug sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 text-white" style={{ fontFamily: fontStack.display }}>
           Starte noch heute — ganz ohne Website-Umbau
         </h2>
-        <p className="mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-base mb-7 sm:mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Werde einer der ersten Weinshops mit einem digitalen Sommelier direkt aus Social Media.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <button onClick={open} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
+          <button onClick={open} className="w-full sm:w-auto px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
             Jetzt anfragen
           </button>
-          <Link to="/#demo-erklaerung" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+          <Link to="/#demo-erklaerung" className="w-full sm:w-auto text-center px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
             Demo ansehen
           </Link>
         </div>
@@ -261,9 +261,9 @@ const CtaBand = () => {
 
 const Footer = () => (
   <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-    <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
+    <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
       <Logo />
-      <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
+      <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
         <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
