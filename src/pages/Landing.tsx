@@ -350,61 +350,71 @@ const Pricing = () => {
   );
 };
 
-const PricingFaq = () => (
-  <section style={{ backgroundColor: COLORS.featuresBg }}>
-    <div className="max-w-3xl mx-auto px-6 py-16">
-      <h3 className="text-xl md:text-2xl font-bold text-center mb-8" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-        Häufige Fragen zu den Tarifen
-      </h3>
-      <div className="flex flex-col gap-4">
-        <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-            Wie lange dauert die Einrichtung?
-            <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
-              <ChevronDown size={20} />
-            </span>
-          </summary>
-          <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-            In der Regel ist der Weinfinder innerhalb von 48 Stunden einsatzbereit. Die Einrichtung umfasst Branding, Sortiments-Import, Shop-Verlinkung und einen kurzen Testlauf. Bei individuellen Anpassungen kann es etwas länger dauern.
-          </p>
-        </details>
-        <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-            Was passiert, wenn ich mehr Weine anbieten möchte als im Tarif enthalten?
-            <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
-              <ChevronDown size={20} />
-            </span>
-          </summary>
-          <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-            Du kannst jederzeit auf ein größeres Paket upgraden. Für sehr große Sortimente oder mehrere Shops erstellen wir gerne eine maßgeschneiderte Enterprise-Lösung.
-          </p>
-        </details>
-        <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-            Wie sieht der Support aus?
-            <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
-              <ChevronDown size={20} />
-            </span>
-          </summary>
-          <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-            Social und Basis enthalten E-Mail-Support. Premium-Kunden erhalten priorisierte Antworten und direktere Unterstützung bei Sortiments-Anpassungen und Fragen zur Einbindung.
-          </p>
-        </details>
-        <details className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-          <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-            Kann ich den Weinfinder vor dem Kauf testen?
-            <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
-              <ChevronDown size={20} />
-            </span>
-          </summary>
-          <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
-            Ja. Schreib uns einfach eine kurze Nachricht und wir zeigen dir anhand deines Sortiments, wie der Weinfinder für deinen Shop aussehen würde – unverbindlich und kostenlos.
-          </p>
-        </details>
+const Faq = () => {
+  const items = [
+    {
+      q: "Was ist der Unterschied zwischen iFrame-Einbindung und eigenständigem Link?",
+      a: "Beim iFrame wird der Weinfinder direkt in eine Seite deines Shops eingebettet – der Kunde merkt keinen Wechsel. Der eigenständige Link führt auf eine separate, mit deinem Branding versehene Seite, die du überall teilen kannst (Instagram-Bio, Story, Linktree, E-Mail).",
+    },
+    {
+      q: "Brauche ich eine eigene Website für den Weinfinder?",
+      a: "Nein. Mit dem Social-Tarif reicht ein eigener Link – ideal für Weingüter, die vor allem über Instagram, TikTok oder Newsletter Kunden erreichen. Wer den Berater direkt im Shop integrieren möchte, nutzt das Basis- oder Premium-Paket mit iFrame.",
+    },
+    {
+      q: "Wie aufwendig ist die technische Einbindung?",
+      a: "Der iFrame wird als einzeiliger HTML-Code ausgeliefert und passt sich automatisch an dein Layout an. Bei den meisten Shopsystemen (Shopify, WooCommerce, Shopware etc.) ist die Einbindung in wenigen Minuten erledigt. Wir begleiten dich beim Setup.",
+    },
+    {
+      q: "Kann ich beide Varianten gleichzeitig nutzen?",
+      a: "Ja. Viele Kunden betten den Weinfinder im Shop ein und verwenden parallel den eigenständigen Link für Social-Media-Kampagnen. Das Sortiment und die Empfehlungslogik laufen zentral, unabhängig davon, wo der Kunde startet.",
+    },
+    {
+      q: "Wie lange dauert die Einrichtung?",
+      a: "In der Regel ist der Weinfinder innerhalb von 48 Stunden einsatzbereit. Die Einrichtung umfasst Branding, Sortiments-Import, Shop-Verlinkung und einen kurzen Testlauf. Bei individuellen Anpassungen kann es etwas länger dauern.",
+    },
+    {
+      q: "Was passiert, wenn ich mehr Weine anbieten möchte als im Tarif enthalten?",
+      a: "Du kannst jederzeit auf ein größeres Paket upgraden. Für sehr große Sortimente oder mehrere Shops erstellen wir gerne eine maßgeschneiderte Enterprise-Lösung.",
+    },
+    {
+      q: "Wie sieht der Support aus?",
+      a: "Social und Basis enthalten E-Mail-Support. Premium-Kunden erhalten priorisierte Antworten und direktere Unterstützung bei Sortiments-Anpassungen und Fragen zur Einbindung.",
+    },
+    {
+      q: "Kann ich den Weinfinder vor dem Kauf testen?",
+      a: "Ja. Schreib uns einfach eine kurze Nachricht und wir zeigen dir anhand deines Sortiments, wie der Weinfinder für deinen Shop aussehen würde – unverbindlich und kostenlos.",
+    },
+  ];
+  return (
+    <section id="faq" style={{ backgroundColor: COLORS.featuresBg }}>
+      <div className="max-w-3xl mx-auto px-6 py-16">
+        <Kicker className="text-center">FAQ</Kicker>
+        <h3 className="text-xl md:text-2xl font-bold text-center mb-8" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+          Häufige Fragen
+        </h3>
+        <div className="flex flex-col gap-4">
+          {items.map(({ q, a }) => (
+            <details key={q} className="rounded-xl group" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <summary className="flex items-center justify-between p-5 cursor-pointer list-none font-semibold text-base" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+                {q}
+                <span className="transition-transform duration-200 group-open:rotate-180" style={{ color: COLORS.primary }}>
+                  <ChevronDown size={20} />
+                </span>
+              </summary>
+              <p className="px-5 pb-5 text-sm leading-relaxed" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+                {q === "Brauche ich eine eigene Website für den Weinfinder?" ? (
+                  <>Nein. Mit dem <Link to="/social" className="underline hover:opacity-70" style={{ color: COLORS.primary }}>Social-Tarif</Link> reicht ein eigener Link – ideal für Weingüter, die vor allem über Instagram, TikTok oder Newsletter Kunden erreichen. Wer den Berater direkt im Shop integrieren möchte, nutzt das Basis- oder Premium-Paket mit iFrame.</>
+                ) : (
+                  a
+                )}
+              </p>
+            </details>
+          ))}
+        </div>
       </div>
-    </div>
-  </section>
-);
+    </section>
+  );
+};
 
 const CtaBand = () => (
   <PilotBandInner />
