@@ -329,15 +329,6 @@ const Features = () => {
   );
 };
 
-          className="shrink-0 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-semibold border hover:bg-black/5 transition"
-          style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}
-        >
-          Mehr erfahren →
-        </Link>
-      </div>
-    </div>
-  </section>
-);
 
 const Pricing = () => {
   const { open } = usePilotForm();
