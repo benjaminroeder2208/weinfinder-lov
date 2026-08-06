@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
-import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, Menu, X, Check, ChevronDown, Link2, Mail, Instagram } from "lucide-react";
+import { CalendarClock, Wine, UtensilsCrossed, Droplets, Euro, Zap, X, Check, ChevronDown, Link2, Mail, Instagram } from "lucide-react";
 import { useEffect, useState } from "react";
 import SEO from "@/components/SEO";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const COLORS = {
   bg: "#f5f0e8",

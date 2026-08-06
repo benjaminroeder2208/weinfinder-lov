@@ -1,7 +1,8 @@
-import { Link } from "react-router-dom";
-import { Menu, X, Calculator } from "lucide-react";
+import { Calculator } from "lucide-react";
 import { useState } from "react";
 import SEO from "@/components/SEO";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const COLORS = {
   bg: "#f5f0e8",

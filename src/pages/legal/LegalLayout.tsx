@@ -1,5 +1,6 @@
-import { Link } from "react-router-dom";
-import { Instagram } from "lucide-react";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+
 
 const COLORS = {
   bg: "#f5f0e8",

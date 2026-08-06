@@ -1,8 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram, ChevronDown } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Mail, Instagram, ChevronDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 
 const PilotFormContext = createContext<{ open: () => void }>({ open: () => {} });

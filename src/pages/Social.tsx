@@ -1,8 +1,10 @@
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Check, X, Menu, Mail, Instagram, Hand, ArrowDown } from "lucide-react";
+import { Check, X, Mail, Instagram, Hand, ArrowDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 const ContactContext = createContext<{ open: () => void }>({ open: () => {} });
 const useContact = () => useContext(ContactContext);
