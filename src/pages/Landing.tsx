@@ -299,7 +299,7 @@ const Features = () => {
     { Icon: Palette, title: "White-Label Branding", desc: "Logo, Farben, Texte & Schriftart — alles anpassbar an deinen Shop und deine Marke." },
     { Icon: Link2, title: "Direkte Shop-Links", desc: "Vom Ergebnis mit einem Klick zur Produktseite und in den Warenkorb." },
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
-    { Icon: Code, title: "iFrame-Einbindung", desc: "Integriere den Weinfinder mit wenigen Zeilen Code direkt auf deiner Website oder in deinem Shop." },
+    { Icon: Code, title: "Flexible Einbindung", desc: "Auf deiner Website per iFrame – oder ganz ohne Umbau als eigenständiger Link für Instagram-Bio & Co." },
     { Icon: Smartphone, title: "Mobile First", desc: "Optimiert für Smartphones — denn deine Kunden shoppen unterwegs." },
   ];
   return (
@@ -329,24 +329,6 @@ const Features = () => {
   );
 };
 
-const SocialBanner = () => (
-  <section style={{ backgroundColor: COLORS.featuresBg }}>
-    <div className="max-w-6xl mx-auto px-6 py-5">
-      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl px-6 py-4" style={{ backgroundColor: `${COLORS.card}80`, border: "1px solid rgba(44,31,14,0.08)" }}>
-        <p className="text-sm leading-relaxed" style={{ color: COLORS.text, fontFamily: fontStack.body, fontWeight: 300 }}>
-          Noch keine eigene Website? Der Weinfinder funktioniert auch ganz ohne Einbindung — direkt über einen Link für Instagram & Co.
-        </p>
-        <Link
-          to="/social"
-          className="shrink-0 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-semibold border hover:bg-black/5 transition"
-          style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}
-        >
-          Mehr erfahren →
-        </Link>
-      </div>
-    </div>
-  </section>
-);
 
 const Pricing = () => {
   const { open } = usePilotForm();
@@ -564,7 +546,6 @@ const Landing = () => {
         <HowItWorks />
         <DemoErklaerung />
         <Features />
-        <SocialBanner />
         <Pricing />
         <UeberMich />
         <CtaBand />
