@@ -157,7 +157,7 @@ const Steps = () => {
           In drei Schritten live
         </h2>
       </div>
-      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
+      <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
         {steps.map((s, i) => (
           <div key={s.t} className="rounded-xl p-5 sm:p-6 shadow-sm h-full" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 text-lg font-bold" style={{ backgroundColor: `${COLORS.primary}14`, color: COLORS.primary, fontFamily: fontStack.display }}>
