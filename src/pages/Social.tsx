@@ -150,16 +150,16 @@ const Steps = () => {
     { t: "In Bio eintragen", d: "Link in die Instagram-Bio oder Story — startklar, ganz ohne Programmierung." },
   ];
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
-      <div className="text-center mb-14 max-w-2xl mx-auto">
+    <section className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+      <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
         <Kicker>So einfach geht's</Kicker>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+        <h2 className="text-[1.75rem] sm:text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
           In drei Schritten live
         </h2>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
         {steps.map((s, i) => (
-          <div key={s.t} className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+          <div key={s.t} className="rounded-xl p-5 sm:p-6 shadow-sm h-full" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 text-lg font-bold" style={{ backgroundColor: `${COLORS.primary}14`, color: COLORS.primary, fontFamily: fontStack.display }}>
               {i + 1}
             </div>
