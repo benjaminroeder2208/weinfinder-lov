@@ -49,6 +49,7 @@ const Nav = () => {
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
           <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
+          <Link to="/social" className={linkClass}>Social</Link>
           <a href="#pricing" className={linkClass}>Preise</a>
           <a href="#ueber" className={linkClass}>Über mich</a>
         </div>
@@ -70,6 +71,7 @@ const Nav = () => {
             <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
             <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
+            <Link to="/social" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Social</Link>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
             <a href="#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</a>
             <a
@@ -465,6 +467,7 @@ const Footer = () => (
       <Logo />
       <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
         <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
+        <Link to="/social" className="hover:opacity-70">Social</Link>
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
         <Link to="/datenschutz" className="hover:opacity-70">Datenschutz</Link>
