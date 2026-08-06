@@ -388,7 +388,6 @@ const Faq = () => {
   return (
     <section id="faq" style={{ backgroundColor: COLORS.featuresBg }}>
       <div className="max-w-3xl mx-auto px-6 py-16">
-        <Kicker className="text-center">FAQ</Kicker>
         <h3 className="text-xl md:text-2xl font-bold text-center mb-8" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
           Häufige Fragen
         </h3>
