@@ -247,7 +247,7 @@ const Features = () => {
     { Icon: Palette, title: "White-Label Branding", desc: "Logo, Farben, Texte & Schriftart — alles anpassbar an deinen Shop und deine Marke." },
     { Icon: Link2, title: "Direkte Shop-Links", desc: "Vom Ergebnis mit einem Klick zur Produktseite und in den Warenkorb." },
     { Icon: MessageSquareQuote, title: "Erklärte Empfehlungen", desc: "Jeder Wein kommt mit einer Begründung — wie bei einer echten Beratung." },
-    { Icon: Code, title: "Flexible Einbindung", desc: "Auf deiner Website per iFrame – oder ganz ohne Umbau als eigenständiger Link für Instagram-Bio & Co." },
+    { Icon: Code, title: "Flexible Einbindung", desc: <>Auf deiner Website per iFrame – oder ganz ohne Umbau als eigenständiger Link für Instagram-Bio & Co. <Link to="/social" className="underline hover:opacity-70" style={{ color: COLORS.primary }}>Mehr zum Social-Tarif →</Link></> },
     { Icon: Smartphone, title: "Mobile First", desc: "Optimiert für Smartphones — denn deine Kunden shoppen unterwegs." },
   ];
   return (
