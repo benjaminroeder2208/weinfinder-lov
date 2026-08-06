@@ -26,11 +26,6 @@ const fontStack = {
   body: "'Lato', sans-serif",
 };
 
-const Logo = () => (
-  <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
-    Wein<span style={{ color: COLORS.primary }}>finder</span>
-  </Link>
-);
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
   <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>

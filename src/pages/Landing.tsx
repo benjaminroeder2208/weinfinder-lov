@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Mail, Instagram, ChevronDown } from "lucide-react";
+import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Mail, ChevronDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
 import SEO from "@/components/SEO";
 import Header from "@/components/Header";
@@ -27,11 +27,6 @@ const fontStack = {
   body: "'Lato', sans-serif",
 };
 
-const Logo = ({ light = false }: { light?: boolean }) => (
-  <Link to="/" className="font-bold text-2xl tracking-tight" style={{ fontFamily: fontStack.display, color: light ? "#f5f0e8" : COLORS.text }}>
-    Wein<span style={{ color: COLORS.primary }}>finder</span>
-  </Link>
-);
 
 const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactNode; color?: string }) => (
   <p className="text-xs font-bold uppercase mb-4" style={{ letterSpacing: "0.18em", color, fontFamily: fontStack.body }}>
