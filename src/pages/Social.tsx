@@ -42,7 +42,7 @@ const Nav = () => {
   const linkClass = "hover:opacity-70 transition";
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
-      <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
         <Logo />
         <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
           <Link to="/#how" className={linkClass}>Wie es funktioniert</Link>
@@ -69,7 +69,7 @@ const Nav = () => {
       </div>
       {open && (
         <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
-          <div className="px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
+          <div className="px-5 sm:px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
             <Link to="/#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</Link>
             <Link to="/#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</Link>
             <Link to="/#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</Link>
@@ -83,13 +83,13 @@ const Nav = () => {
 };
 
 const PhoneMockup = () => (
-  <div className="mx-auto w-full max-w-[320px] rounded-[2rem] overflow-hidden shadow-2xl" style={{ backgroundColor: "#fff", border: "8px solid #2c1f0e" }}>
-    <div className="px-5 py-5" style={{ backgroundColor: "#fff" }}>
+  <div className="mx-auto w-full max-w-[280px] sm:max-w-[320px] rounded-[1.75rem] sm:rounded-[2rem] overflow-hidden shadow-2xl border-[6px] sm:border-8" style={{ backgroundColor: "#fff", borderColor: "#2c1f0e" }}>
+    <div className="px-4 sm:px-5 py-5" style={{ backgroundColor: "#fff" }}>
       <div className="flex items-center gap-3 mb-4">
-        <span className="w-14 h-14 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14`, border: `2px solid ${COLORS.primary}` }}>
+        <span className="w-12 h-12 sm:w-14 sm:h-14 shrink-0 rounded-full flex items-center justify-center" style={{ backgroundColor: `${COLORS.primary}14`, border: `2px solid ${COLORS.primary}` }}>
           <Instagram size={22} style={{ color: COLORS.primary }} />
         </span>
-        <div>
+        <div className="min-w-0">
           <p className="text-sm font-semibold" style={{ color: COLORS.text, fontFamily: fontStack.body }}>weingut.muster</p>
           <p className="text-xs" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>Weingut · Pfalz</p>
         </div>
@@ -97,18 +97,18 @@ const PhoneMockup = () => (
       <p className="text-xs leading-relaxed mb-3" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body }}>
         Finde deinen Wein in 60 Sekunden — Link in Bio
       </p>
-      <div className="rounded-md px-3 py-2 text-xs font-semibold flex items-center justify-between" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
-        <span>weinfinder.link/muster</span>
-        <Hand size={14} />
+      <div className="rounded-md px-3 py-2 text-xs font-semibold flex items-center justify-between gap-2" style={{ border: `1px solid ${COLORS.primary}`, color: COLORS.primary, fontFamily: fontStack.body }}>
+        <span className="truncate">weinfinder.link/muster</span>
+        <Hand size={14} className="shrink-0" />
       </div>
       <div className="flex justify-center py-3">
         <ArrowDown size={18} style={{ color: COLORS.secondary }} />
       </div>
     </div>
-    <div className="px-5 py-8 text-center" style={{ backgroundColor: COLORS.demoBg }}>
+    <div className="px-4 sm:px-5 py-7 sm:py-8 text-center" style={{ backgroundColor: COLORS.demoBg }}>
       <h3 className="text-2xl font-bold mb-1 text-white" style={{ fontFamily: fontStack.display }}>Weinfinder</h3>
       <p className="italic text-xs mb-5" style={{ color: "rgba(245,240,232,0.6)", fontFamily: fontStack.display }}>Ihr digitaler Sommelier</p>
-      <span className="inline-block px-5 py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
+      <span className="inline-block px-4 sm:px-5 py-2.5 rounded-md font-semibold text-sm" style={{ backgroundColor: COLORS.green, color: COLORS.demoBg, fontFamily: fontStack.body }}>
         Weinberatung starten
       </span>
     </div>
@@ -118,20 +118,20 @@ const PhoneMockup = () => (
 const Hero = () => {
   const { open } = useContact();
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20 md:py-28 grid md:grid-cols-2 gap-12 items-center">
+    <section className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20 md:py-28 grid md:grid-cols-2 gap-10 md:gap-12 items-center">
       <div>
         <Kicker>Für Instagram &amp; Co.</Kicker>
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+        <h1 className="text-[2rem] leading-[1.15] sm:text-4xl md:text-5xl lg:text-6xl font-bold md:leading-tight mb-5 sm:mb-6 break-words" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
           Deine Weinberatung — direkt aus <em style={{ color: COLORS.primary, fontStyle: "italic" }}>Instagram</em>
         </h1>
-        <p className="text-lg mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-base sm:text-lg mb-7 sm:mb-8 leading-relaxed" style={{ color: "rgba(44,31,14,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Kein Website-Umbau, keine technische Einbindung. Dein Weinfinder läuft über einen einzigen Link — perfekt für die Instagram-Bio, Story-Highlights oder Linktree.
         </p>
-        <div className="flex flex-wrap gap-4">
-          <button onClick={open} className="px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4">
+          <button onClick={open} className="w-full sm:w-auto px-6 py-3 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
             Jetzt starten
           </button>
-          <Link to="/#demo-erklaerung" className="px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
+          <Link to="/#demo-erklaerung" className="w-full sm:w-auto text-center px-6 py-3 rounded-md font-semibold border hover:bg-black/5 transition" style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}>
             Demo ansehen
           </Link>
         </div>
@@ -150,16 +150,16 @@ const Steps = () => {
     { t: "In Bio eintragen", d: "Link in die Instagram-Bio oder Story — startklar, ganz ohne Programmierung." },
   ];
   return (
-    <section className="max-w-6xl mx-auto px-6 py-20">
-      <div className="text-center mb-14 max-w-2xl mx-auto">
+    <section className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+      <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
         <Kicker>So einfach geht's</Kicker>
-        <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+        <h2 className="text-[1.75rem] sm:text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
           In drei Schritten live
         </h2>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-3 gap-4 sm:gap-6">
         {steps.map((s, i) => (
-          <div key={s.t} className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+          <div key={s.t} className="rounded-xl p-5 sm:p-6 shadow-sm h-full" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
             <div className="w-10 h-10 rounded-full flex items-center justify-center mb-4 text-lg font-bold" style={{ backgroundColor: `${COLORS.primary}14`, color: COLORS.primary, fontFamily: fontStack.display }}>
               {i + 1}
             </div>
@@ -180,17 +180,17 @@ const Comparison = () => {
   ];
   return (
     <section style={{ backgroundColor: COLORS.featuresBg }}>
-      <div className="max-w-6xl mx-auto px-6 py-20">
-        <div className="text-center mb-14 max-w-2xl mx-auto">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-14 sm:py-20">
+        <div className="text-center mb-10 sm:mb-14 max-w-2xl mx-auto">
           <Kicker>Was bleibt gleich</Kicker>
-          <h2 className="text-3xl md:text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
+          <h2 className="text-[1.75rem] sm:text-3xl md:text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
             Gleiche Logik. Anderer Zugang.
           </h2>
         </div>
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4 sm:gap-6">
           {cols.map((c) => (
-            <div key={c.t} className="rounded-xl p-6 shadow-sm" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
-              <h3 className="text-xl font-semibold mb-5" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{c.t}</h3>
+            <div key={c.t} className="rounded-xl p-5 sm:p-6 shadow-sm h-full" style={{ backgroundColor: COLORS.card, border: "1px solid rgba(44,31,14,0.08)" }}>
+              <h3 className="text-lg sm:text-xl font-semibold mb-4 sm:mb-5" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{c.t}</h3>
               <ul className="space-y-3">
                 {shared.map((s) => (
                   <li key={s} className="flex items-start gap-3 text-sm" style={{ color: "rgba(44,31,14,0.8)", fontFamily: fontStack.body, fontWeight: 300 }}>
@@ -206,7 +206,7 @@ const Comparison = () => {
             </div>
           ))}
         </div>
-        <p className="text-center mt-8 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-center mt-6 sm:mt-8 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Beide Varianten lassen sich jederzeit kombinieren.
         </p>
       </div>
@@ -223,11 +223,11 @@ const Stats = () => {
   ];
   return (
     <section>
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 sm:py-12 grid grid-cols-2 md:grid-cols-4 gap-y-8 gap-x-4 sm:gap-8">
         {stats.map((s) => (
           <div key={s.l} className="text-center">
-            <div className="text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{s.v}</div>
-            <div className="text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
+            <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2" style={{ fontFamily: fontStack.display, color: COLORS.primary }}>{s.v}</div>
+            <div className="text-xs sm:text-sm leading-snug" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>{s.l}</div>
           </div>
         ))}
       </div>
@@ -239,18 +239,18 @@ const CtaBand = () => {
   const { open } = useContact();
   return (
     <section style={{ backgroundColor: COLORS.ctaBg }}>
-      <div className="max-w-3xl mx-auto px-6 py-20 text-center">
-        <h2 className="text-3xl md:text-4xl font-bold mb-5 text-white" style={{ fontFamily: fontStack.display }}>
+      <div className="max-w-3xl mx-auto px-5 sm:px-6 py-14 sm:py-20 text-center">
+        <h2 className="text-[1.75rem] leading-snug sm:text-3xl md:text-4xl font-bold mb-4 sm:mb-5 text-white" style={{ fontFamily: fontStack.display }}>
           Starte noch heute — ganz ohne Website-Umbau
         </h2>
-        <p className="mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        <p className="text-base mb-7 sm:mb-8 leading-relaxed" style={{ color: "rgba(245,240,232,0.75)", fontFamily: fontStack.body, fontWeight: 300 }}>
           Werde einer der ersten Weinshops mit einem digitalen Sommelier direkt aus Social Media.
         </p>
-        <div className="flex flex-wrap gap-4 justify-center">
-          <button onClick={open} className="px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
+        <div className="flex flex-col sm:flex-row flex-wrap gap-3 sm:gap-4 justify-center">
+          <button onClick={open} className="w-full sm:w-auto px-7 py-3.5 rounded-md font-semibold text-white hover:opacity-90 transition" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
             Jetzt anfragen
           </button>
-          <Link to="/#demo-erklaerung" className="px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
+          <Link to="/#demo-erklaerung" className="w-full sm:w-auto text-center px-7 py-3.5 rounded-md font-semibold border hover:bg-white/5 transition" style={{ borderColor: "rgba(245,240,232,0.3)", color: "#f5f0e8", fontFamily: fontStack.body }}>
             Demo ansehen
           </Link>
         </div>
@@ -261,9 +261,9 @@ const CtaBand = () => {
 
 const Footer = () => (
   <footer className="border-t" style={{ borderColor: "rgba(44,31,14,0.08)" }}>
-    <div className="max-w-6xl mx-auto px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
+    <div className="max-w-6xl mx-auto px-5 sm:px-6 py-10 flex flex-col md:flex-row gap-6 items-center justify-between">
       <Logo />
-      <div className="flex flex-wrap gap-6 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
+      <div className="flex flex-wrap justify-center md:justify-end gap-x-6 gap-y-3 text-sm" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body }}>
         <a href="https://premium-weinfinder.de" className="hover:opacity-70">premium-weinfinder.de</a>
         <Link to="/kontakt" className="hover:opacity-70">Kontakt</Link>
         <Link to="/impressum" className="hover:opacity-70">Impressum</Link>
