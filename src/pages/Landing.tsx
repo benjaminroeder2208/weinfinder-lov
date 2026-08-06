@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Sparkles, Palette, Link2, MessageSquareQuote, Code, Smartphone, Check, X, Menu, Mail, Instagram, ChevronDown } from "lucide-react";
 import { useState, createContext, useContext } from "react";
@@ -40,7 +40,10 @@ const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactN
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const location = useLocation();
+  const isSocial = location.pathname === "/social";
   const linkClass = "hover:opacity-70 transition";
+  const activeClass = "font-semibold underline decoration-2 underline-offset-4";
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
       <div className="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
@@ -49,7 +52,7 @@ const Nav = () => {
           <a href="#how" className={linkClass}>Wie es funktioniert</a>
           <a href="#demo-erklaerung" className={linkClass}>Demo</a>
           <a href="#features" className={linkClass}>Features</a>
-          <Link to="/social" className={linkClass}>Social</Link>
+          <Link to="/social" className={`${linkClass} ${isSocial ? activeClass : ""}`}>Social</Link>
           <a href="#pricing" className={linkClass}>Preise</a>
           <a href="#ueber" className={linkClass}>Über mich</a>
         </div>
@@ -71,7 +74,7 @@ const Nav = () => {
             <a href="#how" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Wie es funktioniert</a>
             <a href="#demo-erklaerung" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Demo</a>
             <a href="#features" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Features</a>
-            <Link to="/social" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Social</Link>
+            <Link to="/social" onClick={close} className={`py-3 border-b ${isSocial ? activeClass : ""}`} style={{ borderColor: "rgba(44,31,14,0.08)" }}>Social</Link>
             <a href="#pricing" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Preise</a>
             <a href="#ueber" onClick={close} className="py-3 border-b" style={{ borderColor: "rgba(44,31,14,0.08)" }}>Über mich</a>
             <a
