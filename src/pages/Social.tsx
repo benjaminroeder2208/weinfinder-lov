@@ -338,7 +338,54 @@ const Social = () => {
                 { "@type": "ListItem", position: 2, name: "Weinfinder für Social Media", item: "https://premium-weinfinder.de/social" },
               ],
             },
+            {
+              "@context": "https://schema.org",
+              "@type": "FAQPage",
+              mainEntity: [
+                {
+                  "@type": "Question",
+                  name: "Brauche ich eine eigene Website für den Weinfinder?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Nein. Der Weinfinder läuft als eigenständiger Link, den du in deine Instagram-Bio, Story-Highlights oder Linktree eintragen kannst — ganz ohne Website oder Programmierung.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wie funktioniert die Weinberatung über Instagram?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Deine Kundinnen und Kunden klicken auf den Link in deiner Bio und beantworten 6 gezielte Fragen zu Geschmack, Anlass und Preis. Der Weinfinder zeigt passende Weine aus deinem Sortiment und leitet direkt in deinen Shop weiter.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Kann ich Weinfinder zusätzlich auf meiner Website einbinden?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ja. Du kannst den Weinfinder als Link für Social Media nutzen und gleichzeitig per iFrame in deine Website einbinden — beide Varianten lassen sich beliebig kombinieren.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Wie lange dauert die Einrichtung?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "In der Regel ist dein Weinfinder innerhalb weniger Tage einsatzbereit. Wir übernehmen die Übernahme deines Sortiments, die Konfiguration der Matching-Logik und die Erstellung deines persönlichen Links.",
+                  },
+                },
+                {
+                  "@type": "Question",
+                  name: "Passt sich Weinfinder optisch an meine Marke an?",
+                  acceptedAnswer: {
+                    "@type": "Answer",
+                    text: "Ja. Logo, Farben, Texte und Schriftart werden auf dein Weingut oder deinen Weinshop abgestimmt — für ein durchgängiges Markenerlebnis auf allen Kanälen.",
+                  },
+                },
+              ],
+            },
           ]}
+
         />
         <Nav />
         <main>
