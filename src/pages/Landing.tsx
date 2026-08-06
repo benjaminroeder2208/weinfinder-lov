@@ -329,9 +329,29 @@ const Features = () => {
   );
 };
 
+const SocialBanner = () => (
+  <section style={{ backgroundColor: COLORS.featuresBg }}>
+    <div className="max-w-6xl mx-auto px-6 py-5">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4 rounded-xl px-6 py-4" style={{ backgroundColor: `${COLORS.card}80`, border: "1px solid rgba(44,31,14,0.08)" }}>
+        <p className="text-sm leading-relaxed" style={{ color: COLORS.text, fontFamily: fontStack.body, fontWeight: 300 }}>
+          Noch keine eigene Website? Der Weinfinder funktioniert auch ganz ohne Einbindung — direkt über einen Link für Instagram & Co.
+        </p>
+        <Link
+          to="/social"
+          className="shrink-0 inline-flex items-center justify-center px-4 py-2 rounded-md text-sm font-semibold border hover:bg-black/5 transition"
+          style={{ borderColor: "rgba(44,31,14,0.2)", color: COLORS.text, fontFamily: fontStack.body }}
+        >
+          Mehr erfahren →
+        </Link>
+      </div>
+    </div>
+  </section>
+);
+
 const Pricing = () => {
   const { open } = usePilotForm();
   const plans = [
+    { name: "Social", price: "19,90 €", per: "/Monat", setup: "zzgl. 149 € Einrichtung", recommended: false, soon: false, note: "Keine Website-Einbindung nötig", features: ["Vollständig anpassbares Branding", "Bis zu 30 Weine", "Eigenständiger Link (Instagram-Bio, Linktree, Story)", "Direkte Shop-Verlinkung", "E-Mail-Support"], cta: "Jetzt anfragen" },
     { name: "Basis", price: "39 €", per: "/Monat", setup: "zzgl. 299 € Einrichtung", recommended: false, soon: false, features: ["Vollständig anpassbares Branding", "Bis zu 50 Weine", "Direkte Shop-Verlinkung", "Quiz-Editor", "E-Mail Support"], cta: "Jetzt anfragen" },
     { name: "Premium", price: "79 €", per: "/Monat", setup: "zzgl. 499 € Einrichtung", recommended: true, soon: false, features: ["Alles aus Basis", "Bis zu 100 Weine", "Sortiment sichtbar im Premium Weinfinder", "Lead-Capture & CRM-Export", "Priority Support"], cta: "Jetzt anfragen" },
     { name: "Enterprise", price: "Individuell", per: "", setup: "Auf Anfrage", recommended: false, soon: true, features: ["Unbegrenzte Weine", "Mehrere Shops", "API-Zugang", "Custom Features", "Dedicated Account Manager"], cta: "Demnächst verfügbar" },
@@ -344,7 +364,7 @@ const Pricing = () => {
           Faire Preise für jeden Shop
         </h2>
       </div>
-      <div className="grid md:grid-cols-3 gap-6">
+      <div className="grid md:grid-cols-4 gap-6">
         {plans.map((p) => (
           <div key={p.name} className="relative rounded-xl p-8" style={{
             backgroundColor: COLORS.card,
@@ -361,7 +381,11 @@ const Pricing = () => {
                 Coming soon
               </span>
             )}
-            <h3 className="text-xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.name}</h3>
+            <h3 className="text-xl font-bold mb-1" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.name}</h3>
+            {p.note && (
+              <p className="text-[11px] font-medium mb-4" style={{ color: COLORS.secondary, fontFamily: fontStack.body }}>{p.note}</p>
+            )}
+            {!p.note && <div className="mb-4" />}
             <div className="mb-1">
               <span className="text-4xl font-bold" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.price}</span>
               <span className="text-sm" style={{ color: "rgba(44,31,14,0.6)", fontFamily: fontStack.body }}>{p.per}</span>
@@ -540,6 +564,7 @@ const Landing = () => {
         <HowItWorks />
         <DemoErklaerung />
         <Features />
+        <SocialBanner />
         <Pricing />
         <UeberMich />
         <CtaBand />
