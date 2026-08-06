@@ -39,7 +39,10 @@ const Kicker = ({ children, color = COLORS.secondary }: { children: React.ReactN
 const Nav = () => {
   const [open, setOpen] = useState(false);
   const close = () => setOpen(false);
+  const location = useLocation();
+  const isSocial = location.pathname === "/social";
   const linkClass = "hover:opacity-70 transition";
+  const activeClass = "font-semibold underline decoration-2 underline-offset-4";
   return (
     <nav className="sticky top-0 z-50 backdrop-blur-md border-b" style={{ backgroundColor: `${COLORS.bg}ee`, borderColor: "rgba(44,31,14,0.08)" }}>
       <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
@@ -48,6 +51,7 @@ const Nav = () => {
           <Link to="/#how" className={linkClass}>Wie es funktioniert</Link>
           <Link to="/#demo-erklaerung" className={linkClass}>Demo</Link>
           <Link to="/#features" className={linkClass}>Features</Link>
+          <Link to="/social" className={`${linkClass} ${isSocial ? activeClass : ""}`}>Social</Link>
           <Link to="/#pricing" className={linkClass}>Preise</Link>
           <Link to="/#ueber" className={linkClass}>Über mich</Link>
         </div>
