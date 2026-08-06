@@ -345,21 +345,15 @@ const Pricing = () => {
           Faire Preise für jeden Shop
         </h2>
       </div>
-      <div className="grid md:grid-cols-4 gap-6">
+      <div className="grid md:grid-cols-3 gap-6">
         {plans.map((p) => (
           <div key={p.name} className="relative rounded-xl p-8" style={{
             backgroundColor: COLORS.card,
             border: p.recommended ? `1.5px solid ${COLORS.primary}` : "1px solid rgba(44,31,14,0.1)",
-            opacity: p.soon ? 0.5 : 1,
           }}>
             {p.recommended && (
               <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold text-white" style={{ backgroundColor: COLORS.primary, fontFamily: fontStack.body }}>
                 Empfohlen
-              </span>
-            )}
-            {p.soon && (
-              <span className="absolute -top-3 left-1/2 -translate-x-1/2 px-3 py-1 rounded-full text-xs font-bold" style={{ backgroundColor: COLORS.secondary, color: "#fff", fontFamily: fontStack.body }}>
-                Coming soon
               </span>
             )}
             <h3 className="text-xl font-bold mb-1" style={{ fontFamily: fontStack.display, color: COLORS.text }}>{p.name}</h3>
@@ -380,9 +374,9 @@ const Pricing = () => {
                 </li>
               ))}
             </ul>
-            <button onClick={() => !p.soon && open()} disabled={p.soon} className="w-full py-3 rounded-md text-sm font-semibold disabled:cursor-not-allowed" style={{
-              backgroundColor: p.soon ? "rgba(44,31,14,0.1)" : COLORS.primary,
-              color: p.soon ? "rgba(44,31,14,0.5)" : "#fff",
+            <button onClick={() => open()} className="w-full py-3 rounded-md text-sm font-semibold" style={{
+              backgroundColor: COLORS.primary,
+              color: "#fff",
               fontFamily: fontStack.body,
             }}>
               {p.cta}
@@ -390,7 +384,13 @@ const Pricing = () => {
           </div>
         ))}
       </div>
-      <p className="text-center text-xs mt-10" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
+      <p className="text-center text-sm mt-10 mb-3" style={{ color: "rgba(44,31,14,0.7)", fontFamily: fontStack.body, fontWeight: 300 }}>
+        Größeres Sortiment, mehrere Shops oder individuelle Anforderungen? Wir erstellen gerne eine maßgeschneiderte Lösung —{" "}
+        <button onClick={open} className="underline hover:opacity-70 transition" style={{ color: COLORS.primary, fontFamily: fontStack.body }}>
+          Kontakt aufnehmen
+        </button>
+      </p>
+      <p className="text-center text-xs mt-3" style={{ color: "rgba(44,31,14,0.55)", fontFamily: fontStack.body }}>
         Alle Preise netto zzgl. MwSt. · Monatlich kündbar nach Mindestlaufzeit von 12 Monaten
       </p>
     </section>
