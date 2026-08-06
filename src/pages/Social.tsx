@@ -315,9 +315,30 @@ const Social = () => {
     <ContactContext.Provider value={{ open: () => setFormOpen(true) }}>
       <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
         <SEO
-          title="Weinfinder für Instagram — Weinberatung per Link"
-          description="Digitale Weinberatung ohne Website-Umbau: Der Weinfinder läuft als eigenständiger Link — ideal für Instagram-Bio, Story-Highlights oder Linktree."
+          title="Weinfinder für Instagram — Weinberatung per Link in Bio"
+          description="Weinberatung ohne eigene Website: Der Weinfinder läuft als eigener Link — perfekt für Instagram-Bio, Story-Highlights oder Linktree. In 3 Schritten startklar."
           path="/social"
+          ogTitle="Deine Weinberatung — direkt aus Instagram"
+          ogDescription="Kein Website-Umbau nötig. Ein Link in der Bio, und deine Kundinnen und Kunden finden in 6 Fragen den passenden Wein aus deinem Sortiment."
+          jsonLd={[
+            {
+              "@context": "https://schema.org",
+              "@type": "WebPage",
+              name: "Weinfinder für Instagram — Weinberatung per Link in Bio",
+              description:
+                "Weinberatung ohne eigene Website: Der Weinfinder läuft als eigener Link — perfekt für Instagram-Bio, Story-Highlights oder Linktree.",
+              url: "https://premium-weinfinder.de/social",
+              inLanguage: "de-DE",
+            },
+            {
+              "@context": "https://schema.org",
+              "@type": "BreadcrumbList",
+              itemListElement: [
+                { "@type": "ListItem", position: 1, name: "Startseite", item: "https://premium-weinfinder.de/" },
+                { "@type": "ListItem", position: 2, name: "Weinfinder für Social Media", item: "https://premium-weinfinder.de/social" },
+              ],
+            },
+          ]}
         />
         <Nav />
         <main>
