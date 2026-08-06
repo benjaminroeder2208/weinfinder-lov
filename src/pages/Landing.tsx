@@ -546,7 +546,6 @@ const Landing = () => {
         <HowItWorks />
         <DemoErklaerung />
         <Features />
-        <SocialBanner />
         <Pricing />
         <UeberMich />
         <CtaBand />
