@@ -112,6 +112,10 @@
     border-radius: 4px;
   }
 
+  main:focus {
+    outline: none;
+  }
+
   .skip-link {
     position: fixed;
     left: -9999px;
