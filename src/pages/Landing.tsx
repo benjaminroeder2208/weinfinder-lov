@@ -541,8 +541,8 @@ const Landing = () => {
         <DemoErklaerung />
         <Features />
         <Pricing />
-        <PricingFaq />
         <UeberMich />
+        <Faq />
         <CtaBand />
       </main>
       <Footer />
