@@ -18,7 +18,7 @@ const productLinks = [
   { to: "/", label: "Startseite" },
   { to: "/so-funktionierts", label: "So funktioniert's" },
   { to: "/social", label: "Social" },
-  { to: "#demo-erklaerung", label: "Demo", isAnchor: true },
+  { to: "/#demo-erklaerung", label: "Demo" },
 ];
 
 const legalLinks = [
@@ -28,19 +28,11 @@ const legalLinks = [
   { to: "/agb", label: "AGB" },
 ];
 
-const NavLink = ({ to, label, isAnchor }: { to: string; label: string; isAnchor?: boolean }) => {
+const NavLink = ({ to, label }: { to: string; label: string }) => {
   const location = useLocation();
-  const isActive = !isAnchor && location.pathname === to;
+  const isActive = location.pathname === to;
   const baseClasses = "block py-2.5 text-sm transition hover:opacity-80 md:py-1.5";
   const style = { color: "rgba(44,31,14,0.85)", fontFamily: fontStack.body };
-
-  if (isAnchor) {
-    return (
-      <a href={to} className={baseClasses} style={style}>
-        {label}
-      </a>
-    );
-  }
 
   return (
     <Link

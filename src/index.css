@@ -202,3 +202,20 @@
     border-color: #000 !important;
   }
 }
+
+/* Anchor-Sprungmarken: Offset für den Sticky-Header */
+html {
+  scroll-behavior: smooth;
+}
+
+section[id],
+main[id],
+[id][data-anchor] {
+  scroll-margin-top: 88px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
