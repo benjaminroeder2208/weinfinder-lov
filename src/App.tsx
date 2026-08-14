@@ -14,6 +14,7 @@ const Social = lazy(() => import("./pages/Social.tsx"));
 const Kontakt = lazy(() => import("./pages/legal/Kontakt.tsx"));
 const Impressum = lazy(() => import("./pages/legal/Impressum.tsx"));
 const Datenschutz = lazy(() => import("./pages/legal/Datenschutz.tsx"));
+const Agb = lazy(() => import("./pages/legal/Agb.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 const queryClient = new QueryClient();
@@ -35,7 +36,7 @@ const App = () => (
             <Route path="/kontakt" element={<Kontakt />} />
             <Route path="/impressum" element={<Impressum />} />
             <Route path="/datenschutz" element={<Datenschutz />} />
-            
+            <Route path="/agb" element={<Agb />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
           </Suspense>
