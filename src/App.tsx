@@ -5,6 +5,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import ThemeToggle from "@/components/ThemeToggle";
+import ScrollToHash from "@/components/ScrollToHash";
 import { Suspense, lazy } from "react";
 
 const Landing = lazy(() => import("./pages/Landing.tsx"));
@@ -26,6 +27,7 @@ const App = () => (
         <Toaster />
         <Sonner />
         <BrowserRouter>
+          <ScrollToHash />
           <Suspense fallback={<div className="min-h-screen" style={{ backgroundColor: "#f5f0e8" }} />}>
           <Routes>
             <Route path="/" element={<Landing />} />
