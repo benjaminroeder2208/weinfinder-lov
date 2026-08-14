@@ -23,7 +23,6 @@ const App = () => (
   <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={false}>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <ThemeToggle />
         <Toaster />
         <Sonner />
         <BrowserRouter>
@@ -41,6 +40,7 @@ const App = () => (
           </Routes>
           </Suspense>
         </BrowserRouter>
+        <ThemeToggle />
       </TooltipProvider>
     </QueryClientProvider>
   </ThemeProvider>
