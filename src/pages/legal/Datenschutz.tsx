@@ -130,9 +130,6 @@ const Datenschutz = () => (
         </p>
       </LegalSection>
 
-      <p className="text-sm mt-12 pt-8 border-t" style={{ color: "rgba(44,31,14,0.72)", borderColor: "rgba(44,31,14,0.12)" }}>
-        Benjamin Röder, Einzelunternehmen, Mainkurstr. 16, 63075 Offenbach am Main, Deutschland, Stand: 14.08.2026
-      </p>
     </LegalLayout>
   </>
 );
