@@ -13,7 +13,7 @@ const fontStack = {
 };
 
 const LegalLayout = ({ title, kicker, children }: { title: string; kicker?: string; children: React.ReactNode }) => (
-  <div className="min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
+  <div className="legal-page min-h-screen" style={{ backgroundColor: COLORS.bg, color: COLORS.text, fontFamily: fontStack.body }}>
     <Header />
     <main id="inhalt" tabIndex={-1} className="max-w-3xl mx-auto px-6 py-16">
       {kicker && (
