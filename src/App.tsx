@@ -40,6 +40,7 @@ const App = () => (
           </Routes>
           </Suspense>
         </BrowserRouter>
+        <ThemeToggle />
       </TooltipProvider>
     </QueryClientProvider>
   </ThemeProvider>
