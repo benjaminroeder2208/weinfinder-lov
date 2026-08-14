@@ -25,6 +25,7 @@ const legalLinks = [
   { to: "/kontakt", label: "Kontakt" },
   { to: "/impressum", label: "Impressum" },
   { to: "/datenschutz", label: "Datenschutz" },
+  { to: "/agb", label: "AGB" },
 ];
 
 const NavLink = ({ to, label, isAnchor }: { to: string; label: string; isAnchor?: boolean }) => {
