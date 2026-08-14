@@ -64,7 +64,7 @@ const Header = () => {
         <div className="max-w-6xl mx-auto px-5 sm:px-6 py-4 flex items-center justify-between">
           <Logo />
           <div className="hidden md:flex items-center gap-8 text-sm" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-            <NavLink anchor="#how" to="/#how">Wie es funktioniert</NavLink>
+            <NavLink anchor="#how" to="/#how">So funktioniert's</NavLink>
             <NavLink anchor="#demo-erklaerung" to="/#demo-erklaerung">Demo</NavLink>
             <NavLink anchor="#features" to="/#features">Features</NavLink>
             <NavLink anchor="#pricing" to="/#pricing">Preise</NavLink>
@@ -89,7 +89,7 @@ const Header = () => {
         {open && (
           <div className="md:hidden border-t" style={{ borderColor: "rgba(44,31,14,0.08)", backgroundColor: COLORS.bg }}>
             <div className="px-5 sm:px-6 py-4 flex flex-col gap-1 text-base" style={{ fontFamily: fontStack.body, color: COLORS.text }}>
-              <NavLink anchor="#how" to="/#how" mobile>Wie es funktioniert</NavLink>
+              <NavLink anchor="#how" to="/#how" mobile>So funktioniert's</NavLink>
               <NavLink anchor="#demo-erklaerung" to="/#demo-erklaerung" mobile>Demo</NavLink>
               <NavLink anchor="#features" to="/#features" mobile>Features</NavLink>
               <NavLink anchor="#pricing" to="/#pricing" mobile>Preise</NavLink>

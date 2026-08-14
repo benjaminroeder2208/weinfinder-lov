@@ -133,7 +133,7 @@ const OptionBtn = ({ label, selected = false }: { label: string; selected?: bool
 const HowItWorks = () => (
   <section id="how" className="max-w-6xl mx-auto px-6 py-20">
     <div className="text-center mb-14 max-w-2xl mx-auto">
-      <Kicker>Wie es funktioniert</Kicker>
+      <Kicker>So funktioniert's</Kicker>
       <h2 className="text-3xl md:text-4xl font-bold mb-4" style={{ fontFamily: fontStack.display, color: COLORS.text }}>
         Der passende Wein für deine Kunden
       </h2>
