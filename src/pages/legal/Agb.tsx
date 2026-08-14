@@ -4,8 +4,8 @@ import SEO from "@/components/SEO";
 const Agb = () => (
   <>
     <SEO
-      title="Allgemeine Geschäftsbedingungen — Weinfinder"
-      description="AGB für die Nutzung von Weinfinder – dem White-Label Weinberatungs-Tool für Weinshops und Weingüter."
+      title="AGB – Weinfinder | Allgemeine Geschäftsbedingungen für Weinshops & Weingüter"
+      description="Allgemeine Geschäftsbedingungen für die Nutzung von Weinfinder, dem White-Label Weinberatungs-Tool für Weinshops, Weingüter und Online-Handel."
       path="/agb"
     />
     <LegalLayout title="Allgemeine Geschäftsbedingungen">
