@@ -4,7 +4,7 @@ import { ThemeProvider } from "next-themes";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
-import ThemeToggle from "@/components/ThemeToggle";
+
 import ScrollToHash from "@/components/ScrollToHash";
 import { Suspense, lazy } from "react";
 
