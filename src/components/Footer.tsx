@@ -1,5 +1,5 @@
 import { Link, useLocation } from "react-router-dom";
-import { Instagram, ChevronDown, Mail, ExternalLink } from "lucide-react";
+import { Instagram, Facebook, ChevronDown, Mail, ExternalLink } from "lucide-react";
 
 const COLORS = {
   bg: "#f5f0e8",
@@ -113,6 +113,18 @@ const Footer = () => (
             <ExternalLink size={12} aria-hidden="true" className="ml-0.5" />
           </a>
           <a
+            href="https://www.facebook.com/premium.weinfinder"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-2 py-2.5 text-sm transition hover:opacity-80"
+            style={{ color: "rgba(44,31,14,0.85)", fontFamily: fontStack.body }}
+            aria-label="Weinfinder auf Facebook (öffnet in neuem Tab)"
+          >
+            <Facebook size={16} aria-hidden="true" />
+            Facebook
+            <ExternalLink size={12} aria-hidden="true" className="ml-0.5" />
+          </a>
+          <a
             href="https://premium-weinfinder.de"
             className="flex items-center gap-2 py-2.5 text-sm transition hover:opacity-80"
             style={{ color: "rgba(44,31,14,0.85)", fontFamily: fontStack.body }}
@@ -177,6 +189,20 @@ const Footer = () => (
             >
               <Instagram size={16} aria-hidden="true" />
               Instagram
+              <ExternalLink size={12} aria-hidden="true" className="ml-0.5" />
+            </a>
+          </li>
+          <li>
+            <a
+              href="https://www.facebook.com/premium.weinfinder"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 py-1.5 text-sm transition hover:opacity-80"
+              style={{ color: "rgba(44,31,14,0.85)", fontFamily: fontStack.body }}
+              aria-label="Weinfinder auf Facebook (öffnet in neuem Tab)"
+            >
+              <Facebook size={16} aria-hidden="true" />
+              Facebook
               <ExternalLink size={12} aria-hidden="true" className="ml-0.5" />
             </a>
           </li>
